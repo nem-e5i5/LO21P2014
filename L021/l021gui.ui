@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>L021GUIClass</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>282</width>
+    <height>231</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>282</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuUV_2">
+    <property name="title">
+     <string>UV</string>
+    </property>
+    <widget class="QMenu" name="menuImporter">
+     <property name="title">
+      <string>Importer</string>
+     </property>
+     <addaction name="actionTexte"/>
+    </widget>
+    <addaction name="actionAjouter"/>
+    <addaction name="actionModifier"/>
+    <addaction name="actionOuvrir_2"/>
+    <addaction name="menuImporter"/>
+   </widget>
+   <widget class="QMenu" name="menuDossier_2">
+    <property name="title">
+     <string>Dossier</string>
+    </property>
+    <addaction name="actionNouveau"/>
+    <addaction name="actionOuvrir"/>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="actionEnregistrer_sous"/>
+   </widget>
+   <addaction name="menuUV_2"/>
+   <addaction name="menuDossier_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSaisir_dossier">
+   <property name="text">
+    <string>Saisir dossier</string>
+   </property>
+  </action>
+  <action name="actionNouveau">
+   <property name="text">
+    <string>Nouveau</string>
+   </property>
+  </action>
+  <action name="actionOuvrir">
+   <property name="text">
+    <string>Ouvrir...</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer">
+   <property name="text">
+    <string>Enregistrer</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer_sous">
+   <property name="text">
+    <string>Enregistrer sous...</string>
+   </property>
+  </action>
+  <action name="actionAjouter">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="actionModifier">
+   <property name="text">
+    <string>Ajouter...</string>
+   </property>
+  </action>
+  <action name="actionOuvrir_2">
+   <property name="text">
+    <string>Ouvrir...</string>
+   </property>
+  </action>
+  <action name="actionTexte">
+   <property name="text">
+    <string>Texte...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
