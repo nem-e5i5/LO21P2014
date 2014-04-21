@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>L021GUIClass</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>282</width>
-    <height>231</height>
-   </rect>
-  </property>
+ <class>gui</class>
+ <widget class="QMainWindow" name="gui">
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -19,11 +11,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>282</width>
-     <height>21</height>
+     <width>507</width>
+     <height>27</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuUV_2">
+   <widget class="QMenu" name="menuUV">
     <property name="title">
      <string>UV</string>
     </property>
@@ -35,25 +27,33 @@
     </widget>
     <addaction name="actionAjouter"/>
     <addaction name="actionModifier"/>
-    <addaction name="actionOuvrir_2"/>
     <addaction name="menuImporter"/>
    </widget>
-   <widget class="QMenu" name="menuDossier_2">
+   <widget class="QMenu" name="menuDossier">
     <property name="title">
      <string>Dossier</string>
     </property>
     <addaction name="actionNouveau"/>
     <addaction name="actionOuvrir"/>
     <addaction name="actionEnregistrer"/>
-    <addaction name="actionEnregistrer_sous"/>
+    <addaction name="actionEnregistrer_Sous"/>
    </widget>
-   <addaction name="menuUV_2"/>
-   <addaction name="menuDossier_2"/>
+   <addaction name="menuUV"/>
+   <addaction name="menuDossier"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSaisir_dossier">
+  <action name="actionAjouter">
    <property name="text">
-    <string>Saisir dossier</string>
+    <string>Ajouter</string>
+   </property>
+  </action>
+  <action name="actionModifier">
+   <property name="text">
+    <string>Modifier</string>
+   </property>
+  </action>
+  <action name="actionTexte">
+   <property name="text">
+    <string>Texte</string>
    </property>
   </action>
   <action name="actionNouveau">
@@ -63,7 +63,7 @@
   </action>
   <action name="actionOuvrir">
    <property name="text">
-    <string>Ouvrir...</string>
+    <string>Ouvrir</string>
    </property>
   </action>
   <action name="actionEnregistrer">
@@ -71,29 +71,9 @@
     <string>Enregistrer</string>
    </property>
   </action>
-  <action name="actionEnregistrer_sous">
+  <action name="actionEnregistrer_Sous">
    <property name="text">
-    <string>Enregistrer sous...</string>
-   </property>
-  </action>
-  <action name="actionAjouter">
-   <property name="text">
-    <string>Liste</string>
-   </property>
-  </action>
-  <action name="actionModifier">
-   <property name="text">
-    <string>Ajouter...</string>
-   </property>
-  </action>
-  <action name="actionOuvrir_2">
-   <property name="text">
-    <string>Ouvrir...</string>
-   </property>
-  </action>
-  <action name="actionTexte">
-   <property name="text">
-    <string>Texte...</string>
+    <string>Enregistrer Sous</string>
    </property>
   </action>
  </widget>

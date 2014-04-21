@@ -1,10 +1,11 @@
-#include "l021gui.h"
-#include <QtWidgets/QApplication>
+#include "gui.hpp"
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	L021GUI w;
+	gui w;
 	w.show();
+
 	return a.exec();
 }
