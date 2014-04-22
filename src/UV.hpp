@@ -13,7 +13,11 @@ class UV {
 		unsigned int _nb_credit;
 		bool _automne;
 		bool _printemps;
+		bool _is_null;
+		UV();
 	public:
+		static const UV null;
+
 		UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p);
 		// get
 		QString get_code () const;

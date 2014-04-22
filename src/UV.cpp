@@ -1,8 +1,10 @@
 #include "UV.hpp"
 
 // UV //
+const UV UV::null = UV();
 
-UV::UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p) {
+UV::UV() : _is_null(true) { }
+UV::UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p) : _is_null(false) {
 	_code=code;
 	_titre=titre;
 	_type=type;
