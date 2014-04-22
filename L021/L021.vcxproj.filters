@@ -53,10 +53,10 @@
     <ClCompile Include="AddUVDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UV.cpp">
+    <ClCompile Include="EditUVDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EditUVDialog.cpp">
+    <ClCompile Include="..\src\UV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,10 +84,13 @@
     <ClInclude Include="AddUVDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UV.h">
+    <ClInclude Include="EditUVDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EditUVDialog.h">
+    <ClInclude Include="..\src\UV.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Other.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
