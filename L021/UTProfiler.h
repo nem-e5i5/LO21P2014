@@ -1,8 +1,9 @@
 #pragma once
 #include "UV.hpp"
+#include "Ensemble.h"
 class UTProfiler
 {
-	UVList ListeUV;
+	Ensemble<UV> ListeUV;
 public:
 	UTProfiler();
 	~UTProfiler();

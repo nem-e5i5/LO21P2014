@@ -14,10 +14,10 @@ class UV {
 		bool _automne;
 		bool _printemps;
 		bool _is_null;
-		UV();
+		
 	public:
 		static const UV null;
-
+		UV();
 		UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p);
 		// get
 		QString get_code () const;
@@ -34,7 +34,7 @@ class UV {
 		void set_automne (const bool a);
 		void set_printemps (const bool p);
 };
-
+/*
 template <typename T>
 class UVList {
 	private:
@@ -49,6 +49,7 @@ class UVList {
 		template <typename F>
 		T* getWhere (const F& code);
 
+		template <typename T>
 		class Iterator {
 			friend class UVList;
 			private:
@@ -84,10 +85,10 @@ class UVList {
 				}
 		};
 
-		Iterator get_iterator() {
-			return Iterator(this);
+		Iterator<T> get_iterator() {
+			return Iterator<T>(this);
 		}
 
-};
+};*/
 
 #endif // UV_HPP

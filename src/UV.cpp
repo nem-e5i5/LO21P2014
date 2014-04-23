@@ -52,18 +52,20 @@ void UV::set_printemps (const bool p) {
 }
 
 // UVList //
-
+/*
 template <typename T>
-void UVList::add (T* uv) {
+void UVList<T>::add (T* uv) {
 	_uv_list.push_back(uv);
 }
 
 template <typename F>
-void UVList::removeWhere (F selector) {
-	_uv_list.erase(search_UV(code));
+void UVList<T>::removeWhere (F selector) {
+	auto x = get_iterator();
+	x.nextWhere(selector);
+	_uv_list.erase(x.get_current());
 }
 
 template <typename T, typename F>
-T* UVList::getWhere (F selector) {
+T* UVList<T>::getWhere (F selector) {
 	return *(search_UV(code));
-}
+}*/

@@ -145,6 +145,7 @@
     <ClCompile Include="Cursus.cpp" />
     <ClCompile Include="CursusList.cpp" />
     <ClCompile Include="Dossier.cpp" />
+    <ClCompile Include="Ensemble.cpp" />
     <ClCompile Include="UTProfiler.cpp" />
     <ClCompile Include="UVDialog.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="Cursus.h" />
     <ClInclude Include="CursusList.h" />
     <ClInclude Include="Dossier.h" />
+    <ClInclude Include="Ensemble.h" />
     <ClInclude Include="UTProfiler.h" />
     <ClInclude Include="UVDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_AddUV.h" />

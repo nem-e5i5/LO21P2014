@@ -65,6 +65,9 @@
     <ClCompile Include="UVEncours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ensemble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -106,6 +109,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UVEncours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ensemble.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
