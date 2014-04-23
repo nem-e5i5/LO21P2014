@@ -15,12 +15,12 @@ L021GUI::~L021GUI()
 
 void L021GUI::AddUv()
 {
-	AddUVDialog::ShowDialog();
+	UVDialog::ShowDialog();
 }
 
 void L021GUI::EditUv()
 {
 	//TODO: selectionneur d'UV
 	UV x = UV::null;
-	EditUVDialog::ShowDialog(x);
+	UVDialog::ShowDialog(x);
 }
