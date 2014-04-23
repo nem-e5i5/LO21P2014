@@ -35,17 +35,19 @@ class UV {
 		void set_printemps (const bool p);
 };
 
+template <typename T>
 class UVList {
 	private:
-		std::vector<UV*> _uv_list;
-		std::vector<UV*>::iterator search_UV(const QString& code);
+		std::vector<T*> _uv_list;
 	public:
 		UVList() {
 			_uv_list={};
 		}
-		void add_UV (UV* uv);
-		void remove_UV (const QString& code);
-		UV* get_UV (const QString& code);
+		void add (T* uv);
+		template <typename F>
+		void removeWhere (const F& code);
+		template <typename F>
+		T* getWhere (const F& code);
 
 		class Iterator {
 			friend class UVList;
@@ -57,7 +59,7 @@ class UVList {
 					_owner=owner;
 				}
 			public:
-				UV* get_current() {
+				T* get_current() {
 					return _owner->_uv_list[_i];
 				}
 				void begin() {
@@ -65,6 +67,12 @@ class UVList {
 				}
 				void next() {
 					_i+=1;
+				}
+				template <typename F>
+				void nextWhere(F function)
+				{
+					do ++i;
+					while !function(get_current);
 				}
 				bool end() {
 					if (_i >= _owner->_uv_list.size()) {

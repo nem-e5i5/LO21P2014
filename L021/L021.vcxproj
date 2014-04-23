@@ -142,11 +142,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\UV.cpp" />
-    <ClCompile Include="AddUVDialog.cpp" />
-    <ClCompile Include="EditUVDialog.cpp" />
+    <ClCompile Include="Cursus.cpp" />
+    <ClCompile Include="CursusList.cpp" />
+    <ClCompile Include="Dossier.cpp" />
+    <ClCompile Include="UTProfiler.cpp" />
+    <ClCompile Include="UVDialog.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp" />
     <ClCompile Include="l021gui.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UVEncours.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -244,9 +248,13 @@
   <ItemGroup>
     <ClInclude Include="..\src\Other.hpp" />
     <ClInclude Include="..\src\UV.hpp" />
-    <ClInclude Include="AddUVDialog.h" />
-    <ClInclude Include="EditUVDialog.h" />
+    <ClInclude Include="Cursus.h" />
+    <ClInclude Include="CursusList.h" />
+    <ClInclude Include="Dossier.h" />
+    <ClInclude Include="UTProfiler.h" />
+    <ClInclude Include="UVDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_AddUV.h" />
+    <ClInclude Include="UVEncours.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

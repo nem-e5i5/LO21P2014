@@ -53,30 +53,17 @@ void UV::set_printemps (const bool p) {
 
 // UVList //
 
-std::vector<UV*>::iterator UVList::search_UV(const QString& code) {
-	std::vector<UV*>::iterator i = _uv_list.begin();
-	bool found=false;
-	while (found==false && i!=_uv_list.end()) {
-		if (code == (*i)->get_code()) {
-			found=true;
-		}
-		else {
-			i+=1;
-		}
-	}
-	if (found==true) {
-		return i;
-	}
-	else {
-		throw(UTException("search_UV("+code+") : not found"));
-	}
-}
-void UVList::add_UV (UV* uv) {
+template <typename T>
+void UVList::add (T* uv) {
 	_uv_list.push_back(uv);
 }
-void UVList::remove_UV (const QString& code) {
+
+template <typename F>
+void UVList::removeWhere (F selector) {
 	_uv_list.erase(search_UV(code));
 }
-UV* UVList::get_UV (const QString& code) {
+
+template <typename T, typename F>
+T* UVList::getWhere (F selector) {
 	return *(search_UV(code));
 }
