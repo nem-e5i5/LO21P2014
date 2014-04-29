@@ -1,5 +1,5 @@
 #include "l021gui.h"
-#include <QtWidgets/QApplication>
+#include <QtWidgets>
 
 int main(int argc, char *argv[])
 {
@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
 	v->push_back(UV(QString("lol21"), "rire fort", UVType::CS, 6, false, false));
 	v->push_back(UV(QString("lol20"), "rire moins fort", UVType::CS, 6, false, false));
 	std::shared_ptr<std::vector<UV>> p = std::shared_ptr<std::vector<UV>>(v);
+
 	Ensemble<UV> eUV(p);
 
 	auto n = eUV.Where([](const UV& i) {return i.get_code() == "lol21"; });

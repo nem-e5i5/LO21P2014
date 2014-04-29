@@ -4,12 +4,12 @@
 #include "UV.hpp"
 class UVDialog :
 	public Ui::DialogUV,
-	QDialog
+	public QDialog
 {
 public:
 	UVDialog(QWidget* parent);
 	~UVDialog();
-	// Affiche une boîte de dialogue avec les informations de l'UV passé en paramètre, cette UV est édité par l'utilisateur. Retourne la référence passé en paramètre
+	// Affiche une boÃ®te de dialogue avec les informations de l'UV passÃ© en paramÃ¨tre, cette UV est Ã©ditÃ© par l'utilisateur. Retourne la rÃ©fÃ©rence passÃ© en paramÃ¨tre
 	static UV& ShowDialog(UV& Uv, QWidget* parent = nullptr);
 	static UV ShowDialog(QWidget* parent = nullptr);
 };
