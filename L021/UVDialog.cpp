@@ -12,22 +12,22 @@ UVDialog::~UVDialog()
 }
 
 
-// Affiche une boîte de dialogue avec les informations de l'UV passé en paramètre, cette UV est édité par l'utilisateur. Retourne la référence passé en paramètre
+// Affiche une boÃ®te de dialogue avec les informations de l'UV passÃ© en paramÃ¨tre, cette UV est Ã©ditÃ© par l'utilisateur. Retourne la rÃ©fÃ©rence passÃ© en paramÃ¨tre
 UV& UVDialog::ShowDialog(UV& Uv, QWidget* parent)
 {
-	UVDialog x = UVDialog(parent);
+	UVDialog x(parent);
 	//TODO: faire une initialisation propre de la gui
 	int rflag = x.exec();
 	if (rflag == 1)
 	{
-		//TODO: routine de mise à jour
+		//TODO: routine de mise Ã  jour
 	}
 	return Uv;
 }
 
 UV UVDialog::ShowDialog(QWidget* parent)
 {
-	UVDialog x = UVDialog(parent);
+	UVDialog x(parent);
 	int rflag = x.exec();
 	if (rflag == 0)
 		return UV::null;
