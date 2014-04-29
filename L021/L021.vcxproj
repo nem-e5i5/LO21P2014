@@ -60,6 +60,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>..\boost_1_55_0;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -82,7 +84,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Alexandre\SkyDrive\Projets\C++\L021\boost_1_55_0\libs;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <TargetMachine>MachineX86</TargetMachine>
@@ -145,7 +147,7 @@
     <ClCompile Include="Cursus.cpp" />
     <ClCompile Include="CursusList.cpp" />
     <ClCompile Include="Dossier.cpp" />
-    <ClCompile Include="Ensemble.cpp" />
+    <ClCompile Include="Ensemblist.cpp" />
     <ClCompile Include="UTProfiler.cpp" />
     <ClCompile Include="UVDialog.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp" />
@@ -249,10 +251,11 @@
   <ItemGroup>
     <ClInclude Include="..\src\Other.hpp" />
     <ClInclude Include="..\src\UV.hpp" />
+    <ClInclude Include="AllUtility.h" />
     <ClInclude Include="Cursus.h" />
     <ClInclude Include="CursusList.h" />
     <ClInclude Include="Dossier.h" />
-    <ClInclude Include="Ensemble.h" />
+    <ClInclude Include="Ensemblist.h" />
     <ClInclude Include="UTProfiler.h" />
     <ClInclude Include="UVDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_AddUV.h" />

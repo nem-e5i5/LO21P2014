@@ -33,6 +33,15 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{a8dd8d27-1584-4cbb-a915-177099d9378f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Header">
+      <UniqueIdentifier>{7a43ed55-965a-4eb0-a6eb-4b70eedff843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Source">
+      <UniqueIdentifier>{9525ca90-c004-4e3a-9cc5-2a13201ac2d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,8 +74,8 @@
     <ClCompile Include="UVEncours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ensemble.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Ensemblist.cpp">
+      <Filter>Utility\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,8 +120,11 @@
     <ClInclude Include="UVEncours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ensemble.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AllUtility.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Ensemblist.h">
+      <Filter>Utility\Header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
