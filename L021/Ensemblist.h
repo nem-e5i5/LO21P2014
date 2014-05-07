@@ -48,6 +48,9 @@ class IdentityIterator : public EnsemblistIterator<T, src, IdentityIterator<T, s
 {
 public:
 	IdentityIterator(src Iterator, src end) : EnsemblistIterator(Iterator, end) {}
+
+
+	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; }
 	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
 
 
@@ -68,6 +71,8 @@ class WhereIterator : public EnsemblistIterator<T, src, WhereIterator<T, src>>
 
 public:
 	WhereIterator(src Iterator, src end, function<bool(const T&)> p, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), predicate(p) { if (_moveFirst) moveFirst(); }
+	
+	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; }
 	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator ; }
 	
 	void moveFirst() { if (sourceIterator != sourceEnd && !predicate(**this)) ++(*this); }
@@ -200,8 +205,6 @@ public:
 	}
 	ConcatIterator<T, src, src2> getEnd() const { return ConcatIterator<T, src, src2>(sourceEnd, sourceEnd, sourceEnd2, sourceEnd2); }
 
-	//Désactivé
-	const src& getCurrentIterator() { throw; }
 };
 
 
@@ -278,6 +281,12 @@ bool Contains(c begin, c end, T item, F Equalitycomparer = [](T x, T y) { return
 	for (; begin != end; ++begin)
 		if (Equalitycomparer(item, *begin)) return true;
 	return false;
+}
+
+template <class T, class aggregated, class c, class F>
+aggregated Aggregate(c begin, c end, F /* aggregated(aggregated, T) */aggregator, aggregated seed /*= default(aggregated)*/)
+{
+	for (; begin != end; ++begin) seed = aggregator(seed, *begin);
 }
 
 //évalue une expression ensembliste et stock le résultat dans un vector<T>

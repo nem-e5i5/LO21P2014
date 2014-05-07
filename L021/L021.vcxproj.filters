@@ -50,14 +50,8 @@
     <ClCompile Include="l021gui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\UV.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp">
       <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="UVDialog.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UTProfiler.cpp">
       <Filter>Source Files</Filter>
@@ -71,11 +65,14 @@
     <ClCompile Include="CursusList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UVEncours.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Ensemblist.cpp">
       <Filter>Utility\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="UV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UVDialog.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,12 +93,6 @@
     <ClInclude Include="GeneratedFiles\ui_AddUV.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\UV.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Other.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UVDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -117,13 +108,16 @@
     <ClInclude Include="CursusList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UVEncours.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AllUtility.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
     <ClInclude Include="Ensemblist.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="UV.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Other.hpp">
       <Filter>Utility\Header</Filter>
     </ClInclude>
   </ItemGroup>

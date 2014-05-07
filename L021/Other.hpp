@@ -15,7 +15,7 @@ class UTException {
 		}
 };
 
-enum UVType {CS, TM, TSH, SP};
+enum UVType {CS, TM, TSH, SP, size=4};
 enum UVStatus {A, B, C, D, E, F, FX, RES, ABS, EC};
 
 #endif // UTEXCEPTION_HPP
