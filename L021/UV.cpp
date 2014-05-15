@@ -52,8 +52,8 @@ void UV::set_printemps (const bool p) {
 }
 
 // UVEncours //
-UVEncours::UVEncours(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p, const UVStatus s)
-	: UV(code, titre, type, n, a, p) {
+UVEncours::UVEncours(UVEncours(const UV* uv, const UVStatus s) {
+	_uv = uv;
 	_status=s;
 }
 UVStatus UVEncours::get_status() const {
@@ -62,4 +62,3 @@ UVStatus UVEncours::get_status() const {
 void UVEncours::set_status(const UVStatus s) {
 	_status=s;
 }
-

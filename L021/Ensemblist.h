@@ -47,20 +47,20 @@ template <class T, class src>
 class IdentityIterator : public EnsemblistIterator<T, src, IdentityIterator<T, src>>
 {
 public:
-	IdentityIterator(src Iterator, src end) : EnsemblistIterator(Iterator, end) {}
+	IdentityIterator(src Iterator, src end) : EnsemblistIterator<T, src, IdentityIterator<T, src>>(Iterator, end) {}
 
 
-	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	T& operator*() { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; }
+	const T& operator*() const { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; }
 
 
 	IdentityIterator& operator++()
 	{
-		++sourceIterator;
+		++EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator;
 		return *this;
 	}
 
-	IdentityIterator<T, src> getEnd() const { return IdentityIterator<T, src>(sourceEnd, sourceEnd); }
+	IdentityIterator<T, src> getEnd() const { return IdentityIterator<T, src>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd); }
 };
 
 //effectue une opération de restriction
@@ -70,25 +70,25 @@ class WhereIterator : public EnsemblistIterator<T, src, WhereIterator<T, src>>
 	function<bool(const T&)> predicate;
 
 public:
-	WhereIterator(src Iterator, src end, function<bool(const T&)> p, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), predicate(p) { if (_moveFirst) moveFirst(); }
+	WhereIterator(src Iterator, src end, function<bool(const T&)> p, bool _moveFirst = true) : EnsemblistIterator<T, src, IdentityIterator<T, src>>(Iterator, end), predicate(p) { if (_moveFirst) moveFirst(); }
 	
-	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator ; }
+	T& operator*() { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; }
+	const T& operator*() const { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator ; }
 	
-	void moveFirst() { if (sourceIterator != sourceEnd && !predicate(**this)) ++(*this); }
+	void moveFirst() { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd && !predicate(**this)) ++(*this); }
 	
 	WhereIterator& operator++() 
 	{ 
 		do 
 		{
-			++sourceIterator;
-			if (sourceIterator == sourceEnd) break;
+			++EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator;
+			if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator == EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) break;
 		}
 		while (!predicate(**this)); 
 		return *this; 
 	}
 	
-	WhereIterator<T, src> getEnd() const { return WhereIterator<T, src>(sourceEnd, sourceEnd, predicate); }
+	WhereIterator<T, src> getEnd() const { return WhereIterator<T, src>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::predicate); }
 };
 
 //effectue une opération de transformation
@@ -98,15 +98,15 @@ class SelectIterator : public EnsemblistIterator<T, src, SelectIterator<T, Tdest
 	function<Tdest(const T&)> selector;
 
 public:
-	SelectIterator(src Iterator, src end, function<Tdest(const T&)> p) : EnsemblistIterator(Iterator, end), selector(p) { }
-	Tdest operator*() const { return selector(*sourceIterator); }
+	SelectIterator(src Iterator, src end, function<Tdest(const T&)> p) : EnsemblistIterator<T, src, IdentityIterator<T, src>>(Iterator, end), selector(p) { }
+	Tdest operator*() const { return selector(*EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator); }
 	SelectIterator& operator++()
 	{
-		++sourceIterator;
+		++EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator;
 		return *this;
 	}
 
-	SelectIterator<T, Tdest, src> getEnd() const { return SelectIterator<T, Tdest, src>(sourceEnd, sourceEnd, selector); }
+	SelectIterator<T, Tdest, src> getEnd() const { return SelectIterator<T, Tdest, src>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::selector); }
 };
 
 //supprime les doublons d'un ensemble
@@ -115,30 +115,30 @@ class UniqueIterator : public EnsemblistIterator<T, src, UniqueIterator<T, src, 
 {
 	F equalityComparer;
 public:
-	UniqueIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	UniqueIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator<T, src, IdentityIterator<T, src>>(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
+	const T& operator*() const { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; }
 
 	void moveFirst()
 	{
-		if (sourceIterator != sourceEnd)
+		if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd)
 		{
-			src it = sourceIterator; ++it;
-			if (Contains(it, sourceEnd, *sourceIterator, equalityComparer)) operator++();
+			src it = EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; ++it;
+			if (Contains(it, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator, equalityComparer)) operator++();
 		}
 	}
 
 	UniqueIterator& operator++()
 	{
-		src it = ++sourceIterator;
-		if (it != sourceEnd)
+		src it = ++EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator;
+		if (it != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd)
 		{
 			++it;
-			if (Contains(it, sourceEnd, *sourceIterator, equalityComparer)) operator++();
+			if (Contains(it, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator, equalityComparer)) operator++();
 		}
 		return *this;
 	}
 
-	UniqueIterator<T, src, F> getEnd() const { return UniqueIterator<T, src, F>(sourceEnd, sourceEnd, equalityComparer); }
+	UniqueIterator<T, src, F> getEnd() const { return UniqueIterator<T, src, F>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, equalityComparer); }
 };
 
 //supprime un élément de chaque type (les éléments en double, deviennent uniques, les éléments seuls disparaissent, ...)
@@ -147,30 +147,30 @@ class ReduceIterator : public EnsemblistIterator<T, src, ReduceIterator<T, src, 
 {
 	F equalityComparer;
 public:
-	ReduceIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	ReduceIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator<T, src, IdentityIterator<T, src>>(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
+	const T& operator*() const { if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd) return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; }
 
 	void moveFirst() 
 	{ 
-		if (sourceIterator != sourceEnd)
+		if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd)
 		{
-			src it = sourceIterator; ++it;
-			if (!Contains(it, sourceEnd, *sourceIterator, equalityComparer)) operator++();
+			src it = EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; ++it;
+			if (!Contains(it, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator, equalityComparer)) operator++();
 		}
 	}
 
 	ReduceIterator& operator++()
 	{
-		src it = ++sourceIterator;
-		if (it != sourceEnd) 
+		src it = ++EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator;
+		if (it != EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd)
 		{
 			++it;
-			if (!Contains(it, sourceEnd, *sourceIterator, equalityComparer)) operator++();
+			if (!Contains(it, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator, EnsemblistIterator<T, src, IdentityIterator<T, src>>::equalityComparer)) operator++();
 		}
 		return *this;
 	}
 
-	ReduceIterator<T, src, F> getEnd() const { return ReduceIterator<T, src, F>(sourceEnd, sourceEnd, equalityComparer); }
+	ReduceIterator<T, src, F> getEnd() const { return ReduceIterator<T, src, F>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, equalityComparer); }
 };
 
 //itére la première séquence puis la deuxième
@@ -183,27 +183,27 @@ class ConcatIterator : public EnsemblistIterator<T, src, ConcatIterator<T, src, 
 	bool sec;
 
 public:
-	ConcatIterator(src Iterator1, src end1, src2 Iterator2, src2 end2) : EnsemblistIterator(Iterator1, end1), sourceIterator2(Iterator2), sourceEnd2(end2), sec(Iterator1 == end1) { }
-	const T& operator*() const { if (sec) return *sourceIterator2; else return *sourceIterator; }
+	ConcatIterator(src Iterator1, src end1, src2 Iterator2, src2 end2) : EnsemblistIterator<T, src, IdentityIterator<T, src>>(Iterator1, end1), sourceIterator2(Iterator2), sourceEnd2(end2), sec(Iterator1 == end1) { }
+	const T& operator*() const { if (sec) return *sourceIterator2; else return *EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator; }
 	ConcatIterator& operator++()
 	{
-		if (sourceIterator == sourceEnd)
+		if (EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator == EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd)
 			++sourceIterator2;
 		else 
-			++sourceIterator;
-		sec = sourceIterator == sourceEnd;
+			++EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator;
+		sec = EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator == EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd;
 		return *this;
 	}
 
 	bool operator ==(const ConcatIterator& other) const
 	{
-		return sourceIterator == other.sourceIterator && sourceIterator2 == other.sourceIterator2;
+		return EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceIterator == other.sourceIterator && sourceIterator2 == other.sourceIterator2;
 	}
 	bool operator !=(const ConcatIterator& other) const
 	{
 		return (!operator==(other));
 	}
-	ConcatIterator<T, src, src2> getEnd() const { return ConcatIterator<T, src, src2>(sourceEnd, sourceEnd, sourceEnd2, sourceEnd2); }
+	ConcatIterator<T, src, src2> getEnd() const { return ConcatIterator<T, src, src2>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, sourceEnd2, sourceEnd2); }
 
 };
 
