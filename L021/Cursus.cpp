@@ -19,8 +19,8 @@ bool CreditValidator(Dossier d, const char* data)
 	UVType t = *(UVType*)(data + sizeof(int));
 
 	auto x = d.UVIterator();
-	auto candidate = Where<UVEncours*>(x, x.getEnd(), [=](UVEncours* u) { return u->get_type() == t; });
-	int sum = Aggregate<UVEncours*, int>(candidate, candidate.getEnd(), [](int s, UVEncours* u) { return s + u->get_nb_credit(); }, d.getNbEquivalences(t));
+	auto candidate = Where<UVEncours*>(x, x.getEnd(), [=](UVEncours* u) { return u->get_uv()->get_type() == t; });
+	int sum = Aggregate<UVEncours*, int>(candidate, candidate.getEnd(), [](int s, UVEncours* u) { return s + u->get_uv()->get_nb_credit(); }, d.getNbEquivalences(t));
 	return sum >= nbr;
 }
 

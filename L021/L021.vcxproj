@@ -252,6 +252,8 @@
     <ClInclude Include="Dossier.h" />
     <ClInclude Include="DossierEtCursus.h" />
     <ClInclude Include="Ensemblist.h" />
+    <ClInclude Include="Ensemblist_lin.h" />
+    <ClInclude Include="Ensemblist_win.h" />
     <ClInclude Include="Other.hpp" />
     <ClInclude Include="UTProfiler.h" />
     <ClInclude Include="UV.hpp" />

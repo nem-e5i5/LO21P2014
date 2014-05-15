@@ -36,12 +36,13 @@ class UV {
 
 class UVEncours {
 	private:
-		UV* _uv;
+		const UV* _uv;
 		UVStatus _status;
 	public:
 		UVEncours(const UV* uv, const UVStatus s);
 		UVStatus get_status() const;
 		void set_status(const UVStatus s);
+		const UV* get_uv() { return _uv; }
 };
 
 #endif // UV_HPP

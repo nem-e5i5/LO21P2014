@@ -56,7 +56,7 @@ void UV::set_printemps (const bool p) {
 }
 
 // UVEncours //
-UVEncours::UVEncours(UVEncours(const UV* uv, const UVStatus s) {
+UVEncours::UVEncours(const UV* uv, const UVStatus s) {
 	_uv = uv;
 	_status=s;
 }
