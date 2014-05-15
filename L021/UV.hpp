@@ -34,11 +34,12 @@ class UV {
 		void set_printemps (const bool p);
 };
 
-class UVEncours: public UV {
+class UVEncours {
 	private:
+		UV* _uv;
 		UVStatus _status;
 	public:
-		UVEncours(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p, const UVStatus s);
+		UVEncours(const UV* uv, const UVStatus s);
 		UVStatus get_status() const;
 		void set_status(const UVStatus s);
 };
