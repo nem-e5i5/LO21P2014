@@ -18,7 +18,7 @@ class Dossier
 
 public:
 
-	//créer si n'existe pas, passer "" supprime la clé
+	//crÃ©er si n'existe pas, passer "" supprime la clÃ©
 	void Setmeta(QString, QString);
 	QString Getmeta(QString);
 
@@ -47,4 +47,3 @@ public:
 	Dossier();
 	~Dossier();
 };
-

@@ -6,7 +6,7 @@
 using namespace std;
 
 
-//classe de base des itérateurs génériques
+//classe de base des itÃ©rateurs gÃ©nÃ©riques
 template <class T, class src, class Derived>
 class EnsemblistIterator
 {
@@ -42,7 +42,7 @@ public:
 	}
 };
 
-//peut être utilisé pour normaliser les itérateurs std si besoin
+//peut Ãªtre utilisÃ© pour normaliser les itÃ©rateurs std si besoin
 template <class T, class src>
 class IdentityIterator : public EnsemblistIterator<T, src, IdentityIterator<T, src>>
 {
@@ -63,7 +63,7 @@ public:
 	IdentityIterator<T, src> getEnd() const { return IdentityIterator<T, src>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd); }
 };
 
-//effectue une opération de restriction
+//effectue une opÃ©ration de restriction
 template <class T, class src>
 class WhereIterator : public EnsemblistIterator<T, src, WhereIterator<T, src>>
 {
@@ -91,7 +91,7 @@ public:
 	WhereIterator<T, src> getEnd() const { return WhereIterator<T, src>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::predicate); }
 };
 
-//effectue une opération de transformation
+//effectue une opÃ©ration de transformation
 template <class T, class Tdest, class src>
 class SelectIterator : public EnsemblistIterator<T, src, SelectIterator<T, Tdest, src>>
 {
@@ -141,7 +141,7 @@ public:
 	UniqueIterator<T, src, F> getEnd() const { return UniqueIterator<T, src, F>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, equalityComparer); }
 };
 
-//supprime un élément de chaque type (les éléments en double, deviennent uniques, les éléments seuls disparaissent, ...)
+//supprime un Ã©lÃ©ment de chaque type (les Ã©lÃ©ments en double, deviennent uniques, les Ã©lÃ©ments seuls disparaissent, ...)
 template <class T, class src, class F>
 class ReduceIterator : public EnsemblistIterator<T, src, ReduceIterator<T, src, F>>
 {
@@ -173,7 +173,7 @@ public:
 	ReduceIterator<T, src, F> getEnd() const { return ReduceIterator<T, src, F>(EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, EnsemblistIterator<T, src, IdentityIterator<T, src>>::sourceEnd, equalityComparer); }
 };
 
-//itére la première séquence puis la deuxième
+//itÃ©re la premiÃ¨re sÃ©quence puis la deuxiÃ¨me
 template <class T, class src, class src2>
 class ConcatIterator : public EnsemblistIterator<T, src, ConcatIterator<T, src, src2>>
 {
@@ -210,7 +210,7 @@ public:
 
 
 
-//opère une restriction
+//opÃ¨re une restriction
 template <class T, class F, class c>
 WhereIterator<T, c> Where(c begin, c end, F predicate)
 {
@@ -220,7 +220,7 @@ WhereIterator<T, c> Where(c begin, c end, F predicate)
 		predicate);
 }
 
-//opère une selection
+//opÃ¨re une selection
 template <class T, class Tdest, class F, class c>
 SelectIterator<T, Tdest, c> Select(c begin, c end, F selector)
 {
@@ -231,7 +231,7 @@ SelectIterator<T, Tdest, c> Select(c begin, c end, F selector)
 		);
 }
 
-//opère une concaténation
+//opÃ¨re une concatÃ©nation
 template<class T, class c, class c2>
 ConcatIterator<T, c, c2> Concat(c begin, c end, c2 begin2, c2 end2)
 {
@@ -249,7 +249,7 @@ UniqueIterator<T, c, F> keepOneOfEach(c begin, c end, F EqualityComparer = [](T 
 	return UniqueIterator<T, c, F>(begin, end, EqualityComparer);
 }
 
-//supprime un élément de chaque n-uplet
+//supprime un Ã©lÃ©ment de chaque n-uplet
 template<class T, class c, class F>
 ReduceIterator<T, c, F> removeOneOfEach(c begin, c end, F EqualityComparer = [](T x, T y) { return x == y; })
 {
@@ -274,7 +274,7 @@ ReduceIterator<T, ConcatIterator<T, UniqueIterator<T, c, F>, UniqueIterator<T, c
 	return removeOneOfEach<T>(z, z.getEnd(), Equalitycomparer);
 }
 
-//vérifie si un élément appartient à la collection
+//vÃ©rifie si un Ã©lÃ©ment appartient Ã  la collection
 template <class T, class c, class F>
 bool Contains(c begin, c end, T item, F Equalitycomparer = [](T x, T y) { return x == y; })
 {
@@ -289,7 +289,7 @@ aggregated Aggregate(c begin, c end, F /* aggregated(aggregated, T) */aggregator
 	for (; begin != end; ++begin) seed = aggregator(seed, *begin);
 }
 
-//évalue une expression ensembliste et stock le résultat dans un vector<T>
+//Ã©value une expression ensembliste et stock le rÃ©sultat dans un vector<T>
 template <class T, class c> 
 vector<T> toVector(c begin, c end) 
 { 
