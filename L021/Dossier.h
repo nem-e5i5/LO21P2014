@@ -1,18 +1,18 @@
 #pragma once
 #include <vector>
-#include <hash_map>
+#include <map>
 #include <functional>
 #include "UV.hpp"
-#include "Cursus.h"
 #include "AllUtility.h"
 
 using namespace std;
 
+class Cursus;
 class Dossier
 {
 	vector<UVEncours*> UVsuivi;
 	vector<Cursus*> Cursussuivi;
-	hash_map<QString, QString> Metadata;
+	map<QString, QString> Metadata;
 
 	int Equivalences[UVType::size];
 
@@ -22,25 +22,13 @@ public:
 	void Setmeta(QString, QString);
 	QString Getmeta(QString);
 
-	IdentityIterator<UVEncours*, vector<UVEncours*>::iterator> UVIterator()
-	{
-		return IdentityIterator<UVEncours*, vector<UVEncours*>::iterator>(UVsuivi.begin(), UVsuivi.end());
-	}
+	IdentityIterator<UVEncours*, vector<UVEncours*>::iterator> UVIterator();
 
-	IdentityIterator<Cursus*, vector<Cursus*>::iterator> CursusIterator()
-	{
-		return IdentityIterator<Cursus*, vector<Cursus*>::iterator>(Cursussuivi.begin(), Cursussuivi.end());
-	}
+	IdentityIterator<Cursus*, vector<Cursus*>::iterator> CursusIterator();
 
-	int getNbEquivalences(UVType t)
-	{ 
-		return Equivalences[t];
-	}
+	int getNbEquivalences(UVType t);
 
-	void setNbEquivalences(UVType t, int value = 0)
-	{
-		Equivalences[t] = value;
-	}
+	void setNbEquivalences(UVType t, int value);
 
 	bool validerDossier();
 

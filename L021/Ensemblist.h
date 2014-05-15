@@ -287,6 +287,7 @@ template <class T, class aggregated, class c, class F>
 aggregated Aggregate(c begin, c end, F /* aggregated(aggregated, T) */aggregator, aggregated seed /*= default(aggregated)*/)
 {
 	for (; begin != end; ++begin) seed = aggregator(seed, *begin);
+	return seed;
 }
 
 //évalue une expression ensembliste et stock le résultat dans un vector<T>

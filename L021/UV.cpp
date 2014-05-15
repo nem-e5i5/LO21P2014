@@ -31,6 +31,10 @@ bool UV::get_automne () const {
 bool UV::get_printemps () const {
 	return _printemps;
 }
+bool UV::isnull() const {
+	return _is_null;
+}
+
 // set
 void UV::set_code (const QString code) {
 	_code=code;

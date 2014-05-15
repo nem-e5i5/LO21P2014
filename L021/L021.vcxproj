@@ -60,7 +60,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>..\boost_1_55_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Qt\5.2.1-vc12\qtbase\include\QtANGLE;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,7 +144,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cursus.cpp" />
-    <ClCompile Include="CursusList.cpp" />
     <ClCompile Include="Dossier.cpp" />
     <ClCompile Include="Ensemblist.cpp" />
     <ClCompile Include="UTProfiler.cpp" />
@@ -250,14 +249,15 @@
   <ItemGroup>
     <ClInclude Include="AllUtility.h" />
     <ClInclude Include="Cursus.h" />
-    <ClInclude Include="CursusList.h" />
     <ClInclude Include="Dossier.h" />
+    <ClInclude Include="DossierEtCursus.h" />
     <ClInclude Include="Ensemblist.h" />
     <ClInclude Include="Other.hpp" />
     <ClInclude Include="UTProfiler.h" />
     <ClInclude Include="UV.hpp" />
     <ClInclude Include="UVDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_AddUV.h" />
+    <ClInclude Include="Validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

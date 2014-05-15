@@ -24,6 +24,7 @@ class UV {
 		unsigned int get_nb_credit () const;
 		bool get_automne () const;
 		bool get_printemps () const;
+		bool isnull() const;
 		// set
 		void set_code (const QString code);
 		void set_titre (const QString titre);

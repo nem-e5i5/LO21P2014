@@ -62,9 +62,6 @@
     <ClCompile Include="Cursus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CursusList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Ensemblist.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
@@ -105,9 +102,6 @@
     <ClInclude Include="Cursus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CursusList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AllUtility.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
@@ -119,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="Other.hpp">
       <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Validator.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DossierEtCursus.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
