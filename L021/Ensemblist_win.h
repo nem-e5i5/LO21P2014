@@ -204,6 +204,7 @@ public:
 	}
 	ConcatIterator<T, src, src2> getEnd() const { return ConcatIterator<T, src, src2>(sourceEnd, sourceEnd, sourceEnd2, sourceEnd2); }
 
+	bool ended() const { return sourceIterator == sourceEnd && sourceIterator2 = sourceEnd2; }
 };
 
 
@@ -282,12 +283,23 @@ bool Contains(c begin, c end, T item, F Equalitycomparer = [](T x, T y) { return
 	return false;
 }
 
+//Effectue une accumulation des valeurs selon le schéma pour chaque v; aggr(seed, v) -> seed; return seed;
 template <class T, class aggregated, class c, class F>
 aggregated Aggregate(c begin, c end, F /* aggregated(aggregated, T) */aggregator, aggregated seed /*= default(aggregated)*/)
 {
 	for (; begin != end; ++begin) seed = aggregator(seed, *begin);
 	return seed;
 }
+
+//Alias à Aggregate(begin, end, (x, y) => x+y, seed)
+template <class T, class aggregated, class c>
+aggregated Sum(c begin, c end, aggregated seed /*= default(aggregated)*/)
+{
+	return Aggregate<T, aggregated>(begin, end, [](aggregated x, T y) { return x + y; }, seed);
+}
+
+
+
 
 //évalue une expression ensembliste et stock le résultat dans un vector<T>
 template <class T, class c>

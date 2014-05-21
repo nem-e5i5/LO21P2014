@@ -1,9 +1,12 @@
 #ifndef UV_HPP
 #define UV_HPP
 
-#include "Other.hpp"
+#include "AllUtility.h"
+#include <qdatastream.h>
 
 class UV {
+	friend QDataStream& operator>>(QDataStream&, UV&);
+
 	private:
 		QString _code;
 		QString _titre;
@@ -34,15 +37,26 @@ class UV {
 		void set_printemps (const bool p);
 };
 
+QDataStream& operator<<(QDataStream&, const UV&);
+QDataStream& operator>>(QDataStream&, UV&);
+
 class UVEncours {
+	friend QDataStream& operator>>(QDataStream&, UVEncours&);
+
 	private:
-		const UV* _uv;
+		QString _uv;
 		UVStatus _status;
 	public:
-		UVEncours(const UV* uv, const UVStatus s);
+		UVEncours() {}
+		UVEncours(QString uv, const UVStatus s);
 		UVStatus get_status() const;
 		void set_status(const UVStatus s);
-		const UV* get_uv() { return _uv; }
+
+		bool get_hasCompleted() const { return get_status() != UVStatus::F && get_status() != UVStatus::FX && get_status() != UVStatus::ABS && get_status() != UVStatus::RES && get_status() != UVStatus::EC; }
+
+		const UV& get_uv() const;
 };
+QDataStream& operator<<(QDataStream&, const UVEncours&);
+QDataStream& operator>>(QDataStream&, UVEncours&);
 
 #endif // UV_HPP
