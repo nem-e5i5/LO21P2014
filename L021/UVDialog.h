@@ -13,4 +13,3 @@ public:
 	static UV& ShowDialog(UV& Uv, QWidget* parent = nullptr);
 	static UV ShowDialog(QWidget* parent = nullptr);
 };
-

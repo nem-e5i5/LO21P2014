@@ -16,7 +16,9 @@ HEADERS += \
     L021/Other.hpp \
     L021/UTProfiler.h \
     L021/UV.hpp \
-    L021/UVDialog.h
+    L021/UVDialog.h \
+    L021/Ensemblist_lin.h \
+    L021/Ensemblist_win.h
 
 SOURCES += \
     L021/Cursus.cpp \
