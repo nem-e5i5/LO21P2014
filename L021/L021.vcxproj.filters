@@ -71,6 +71,9 @@
     <ClCompile Include="UVDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GuiFunctions.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -124,6 +127,9 @@
       <Filter>Utility\Header</Filter>
     </ClInclude>
     <ClInclude Include="Ensemblist.h">
+      <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiFunctions.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -36,7 +36,7 @@ public:
 
 	virtual QString getName() = 0;
 	CursusValidator() {}
-	virtual bool Validate(Dossier d) = 0;
+	virtual bool Validate(Dossier d) const = 0;
 
 	void true_Serialize(QDataStream& str) { str << getName(); Serialize(str); }
 	
@@ -58,7 +58,7 @@ define_validator(Credit)
 
 	CreditValidator(UVType _t, int nbr) : CursusValidator(), t(_t), nb(nbr) {}
 
-	bool Validate(Dossier d);
+	bool Validate(Dossier d) const;
 
 	void Serialize(QDataStream& str) const
 	{
@@ -91,9 +91,10 @@ public:
 
 	QString getName() const { return Name; }
 
-	bool Validate(Dossier d);
+	bool Validate(Dossier d) const;
 	Cursus() : Cursus(""){}
 	Cursus(const Cursus&);
+	const Cursus& operator=(const Cursus&);
 	Cursus(QString name);
 	~Cursus();
 };

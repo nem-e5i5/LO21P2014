@@ -14,7 +14,7 @@ CursusValidator* CursusValidator::true_UnSerialize(QDataStream& str)
 }
 
 
-bool CreditValidator::Validate(Dossier d)
+bool CreditValidator::Validate(Dossier d) const
 {
 	auto iter = d.UVIterator();
 	auto cd = Where<UVEncours>(iter, iter.getEnd(), [=](const UVEncours& x) { return x.get_uv().get_type() == t && x.get_hasCompleted(); });
@@ -27,7 +27,7 @@ int Cursus::addValidator(CursusValidator* x) { Validators.push_back(x); return V
 
 void Cursus::removeValidator(int Id) { Validators.erase(Validators.begin() + Id); }
 
-bool Cursus::Validate(Dossier d)
+bool Cursus::Validate(Dossier d) const
 {
 	for (auto& v : Validators)
 	if (!v->Validate(d)) return false;
@@ -40,11 +40,24 @@ Cursus::Cursus(const Cursus& x): Name(x.Name),
 	for (int i = 0; i < x.Validators.size(); ++i) 
 		Validators[i] = CursusValidator::Validators[x.Validators[i]->getName()]->proceed(*x.Validators[i]);
 }
+
+const Cursus& Cursus::operator=(const Cursus& x)
+{
+	if (&x == this) return x;
+
+	Name = x.Name;
+	Validators = vector<CursusValidator*>(x.Validators.size());
+	for (int i = 0; i < x.Validators.size(); ++i)
+		Validators[i] = CursusValidator::Validators[x.Validators[i]->getName()]->proceed(*x.Validators[i]);
+	return x;
+}
+
 Cursus::Cursus(QString name) : Name(name){}
 Cursus::~Cursus(){
-	for (auto v : Validators)
+	for (auto& v : Validators)
 	{
 		delete v;
+		v = nullptr;
 	}
 }
 

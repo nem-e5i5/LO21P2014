@@ -32,7 +32,11 @@ void Dossier::setNbEquivalences(UVType t, int value = 0)
 	Equivalences[t] = value;
 }
 
-bool Dossier::validerDossier() { return false; }
+bool Dossier::validerDossier() 
+{ 
+	for (auto x = CursusIterator(); !x.ended(); ++x) 
+		if (!((*x).Validate(*this))) return false; 
+	return true; }
 
 void Dossier::InscriptionUV(const UV& x)
 {
@@ -45,10 +49,12 @@ void Dossier::InscriptionCursus(const Cursus& x)
 
 void Dossier::InscriptionUVByName(QString x)
 {
+	if (!UTProfiler::GetInstance()->UVExists(x)) throw;
 	UVsuivi.push_back(UVEncours(x, UVStatus::EC));
 }
 void Dossier::InscriptionCursusByName(QString x)
 {
+	if (!UTProfiler::GetInstance()->CursusExists(x)) throw;
 	Cursussuivi.push_back(x);
 }
 

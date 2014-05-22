@@ -1,4 +1,5 @@
 #pragma once
+
 #include "UV.hpp"
 #include "AllUtility.h"
 #include "DossierEtCursus.h"
@@ -41,6 +42,10 @@ public:
 
 	UV& UVrefByName(QString name) { return UVList[name]; }
 	Cursus& CursusrefByName(QString name) { return CursusList[name]; }
+
+	bool UVExists(QString name) { return UVList.find(name) != UVList.end(); }
+	bool CursusExists(QString name) { return CursusList.find(name) != CursusList.end(); }
+
 
 	void AppToBinFile(QString fname);
 

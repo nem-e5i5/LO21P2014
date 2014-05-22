@@ -2,6 +2,7 @@
 #define L021GUI_H
 
 #include <QtWidgets/QMainWindow>
+#include <qmessagebox.h>
 #include "ui_l021gui.h"
 #include "UVDialog.h"
 #include "UV.hpp"

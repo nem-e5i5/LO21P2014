@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
 	x.InscriptionUVByName("lol21");
 	(*x.UVIterator()).set_status(UVStatus::A);
 	y.addValidator(new CreditValidator(UVType::CS, 6));
-	x.InscriptionCursusByName("counter strike");
-
+	
 	prf->CursusrefByName("counter strike") = y;
+	x.InscriptionCursusByName("counter strike");
 
 	prf->AppToBinFile("test.bin");
 
@@ -26,6 +26,9 @@ int main(int argc, char *argv[])
 	prf = UTProfiler::GetInstance();
 
 	prf->BinFileToApp("test.bin");
+
+	UTProfiler::ResetInstance();
+	prf = UTProfiler::GetInstance();
 
 	QApplication a(argc, argv);
 	L021GUI w;

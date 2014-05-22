@@ -50,8 +50,8 @@ public:
 	IdentityIterator(src Iterator, src end) : EnsemblistIterator(Iterator, end) {}
 
 
-	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 
 	IdentityIterator& operator++()
@@ -72,8 +72,8 @@ class WhereIterator : public EnsemblistIterator<T, src, WhereIterator<T, src>>
 public:
 	WhereIterator(src Iterator, src end, function<bool(const T&)> p, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), predicate(p) { if (_moveFirst) moveFirst(); }
 
-	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 	void moveFirst() { if (sourceIterator != sourceEnd && !predicate(**this)) ++(*this); }
 
@@ -115,7 +115,7 @@ class UniqueIterator : public EnsemblistIterator<T, src, UniqueIterator<T, src, 
 	F equalityComparer;
 public:
 	UniqueIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 	void moveFirst()
 	{
@@ -147,7 +147,7 @@ class ReduceIterator : public EnsemblistIterator<T, src, ReduceIterator<T, src, 
 	F equalityComparer;
 public:
 	ReduceIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; }
+	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 	void moveFirst()
 	{

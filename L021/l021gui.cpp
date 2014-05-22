@@ -15,7 +15,9 @@ L021GUI::~L021GUI()
 
 void L021GUI::AddUv()
 {
-	UVDialog::ShowDialog();
+	UV x = UVDialog::ShowDialog();
+	UTProfiler::GetInstance()->UVrefByName(x.get_code()) = x;
+	Notify(L"UV ajouté avec succès");
 }
 
 void L021GUI::EditUv()

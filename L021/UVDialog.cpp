@@ -16,11 +16,25 @@ UVDialog::~UVDialog()
 UV& UVDialog::ShowDialog(UV& Uv, QWidget* parent)
 {
 	UVDialog x(parent);
-	//TODO: faire une initialisation propre de la gui
+	x.lineEdit->setEnabled(false);
+	x.lineEdit->setText(Uv.get_code());
+	x.textEdit->setText(Uv.get_titre());
+	x.spinBox->setValue(Uv.get_nb_credit());
+	x.comboBox->setCurrentIndex(static_cast<int>(Uv.get_type()));
+	x.checkBox->setChecked(Uv.get_printemps());
+	x.checkBox_2->setChecked(Uv.get_automne());
+
 	int rflag = x.exec();
 	if (rflag == 1)
 	{
-		//TODO: routine de mise à jour
+		Uv = UV(
+			Uv.get_code(),
+			x.textEdit->toPlainText(),
+			static_cast<UVType>(x.comboBox->currentIndex()),
+			x.spinBox->value(),
+			x.checkBox_2->isChecked(),
+			x.checkBox->isChecked()
+		);
 	}
 	return Uv;
 }
@@ -33,5 +47,12 @@ UV UVDialog::ShowDialog(QWidget* parent)
 		return UV::null;
 	else
 		//TODO: faire une construction propre
-		return UV::null;
+		return UV(
+			x.lineEdit->text(),
+			x.textEdit->toPlainText(),
+			static_cast<UVType>(x.comboBox->currentIndex()),
+			x.spinBox->value(),
+			x.checkBox_2->isChecked(),
+			x.checkBox->isChecked()
+		);
 }
