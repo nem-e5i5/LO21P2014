@@ -3,20 +3,29 @@
 
 int main(int argc, char *argv[])
 {
-	std::vector<UV>* v = new std::vector<UV>();
-	v->push_back(UV(QString("lol21"), "rire fort", UVType::CS, 6, false, false));
-	v->push_back(UV(QString("lol20"), "rire moins fort", UVType::CS, 6, false, false));
+	register_validator(Credit);
 
-	v->push_back(UV(QString("lol19"), "rire encore moins fort", UVType::CS, 6, false, false));
+	UTProfiler* prf = UTProfiler::GetInstance();
 	
-	auto va = Where<UV>(v->begin(), v->end(), [](const UV& x) { return x.get_code().startsWith("lol2"); });
-	auto vb = Where<UV>(va, va.getEnd(), [](const UV& x) { return x.get_code().endsWith("0"); });
-	auto vc = Select<UV, QString>(vb, vb.getEnd(), [](const UV& x) {return x.get_titre(); });
-	auto vd = Union<UV>(va, va.getEnd(), vb, vb.getEnd(), [](const UV& a, const UV& b) {return a.get_code() == b.get_code(); });
-	auto ve = Intersect<UV>(v->begin(), v->end(), va, va.getEnd(), [](const UV& a, const UV& b) {return a.get_code() == b.get_code(); });
-	auto v2 = toVector<UV>(ve, ve.getEnd());
-	for(auto end = va.getEnd(); va != end; ++va) {*va;}
-	v2.at(0);
+	prf->UVrefByName("lol21") = UV(QString("lol21"), "rire fort", UVType::CS, 6, false, false);
+	prf->UVrefByName("lol20") = UV(QString("lol20"), "haha", UVType::CS, 6, false, false);
+	prf->UVrefByName("lol19") = UV(QString("lol19"), "hihi", UVType::CS, 6, false, false);
+	
+	Dossier& x = prf->MonDossier;
+	Cursus y("counter strike");
+	x.InscriptionUVByName("lol21");
+	(*x.UVIterator()).set_status(UVStatus::A);
+	y.addValidator(new CreditValidator(UVType::CS, 6));
+	x.InscriptionCursusByName("counter strike");
+
+	prf->CursusrefByName("counter strike") = y;
+
+	prf->AppToBinFile("test.bin");
+
+	UTProfiler::ResetInstance();
+	prf = UTProfiler::GetInstance();
+
+	prf->BinFileToApp("test.bin");
 
 	QApplication a(argc, argv);
 	L021GUI w;

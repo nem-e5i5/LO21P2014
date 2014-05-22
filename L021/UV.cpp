@@ -1,4 +1,4 @@
-#include "UV.hpp"
+#include "DossierEtCursus.h"
 
 // UV //
 const UV UV::null = UV();
@@ -56,7 +56,7 @@ void UV::set_printemps (const bool p) {
 }
 
 // UVEncours //
-UVEncours::UVEncours(const UV* uv, const UVStatus s) {
+UVEncours::UVEncours(QString uv, const UVStatus s) {
 	_uv = uv;
 	_status=s;
 }
@@ -65,4 +65,46 @@ UVStatus UVEncours::get_status() const {
 }
 void UVEncours::set_status(const UVStatus s) {
 	_status=s;
+}
+
+const UV& UVEncours::get_uv() const { return UTProfiler::GetInstance()->UVrefByName(_uv); }
+
+QDataStream& operator<<(QDataStream& str, const UV& x)
+{
+	str << x.get_code()
+		<< x.get_titre()
+		<< x.get_type()
+		<< x.get_nb_credit()
+		<< x.get_automne()
+		<< x.get_printemps()
+		<< x.isnull();
+	return str;
+}
+QDataStream& operator>>(QDataStream& str, UV& x)
+{
+	int tmp;
+	str >> x._code
+		>> x._titre
+		>> tmp
+		>> x._nb_credit
+		>> x._automne
+		>> x._printemps
+		>> x._is_null;
+	x._type = static_cast<UVType>(tmp);
+	return str;
+}
+
+QDataStream& operator<<(QDataStream& str, const UVEncours& x)
+{
+	str << x.get_uv().get_code();
+	str << static_cast<int>(x.get_status());
+	return str;
+}
+QDataStream& operator>>(QDataStream& str, UVEncours& x)
+{
+	int tmp2;
+	str >> x._uv >> tmp2;
+
+	x.set_status(static_cast<UVStatus>(tmp2));
+	return str;
 }

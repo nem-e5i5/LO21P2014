@@ -8,10 +8,14 @@
 using namespace std;
 
 class Cursus;
+class UVEncours;
 class Dossier
 {
-	vector<UVEncours*> UVsuivi;
-	vector<Cursus*> Cursussuivi;
+	friend QDataStream& operator<<(QDataStream&, const Dossier&);
+	friend QDataStream& operator>>(QDataStream&, Dossier&);;
+
+	vector<UVEncours> UVsuivi;
+	vector<QString> Cursussuivi;
 	map<QString, QString> Metadata;
 
 	int Equivalences[UVType::size];
@@ -22,9 +26,9 @@ public:
 	void Setmeta(QString, QString);
 	QString Getmeta(QString);
 
-	IdentityIterator<UVEncours*, vector<UVEncours*>::iterator> UVIterator();
+	IdentityIterator<UVEncours, vector<UVEncours>::iterator> UVIterator();
 
-	IdentityIterator<Cursus*, vector<Cursus*>::iterator> CursusIterator();
+	SelectIterator<QString, const Cursus&, vector<QString>::iterator> CursusIterator();
 
 	int getNbEquivalences(UVType t);
 
@@ -32,6 +36,14 @@ public:
 
 	bool validerDossier();
 
+	void InscriptionUV(const UV& x);
+	void InscriptionUVByName(QString x);
+	void InscriptionCursus(const Cursus& x);
+	void InscriptionCursusByName(QString x);
+
 	Dossier();
 	~Dossier();
 };
+
+QDataStream& operator<<(QDataStream&, const Dossier&);
+QDataStream& operator>>(QDataStream&, Dossier&);

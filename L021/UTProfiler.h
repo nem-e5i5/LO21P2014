@@ -7,12 +7,16 @@
 #include <qdatastream.h>
 
 class Cursus;
-//class Dossier;
+class UV;
+class Dossier;
 class UTProfiler
 {
-	vector<UV> UVList;
-	vector<Cursus> CursusList;
-	//Dossier MonDossier;
+	//DEBUG
+	friend int main(int argc, char *argv[]);
+
+	map<QString, UV> UVList;
+	map<QString, Cursus> CursusList;
+	Dossier MonDossier;
 	UTProfiler();
 	static UTProfiler* ssx;
 public:
@@ -25,44 +29,21 @@ public:
 		return ssx;
 	}
 
-	IdentityIterator<UV, vector<UV>::iterator> UVIterator()
+	static void ResetInstance()
 	{
-		return IdentityIterator<UV, vector<UV>::iterator>(UVList.begin(), UVList.end());
+		if (ssx) delete ssx;
+		ssx = new UTProfiler();
 	}
 
-	IdentityIterator<Cursus, vector<Cursus>::iterator> CursusIterator()
-	{
-		return IdentityIterator<Cursus, vector<Cursus>::iterator>(CursusList.begin(), CursusList.end());
-	}
+	SelectIterator<pair<QString, UV>, UV, map<QString, UV>::iterator> UVIterator();
 
-	void UVToBinFile(QString fname)
-	{
-		QFile f(fname);
-		if (!f.open(QIODevice::WriteOnly))
-			return;
-		QDataStream dst(&f);
+	SelectIterator<pair<QString, Cursus>, Cursus, map<QString, Cursus>::iterator> CursusIterator();
 
-		for (auto uv : UVList)
-		{
-			dst << uv.get_code();
-			dst << uv.get_titre();
-			dst << uv.get_type();
-			dst << uv.get_nb_credit();
-			dst << uv.get_automne();
-			dst << uv.get_printemps();
-			dst << uv.isnull();
-		}
+	UV& UVrefByName(QString name) { return UVList[name]; }
+	Cursus& CursusrefByName(QString name) { return CursusList[name]; }
 
-		/*for (auto cr : CursusList)
-		{
-			dst << uv.get_code();
-			dst << uv.get_titre();
-			dst << uv.get_type();
-			dst << uv.get_nb_credit();
-			dst << uv.get_automne();
-			dst << uv.get_printemps();
-			dst << uv.isnull();
-		}*/
-	}
+	void AppToBinFile(QString fname);
+
+	void BinFileToApp(QString fname);
 };
 

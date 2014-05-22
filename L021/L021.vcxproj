@@ -261,6 +261,9 @@
     <ClInclude Include="GeneratedFiles\ui_AddUV.h" />
     <ClInclude Include="Validator.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

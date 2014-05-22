@@ -6,6 +6,7 @@
 #include "UVDialog.h"
 #include "UV.hpp"
 #include "AllUtility.h"
+#include "UTProfiler.h"
 
 class L021GUI : public QMainWindow
 {
