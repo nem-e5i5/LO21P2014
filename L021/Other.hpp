@@ -1,5 +1,4 @@
-#ifndef UTEXCEPTION_HPP
-#define UTEXCEPTION_HPP
+#pragma once
 
 #include <QString>
 
@@ -15,7 +14,8 @@ class UTException {
 		}
 };
 
-enum UVType {CS, TM, TSH, SP, size=4};
+enum UVType {CS, TM, TSH, SP, size=4, Mixe};
+QString UVTypeName(UVType t);
+UVType UVTypeFromName(QString name);
 enum UVStatus {A, B, C, D, E, F, FX, RES, ABS, EC};
-
-#endif // UTEXCEPTION_HPP
+QString UVStatusName(UVStatus t);

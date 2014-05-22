@@ -6,12 +6,12 @@
 
 class UV {
 	friend QDataStream& operator>>(QDataStream&, UV&);
+	friend QDataStream& operator<<(QDataStream&, const UV&);
 
 	private:
 		QString _code;
 		QString _titre;
-		UVType _type;
-		unsigned int _nb_credit;
+		unsigned int _nb_credit[UVType::size];
 		bool _automne;
 		bool _printemps;
 		bool _is_null;
@@ -24,15 +24,14 @@ class UV {
 		QString get_code () const;
 		QString get_titre () const;
 		UVType get_type () const;
-		unsigned int get_nb_credit () const;
+		unsigned int get_nb_credit (const UVType) const;
 		bool get_automne () const;
 		bool get_printemps () const;
 		bool isnull() const;
 		// set
 		void set_code (const QString code);
 		void set_titre (const QString titre);
-		void set_type (const UVType type);
-		void set_nb_credit (const unsigned int n);
+		void set_nb_credit(const UVType type, const unsigned int n);
 		void set_automne (const bool a);
 		void set_printemps (const bool p);
 };
