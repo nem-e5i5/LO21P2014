@@ -7,8 +7,7 @@ UV::UV() : _is_null(true) { }
 UV::UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p) : _is_null(false) {
 	_code=code;
 	_titre=titre;
-	_type=type;
-	_nb_credit=n;
+	_nb_credit[type]=n;
 	_automne=a;
 	_printemps=p;
 }
@@ -19,11 +18,18 @@ QString UV::get_code () const {
 QString UV::get_titre () const {
 	return _titre;
 }
-UVType UV::get_type () const {
-	return _type;
+UVType UV::get_type() const 
+{
+	int j = 0;
+	for (int i = 0; i < UVType::size; ++i)
+	{
+		if (_nb_credit[i] > 0) j += i;
+	}
+	if (j >= UVType::size) return UVType::Mixe;
+	else return static_cast<UVType>(j);
 }
-unsigned int UV::get_nb_credit () const {
-	return _nb_credit;
+unsigned int UV::get_nb_credit (const UVType t) const {
+	return _nb_credit[t];
 }
 bool UV::get_automne () const {
 	return _automne;
@@ -42,11 +48,8 @@ void UV::set_code (const QString code) {
 void UV::set_titre (const QString titre) {
 	_titre=titre;
 }
-void UV::set_type (const UVType type) {
-	_type=type;
-}
-void UV::set_nb_credit (const unsigned int n) {
-	_nb_credit=n;
+void UV::set_nb_credit (const UVType t, const unsigned int n) {
+	_nb_credit[t]=n;
 }
 void UV::set_automne (const bool a) {
 	_automne=a;
@@ -72,25 +75,21 @@ const UV& UVEncours::get_uv() const { return UTProfiler::GetInstance()->UVrefByN
 QDataStream& operator<<(QDataStream& str, const UV& x)
 {
 	str << x.get_code()
-		<< x.get_titre()
-		<< x.get_type()
-		<< x.get_nb_credit()
-		<< x.get_automne()
+		<< x.get_titre();
+	for (auto n : x._nb_credit) str << n;
+	str	<< x.get_automne()
 		<< x.get_printemps()
 		<< x.isnull();
 	return str;
 }
 QDataStream& operator>>(QDataStream& str, UV& x)
 {
-	int tmp;
 	str >> x._code
-		>> x._titre
-		>> tmp
-		>> x._nb_credit
-		>> x._automne
+		>> x._titre;
+	for (auto& n : x._nb_credit) str >> n;
+	str	>> x._automne
 		>> x._printemps
 		>> x._is_null;
-	x._type = static_cast<UVType>(tmp);
 	return str;
 }
 

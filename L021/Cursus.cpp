@@ -17,8 +17,8 @@ CursusValidator* CursusValidator::true_UnSerialize(QDataStream& str)
 bool CreditValidator::Validate(Dossier d) const
 {
 	auto iter = d.UVIterator();
-	auto cd = Where<UVEncours>(iter, iter.getEnd(), [=](const UVEncours& x) { return x.get_uv().get_type() == t && x.get_hasCompleted(); });
-	auto sl = Select<UVEncours, unsigned int>(cd, cd.getEnd(), [](const UVEncours& x) { return x.get_uv().get_nb_credit(); });
+	auto cd = Where<UVEncours>(iter, iter.getEnd(), [=](const UVEncours& x) { return x.get_hasCompleted(); });
+	auto sl = Select<UVEncours, unsigned int>(cd, cd.getEnd(), [=](const UVEncours& x) { return x.get_uv().get_nb_credit(t); });
 	int ag = Sum<unsigned int>(sl, sl.getEnd(), d.getNbEquivalences(t));
 	return ag >= nb;
 }

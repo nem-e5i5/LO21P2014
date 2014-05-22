@@ -74,6 +74,12 @@
     <ClCompile Include="GuiFunctions.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
+    <ClCompile Include="UVList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Other.cpp">
+      <Filter>Utility\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -86,6 +92,12 @@
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="AddUV.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="UV_popup.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="main_window.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -131,6 +143,15 @@
     </ClInclude>
     <ClInclude Include="GuiFunctions.h">
       <Filter>Utility\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_UV_popup.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_main_window.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UVList.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

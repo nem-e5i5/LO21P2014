@@ -19,7 +19,7 @@ UV& UVDialog::ShowDialog(UV& Uv, QWidget* parent)
 	x.lineEdit->setEnabled(false);
 	x.lineEdit->setText(Uv.get_code());
 	x.textEdit->setText(Uv.get_titre());
-	x.spinBox->setValue(Uv.get_nb_credit());
+	x.spinBox->setValue(Uv.get_nb_credit(Uv.get_type()));
 	x.comboBox->setCurrentIndex(static_cast<int>(Uv.get_type()));
 	x.checkBox->setChecked(Uv.get_printemps());
 	x.checkBox_2->setChecked(Uv.get_automne());
