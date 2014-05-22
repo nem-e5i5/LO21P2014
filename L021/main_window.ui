@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1165</width>
-    <height>530</height>
+    <width>825</width>
+    <height>458</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,163 +21,154 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="text">
-       <string>Ajouter UV</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>UVs disponibles</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="5">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Cursus disponibles</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>&lt;=</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QGroupBox" name="groupBox">
-      <property name="title">
-       <string/>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="spacing">
-        <number>5</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>=&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="2" column="5">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="text">
-       <string>Ajouter cursus</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2" colspan="2">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="text">
-       <string>Autocomplétion du dossier</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>UVs suivies</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Cursus suivis</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0">
-     <widget class="QTableWidget" name="tableWidget">
-      <attribute name="horizontalHeaderVisible">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-       <bool>true</bool>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>Code</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>CS</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TM</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TSH</string>
-       </property>
-      </column>
+     <widget class="QTabWidget" name="tab_widget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Dossier</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="3" column="4">
+         <widget class="QPushButton" name="remove_cursus_from_dossier_button">
+          <property name="text">
+           <string>Supprimer un cursus</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QPushButton" name="add_cursus_to_dossier_button">
+          <property name="text">
+           <string>Ajouter un cursus</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Cursus suivis</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1" colspan="4">
+         <widget class="QPushButton" name="autocomplete_button">
+          <property name="text">
+           <string>Autocomplétion du dossier</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="remove_uv_from_dossier_button">
+          <property name="text">
+           <string>Supprimer une UV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="add_uv_to_dossier_button">
+          <property name="text">
+           <string>Ajouter une UV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>UVs suivies</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QColumnView" name="dossier_uv_list">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3" colspan="2">
+         <widget class="QColumnView" name="dossier_cursus_list">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>UV</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="2">
+         <widget class="QComboBox" name="uv_type">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QSpinBox" name="uv_nb_credit">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximum">
+           <number>50</number>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QPushButton" name="add_uv_button">
+          <property name="text">
+           <string>Ajouter une UV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2" colspan="2">
+         <widget class="QComboBox" name="uv_semester"/>
+        </item>
+        <item row="6" column="1">
+         <widget class="QPushButton" name="remove_uv_button">
+          <property name="text">
+           <string>Supprimer une UV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2" colspan="2">
+         <widget class="QTextEdit" name="uv_description"/>
+        </item>
+        <item row="0" column="2" colspan="2">
+         <widget class="QLineEdit" name="uv_name">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" rowspan="6" colspan="2">
+         <widget class="QColumnView" name="columnView"/>
+        </item>
+        <item row="5" column="2" colspan="2">
+         <widget class="QPushButton" name="save_uv_button">
+          <property name="text">
+           <string>Enregistrer</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Cursus</string>
+       </attribute>
+      </widget>
      </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QTableView" name="tableView_2"/>
-    </item>
-    <item row="1" column="3">
-     <widget class="QTableView" name="tableView_3"/>
-    </item>
-    <item row="1" column="5">
-     <widget class="QTableView" name="tableView"/>
     </item>
    </layout>
   </widget>
