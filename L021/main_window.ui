@@ -21,7 +21,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tab_widget">
       <property name="currentIndex">
        <number>1</number>
@@ -81,17 +81,86 @@
          </widget>
         </item>
         <item row="2" column="1" colspan="2">
-         <widget class="QColumnView" name="dossier_uv_list">
+         <widget class="QTableWidget" name="dossier_uv_list">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="selectionMode">
            <enum>QAbstractItemView::SingleSelection</enum>
           </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Nom</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Credits</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Statut</string>
+           </property>
+          </column>
          </widget>
         </item>
         <item row="2" column="3" colspan="2">
-         <widget class="QColumnView" name="dossier_cursus_list">
+         <widget class="QTableWidget" name="dossier_cursus_list">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="selectionMode">
            <enum>QAbstractItemView::SingleSelection</enum>
           </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>300</number>
+          </attribute>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Nom</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Validé</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>
@@ -101,64 +170,73 @@
         <string>UV</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="2">
-         <widget class="QComboBox" name="uv_type">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QSpinBox" name="uv_nb_credit">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximum">
-           <number>50</number>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
+        <item row="3" column="0">
          <widget class="QPushButton" name="add_uv_button">
           <property name="text">
            <string>Ajouter une UV</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="2" colspan="2">
-         <widget class="QComboBox" name="uv_semester"/>
-        </item>
-        <item row="6" column="1">
+        <item row="3" column="2">
          <widget class="QPushButton" name="remove_uv_button">
           <property name="text">
            <string>Supprimer une UV</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="2" colspan="2">
-         <widget class="QTextEdit" name="uv_description"/>
-        </item>
-        <item row="0" column="2" colspan="2">
-         <widget class="QLineEdit" name="uv_name">
-          <property name="enabled">
-           <bool>false</bool>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="modifie_uv_button">
+          <property name="text">
+           <string>Modifier une UV</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="0" rowspan="6" colspan="2">
-         <widget class="QColumnView" name="columnView"/>
-        </item>
-        <item row="5" column="2" colspan="2">
-         <widget class="QPushButton" name="save_uv_button">
-          <property name="text">
-           <string>Enregistrer</string>
+        <item row="0" column="0" rowspan="3" colspan="3">
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
           </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>4</number>
+          </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Nom</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Crédits</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>
