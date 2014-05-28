@@ -4,17 +4,21 @@
 #include <functional>
 #include "UV.hpp"
 #include "AllUtility.h"
+#include "Semestre.h"
+#include <stack>
 
 using namespace std;
 
 class Cursus;
 class UVEncours;
+
+typedef LinearizeIterator <UVEncours, SelectIterator<SemestreSuivi, UVEncoursOnVectorIterator, vector<SemestreSuivi>::iterator>> SemestreLinearizer;
 class Dossier
 {
 	friend QDataStream& operator<<(QDataStream&, const Dossier&);
 	friend QDataStream& operator>>(QDataStream&, Dossier&);;
 
-	vector<UVEncours> UVsuivi;
+	vector<SemestreSuivi> Ssuivi;
 	vector<QString> Cursussuivi;
 	map<QString, QString> Metadata;
 
@@ -26,7 +30,7 @@ public:
 	void Setmeta(QString, QString);
 	QString Getmeta(QString);
 
-	IdentityIterator<UVEncours, vector<UVEncours>::iterator> UVIterator();
+	SemestreLinearizer UVIterator();
 
 	SelectIterator<QString, const Cursus&, vector<QString>::iterator> CursusIterator();
 
@@ -35,6 +39,8 @@ public:
 	void setNbEquivalences(UVType t, int value);
 
 	bool validerDossier();
+
+	void NouveauSemestre();
 
 	void InscriptionUV(const UV& x);
 	void InscriptionUVByName(QString x);

@@ -115,7 +115,7 @@ class UniqueIterator : public EnsemblistIterator<T, src, UniqueIterator<T, src, 
 	F equalityComparer;
 public:
 	UniqueIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 	void moveFirst()
 	{
@@ -147,7 +147,7 @@ class ReduceIterator : public EnsemblistIterator<T, src, ReduceIterator<T, src, 
 	F equalityComparer;
 public:
 	ReduceIterator(src Iterator, src end, F equalityComparer, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), equalityComparer(equalityComparer) { if (_moveFirst) moveFirst(); }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 	void moveFirst()
 	{
@@ -183,7 +183,7 @@ class ConcatIterator : public EnsemblistIterator<T, src, ConcatIterator<T, src, 
 
 public:
 	ConcatIterator(src Iterator1, src end1, src2 Iterator2, src2 end2) : EnsemblistIterator(Iterator1, end1), sourceIterator2(Iterator2), sourceEnd2(end2), sec(Iterator1 == end1) { }
-	const T& operator*() const { if (sec) return *sourceIterator2; else return *sourceIterator; }
+	T& operator*() const { if (sec) return *sourceIterator2; else return *sourceIterator; }
 	ConcatIterator& operator++()
 	{
 		if (sourceIterator == sourceEnd)
@@ -207,6 +207,25 @@ public:
 	bool ended() const { return sourceIterator == sourceEnd && sourceIterator2 = sourceEnd2; }
 };
 
+//itére la les séquences énuméré une à une; typiquement iterator<iterator<T>> --> iterator<T>
+template <class T, class src>
+class LinearizeIterator : public EnsemblistIterator<T, src, LinearizeIterator<T, src>>
+{
+
+public:
+	LinearizeIterator(src Iterator1, src end1) : EnsemblistIterator(Iterator1, end1) { }
+	T& operator*() const {  return **sourceIterator; }
+	LinearizeIterator& operator++()
+	{
+		if (*sourceIterator == *sourceEnd)
+			++sourceIterator;
+		else
+			++*sourceIterator;
+		return *this;
+	}
+
+	LinearizeIterator<T, src> getEnd() const { return LinearizeIterator<T, src>(sourceEnd, sourceEnd); }
+};
 
 
 
@@ -240,6 +259,16 @@ ConcatIterator<T, c, c2> Concat(c begin, c end, c2 begin2, c2 end2)
 		end,
 		begin2,
 		end2);
+}
+
+//opère une linéarisation
+template<class T, class c>
+LinearizeIterator<T, c> Linearize(c begin, c end)
+{
+	return LinearizeIterator<T, c>(
+		begin,
+		end
+		);
 }
 
 //supprime les doublons

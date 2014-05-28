@@ -148,6 +148,7 @@
     <ClCompile Include="Ensemblist.cpp" />
     <ClCompile Include="GuiFunctions.cpp" />
     <ClCompile Include="Other.cpp" />
+    <ClCompile Include="Semestre.cpp" />
     <ClCompile Include="UTProfiler.cpp" />
     <ClCompile Include="UV.cpp" />
     <ClCompile Include="UVDialog.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="GeneratedFiles\ui_UV_popup.h" />
     <ClInclude Include="GuiFunctions.h" />
     <ClInclude Include="Other.hpp" />
+    <ClInclude Include="Semestre.h" />
     <ClInclude Include="UTProfiler.h" />
     <ClInclude Include="UV.hpp" />
     <ClInclude Include="UVDialog.h" />

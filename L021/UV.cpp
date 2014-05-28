@@ -7,6 +7,7 @@ UV::UV() : _is_null(true) { }
 UV::UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p) : _is_null(false) {
 	_code=code;
 	_titre=titre;
+	for (auto& x : _nb_credit) x = 0;
 	_nb_credit[type]=n;
 	_automne=a;
 	_printemps=p;
@@ -23,13 +24,16 @@ UVType UV::get_type() const
 	int j = 0;
 	for (int i = 0; i < UVType::size; ++i)
 	{
-		if (_nb_credit[i] > 0) j += i;
+		if (_nb_credit[i] > 0) 
+			if (j == 0) j = i;
+			else j = UVType::Mixe;
 	}
-	if (j >= UVType::size) return UVType::Mixe;
-	else return static_cast<UVType>(j);
+	return static_cast<UVType>(j);
 }
 unsigned int UV::get_nb_credit (const UVType t) const {
-	return _nb_credit[t];
+	if (t < UVType::size)
+		return _nb_credit[t];
+	return Sum<int>(&_nb_credit[0], &_nb_credit[UVType::size], 0);
 }
 bool UV::get_automne () const {
 	return _automne;

@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	
 	Dossier& x = prf->MonDossier;
 	Cursus y("counter strike");
+	x.NouveauSemestre();
 	x.InscriptionUVByName("lol21");
 	(*x.UVIterator()).set_status(UVStatus::A);
 	y.addValidator(new CreditValidator(UVType::CS, 6));
@@ -21,14 +22,6 @@ int main(int argc, char *argv[])
 	x.InscriptionCursusByName("counter strike");
 
 	prf->AppToBinFile("test.bin");
-
-	UTProfiler::ResetInstance();
-	prf = UTProfiler::GetInstance();
-
-	prf->BinFileToApp("test.bin");
-
-	UTProfiler::ResetInstance();
-	prf = UTProfiler::GetInstance();
 
 	QApplication a(argc, argv);
 	L021GUI w;

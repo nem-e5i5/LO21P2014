@@ -80,6 +80,9 @@
     <ClCompile Include="Other.cpp">
       <Filter>Utility\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Semestre.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -151,6 +154,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="UVList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Semestre.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
