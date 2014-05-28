@@ -44,8 +44,10 @@ public:
 
 	void InscriptionUV(const UV& x);
 	void InscriptionUVByName(QString x);
+	
 	void InscriptionCursus(const Cursus& x);
 	void InscriptionCursusByName(QString x);
+	void DesinscriptionCursusByName(QString x);
 
 	Dossier();
 	~Dossier();

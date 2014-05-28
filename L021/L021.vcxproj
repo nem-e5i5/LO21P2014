@@ -147,13 +147,15 @@
     <ClCompile Include="Dossier.cpp" />
     <ClCompile Include="Ensemblist.cpp" />
     <ClCompile Include="GuiFunctions.cpp" />
+    <ClCompile Include="l021gui_Binding.cpp" />
+    <ClCompile Include="l021gui_Dossier.cpp" />
     <ClCompile Include="Other.cpp" />
     <ClCompile Include="Semestre.cpp" />
     <ClCompile Include="UTProfiler.cpp" />
     <ClCompile Include="UV.cpp" />
     <ClCompile Include="UVDialog.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp" />
-    <ClCompile Include="l021gui.cpp" />
+    <ClCompile Include="l021gui_UV.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UVList.cpp" />
   </ItemGroup>

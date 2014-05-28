@@ -32,7 +32,7 @@ public:
 			++begin;
 		}
 		int ret = f.exec();
-		if (ret == 1) return f.tableWidget->selectedItems()[0]->text();
+		if (ret == 1 && f.tableWidget()->selectedItems.size() > 0) return f.tableWidget->selectedItems()[0]->text();
 		else return "";
 	}
 };

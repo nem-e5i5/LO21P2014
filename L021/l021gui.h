@@ -4,6 +4,7 @@
 #include <QtWidgets/QMainWindow>
 #include <qmessagebox.h>
 #include "ui_l021gui.h"
+#include "ui_main_window.h"
 #include "UVDialog.h"
 #include "UVList.h"
 #include "UV.hpp"
@@ -21,8 +22,14 @@ public:
 private slots:
 	void AddUv();
 	void EditUv();
+	void RemoveUV();
+
+	void AddCursus_Dossier();
+	void RemoveCursus_Dossier();
 private:
-	Ui::gui ui;
+	Ui::MainWindow ui;
+	void UVListChanged();
+	void CursusList_DossierChanged();
 };
 
 #endif // L021GUI_H

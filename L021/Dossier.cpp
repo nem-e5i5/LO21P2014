@@ -64,6 +64,13 @@ void Dossier::InscriptionCursusByName(QString x)
 	Cursussuivi.push_back(x);
 }
 
+void Dossier::DesinscriptionCursusByName(QString x)
+{
+	auto iter = find(Cursussuivi.begin(), Cursussuivi.end(), x);
+	if (iter == Cursussuivi.end()) throw;
+	Cursussuivi.erase(iter);
+}
+
 Dossier::Dossier()
 {
 	for (int i = 0; i < UVType::size; ++i) Equivalences[i] = 0;
