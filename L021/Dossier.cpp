@@ -11,9 +11,10 @@ QString Dossier::Getmeta(QString n)
 	return Metadata[n];
 }
 
-IdentityIterator<UVEncours, vector<UVEncours>::iterator> Dossier::UVIterator()
+SemestreLinearizer Dossier::UVIterator()
 {
-	return IdentityIterator<UVEncours, vector<UVEncours>::iterator>(UVsuivi.begin(), UVsuivi.end());
+	auto x = Select<SemestreSuivi, UVEncoursOnVectorIterator>(Ssuivi.begin(), Ssuivi.end(), [](const SemestreSuivi& s) { return const_cast<SemestreSuivi&>(s).UVIterator(); });
+	return Linearize<UVEncours>(x, x.getEnd());
 }
 
 SelectIterator<QString, const Cursus&, vector<QString>::iterator> Dossier::CursusIterator()
@@ -38,6 +39,11 @@ bool Dossier::validerDossier()
 		if (!((*x).Validate(*this))) return false; 
 	return true; }
 
+void Dossier::NouveauSemestre()
+{
+	Ssuivi.push_back(SemestreSuivi(Semestre::Automne, SemestreStatus::SEC));
+}
+
 void Dossier::InscriptionUV(const UV& x)
 {
 	Dossier::InscriptionUVByName(x.get_code());
@@ -50,7 +56,7 @@ void Dossier::InscriptionCursus(const Cursus& x)
 void Dossier::InscriptionUVByName(QString x)
 {
 	if (!UTProfiler::GetInstance()->UVExists(x)) throw;
-	UVsuivi.push_back(UVEncours(x, UVStatus::EC));
+	(*(Ssuivi.end() - 1)).Inscription(UVEncours(x, UVStatus::EC));
 }
 void Dossier::InscriptionCursusByName(QString x)
 {
@@ -70,8 +76,8 @@ Dossier::~Dossier()
 
 QDataStream& operator<<(QDataStream& str, const Dossier& x)
 {
-	str << x.UVsuivi.size();
-	for (auto& u: x.UVsuivi)
+	str << x.Ssuivi.size();
+	for (auto& u: x.Ssuivi)
 		str << u;
 
 	str << x.Cursussuivi.size();
@@ -96,10 +102,10 @@ QDataStream& operator>>(QDataStream& str, Dossier& x)
 	QString tmpstr, tmpstr2;
 	str >> tmp;
 
-	x.UVsuivi = vector<UVEncours>(tmp);
+	x.Ssuivi = vector<SemestreSuivi>(tmp);
 	for (int i = 0; i < tmp; ++i)
 	{
-		str >> x.UVsuivi[i];
+		str >> x.Ssuivi[i];
 	}
 
 	str >> tmp;

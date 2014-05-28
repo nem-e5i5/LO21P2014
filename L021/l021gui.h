@@ -5,6 +5,7 @@
 #include <qmessagebox.h>
 #include "ui_l021gui.h"
 #include "UVDialog.h"
+#include "UVList.h"
 #include "UV.hpp"
 #include "AllUtility.h"
 #include "UTProfiler.h"

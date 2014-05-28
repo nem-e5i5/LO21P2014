@@ -23,6 +23,11 @@ void L021GUI::AddUv()
 void L021GUI::EditUv()
 {
 	//TODO: selectionneur d'UV
-	UV x = UV::null;
-	UVDialog::ShowDialog(x);
+	auto iter = UTProfiler::GetInstance()->UVIterator();
+	QString t = UVList::ShowDialog(iter, iter.getEnd());
+	if (t != "")
+	{
+		UV& x = UTProfiler::GetInstance()->UVrefByName(t);
+		UVDialog::ShowDialog(x);
+	}
 }
