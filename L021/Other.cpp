@@ -1,6 +1,9 @@
 #include "Other.hpp"
 
 QString UVTypeName(UVType t)
+/**
+ * Retourne le nom de l'UVType 
+ */
 {
 	switch (t)
 	{
@@ -14,6 +17,9 @@ QString UVTypeName(UVType t)
 }
 
 QString UVStatusName(UVStatus t)
+/**
+ * Retourne le nom de l'UVStatus
+ */
 {
 	switch (t)
 	{
