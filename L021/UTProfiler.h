@@ -49,7 +49,7 @@ public:
 	bool CursusExists(QString name) { return CursusList.find(name) != CursusList.end(); }
 
 	void RemoveUV(QString name);
-	void RemoveCursus(QString name) { CursusList.erase(name); }
+	void RemoveCursus(QString name);
 
 
 	void AppToBinFile(QString fname);

@@ -6,6 +6,7 @@
 #include "ui_l021gui.h"
 #include "ui_main_window.h"
 #include "UVDialog.h"
+#include "EquivDialog.h"
 #include "UVList.h"
 #include "CursusList.h"
 #include "UV.hpp"
@@ -24,6 +25,8 @@ private slots:
 	void AddUv();
 	void EditUv();
 	void RemoveUV();
+
+	void EditEquiv_Dossier();
 
 	void AddCursus_Dossier();
 	void RemoveCursus_Dossier();

@@ -8,6 +8,8 @@ L021GUI::L021GUI(QWidget *parent)
 	QObject::connect(ui.modifie_uv_button, SIGNAL(clicked()), this, SLOT(EditUv()));
 	QObject::connect(ui.remove_uv_button, SIGNAL(clicked()), this, SLOT(RemoveUV()));
 	
+	QObject::connect(ui.equivalence_button, SIGNAL(clicked()), this, SLOT(EditEquiv_Dossier()));
+
 	QObject::connect(ui.add_cursus_to_dossier_button, SIGNAL(clicked()), this, SLOT(AddCursus_Dossier()));
 	QObject::connect(ui.remove_cursus_from_dossier_button, SIGNAL(clicked()), this, SLOT(RemoveCursus_Dossier()));
 	

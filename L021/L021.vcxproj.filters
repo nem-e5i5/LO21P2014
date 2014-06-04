@@ -92,6 +92,9 @@
     <ClCompile Include="CursusList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EquivDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -113,6 +116,15 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="cursus_popup.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="cursus_dialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="equiv_dialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="validator_dialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -175,6 +187,18 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="CursusList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_cursus_dialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_equiv_dialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_validator_dialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EquivDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
