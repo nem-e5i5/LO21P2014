@@ -31,17 +31,10 @@
         <string>Dossier</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="4" column="4">
-         <widget class="QPushButton" name="remove_cursus_from_dossier_button">
+        <item row="5" column="2">
+         <widget class="QPushButton" name="remove_uv_from_dossier_button">
           <property name="text">
-           <string>Supprimer un cursus</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="3">
-         <widget class="QPushButton" name="add_cursus_to_dossier_button">
-          <property name="text">
-           <string>Ajouter un cursus</string>
+           <string>Supprimer une UV</string>
           </property>
          </widget>
         </item>
@@ -52,17 +45,10 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="1" colspan="4">
-         <widget class="QPushButton" name="autocomplete_button">
+        <item row="1" column="1" colspan="2">
+         <widget class="QPushButton" name="equivalence_button">
           <property name="text">
-           <string>Autocomplétion du dossier</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="add_uv_to_dossier_button">
-          <property name="text">
-           <string>Ajouter une UV</string>
+           <string>Gerer les equivalences</string>
           </property>
          </widget>
         </item>
@@ -73,24 +59,38 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="5" column="3">
+         <widget class="QPushButton" name="add_cursus_to_dossier_button">
+          <property name="text">
+           <string>Ajouter un cursus</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
          <widget class="QPushButton" name="add_semestre_button">
           <property name="text">
            <string>Ajouter un semestre</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="remove_semestre_button">
+        <item row="5" column="1">
+         <widget class="QPushButton" name="add_uv_to_dossier_button">
           <property name="text">
-           <string>Supprimer un semestre</string>
+           <string>Ajouter une UV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1" colspan="4">
+         <widget class="QPushButton" name="autocomplete_button">
+          <property name="text">
+           <string>Autocomplétion du dossier</string>
           </property>
          </widget>
         </item>
         <item row="4" column="2">
-         <widget class="QPushButton" name="remove_uv_from_dossier_button">
+         <widget class="QPushButton" name="remove_semestre_button">
           <property name="text">
-           <string>Supprimer une UV</string>
+           <string>Supprimer un semestre</string>
           </property>
          </widget>
         </item>
@@ -125,14 +125,14 @@
           </column>
          </widget>
         </item>
-        <item row="1" column="1" colspan="2">
-         <widget class="QPushButton" name="equivalence_button">
+        <item row="5" column="4">
+         <widget class="QPushButton" name="remove_cursus_from_dossier_button">
           <property name="text">
-           <string>Gerer les equivalences</string>
+           <string>Supprimer un cursus</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="3" rowspan="3" colspan="2">
+        <item row="1" column="3" rowspan="4" colspan="2">
          <widget class="QTableWidget" name="dossier_cursus_list">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
@@ -168,6 +168,13 @@
             <string>Validé</string>
            </property>
           </column>
+         </widget>
+        </item>
+        <item row="3" column="1" colspan="2">
+         <widget class="QPushButton" name="modify_status">
+          <property name="text">
+           <string>Modifier le statut</string>
+          </property>
          </widget>
         </item>
        </layout>
