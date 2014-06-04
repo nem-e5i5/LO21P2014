@@ -7,6 +7,7 @@ void L021GUI::AddUv()
 	{
 		UTProfiler::GetInstance()->UVrefByName(x.get_code()) = x;
 		UVListChanged();
+		UVList_DossierChanged();
 		Notify(L"UV ajouté avec succès");
 	}
 	else Notify(L"Action annulée");
@@ -20,6 +21,7 @@ void L021GUI::EditUv()
 		UV& x = UTProfiler::GetInstance()->UVrefByName(t);
 		UVDialog::ShowDialog(x);
 		UVListChanged();
+		UVList_DossierChanged();
 	}
 	else Notify(L"Pas d'uv choisie");
 }
@@ -32,6 +34,7 @@ void L021GUI::RemoveUV()
 		UV& x = UTProfiler::GetInstance()->UVrefByName(t);
 		UTProfiler::GetInstance()->RemoveUV(t);
 		UVListChanged();
+		UVList_DossierChanged();
 	}
 	else Notify(L"Pas d'uv choisie");
 }

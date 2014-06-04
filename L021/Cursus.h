@@ -26,6 +26,7 @@ class Dossier;
 class ValidatorFactory;
 class CursusValidator {
 protected:
+	virtual vector<QString> ArgList() const = 0;
 	virtual void Serialize(QDataStream&) const = 0;
 	virtual void UnSerialize(QDataStream&) = 0;
 	
@@ -60,6 +61,14 @@ define_validator(Credit)
 
 	bool Validate(Dossier d) const;
 
+	vector<QString> ArgList() const
+	{
+		vector<QString> out(2);
+		out[0] = "UVType";
+		out[1] = "int";
+		return out;
+	}
+
 	void Serialize(QDataStream& str) const
 	{
 		str << static_cast<int>(t)
@@ -88,6 +97,8 @@ public:
 	//Utiliser new, le pointeur sera géré par l'objet lui même, pas de delete après
 	int addValidator(CursusValidator* x);
 	void removeValidator(int Id);
+
+	SelectIterator<CursusValidator*, QString, vector<CursusValidator*>::iterator> validatorList();
 
 	QString getName() const { return Name; }
 

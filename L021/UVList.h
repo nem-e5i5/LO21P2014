@@ -19,7 +19,7 @@ public:
 		while (begin != end)
 		{
 			f.tableWidget->setRowCount(i + 1);
-			UV c = (*begin);
+			const UV& c = (*begin);
 			f.tableWidget->setItem(i, 0, new QTableWidgetItem(c.get_code()));
 			f.tableWidget->setItem(i, 1, new QTableWidgetItem(UVTypeName(c.get_type())));
 			f.tableWidget->setItem(i, 2, new QTableWidgetItem(QString::number(c.get_nb_credit(c.get_type()))));
@@ -32,7 +32,7 @@ public:
 			++begin;
 		}
 		int ret = f.exec();
-		if (ret == 1 && f.tableWidget()->selectedItems.size() > 0) return f.tableWidget->selectedItems()[0]->text();
+		if (ret == 1 && f.tableWidget->selectedItems().size() > 0) return f.tableWidget->selectedItems()[0]->text();
 		else return "";
 	}
 };

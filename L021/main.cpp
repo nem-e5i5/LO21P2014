@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	Cursus y("counter strike");
 	x.NouveauSemestre();
 	x.InscriptionUVByName("lol21");
-	(*x.UVIterator()).set_status(UVStatus::A);
+	//(*x.UVIterator()).set_status(UVStatus::A);
 	y.addValidator(new CreditValidator(UVType::CS, 6));
 	
 	prf->CursusrefByName("counter strike") = y;

@@ -40,6 +40,10 @@ public:
 	{
 		return sourceIterator == sourceEnd;
 	}
+
+	virtual ~EnsemblistIterator() {}
+	//EnsemblistIterator(const EnsemblistIterator& o) : sourceIterator(o.sourceIterator), sourceEnd(o.sourceEnd){ }
+	//const EnsemblistIterator& operator=(const EnsemblistIterator& o) { sourceIterator = o.sourceIterator; sourceEnd = o.sourceEnd; return o; }
 };
 
 //peut être utilisé pour normaliser les itérateurs std si besoin
@@ -72,8 +76,8 @@ class WhereIterator : public EnsemblistIterator<T, src, WhereIterator<T, src>>
 public:
 	WhereIterator(src Iterator, src end, function<bool(const T&)> p, bool _moveFirst = true) : EnsemblistIterator(Iterator, end), predicate(p) { if (_moveFirst) moveFirst(); }
 
-	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
-	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	T operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	const T operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 	void moveFirst() { if (sourceIterator != sourceEnd && !predicate(**this)) ++(*this); }
 
@@ -208,23 +212,73 @@ public:
 };
 
 //itére la les séquences énuméré une à une; typiquement iterator<iterator<T>> --> iterator<T>
-template <class T, class src>
-class LinearizeIterator : public EnsemblistIterator<T, src, LinearizeIterator<T, src>>
+//n'opère que sur les itertors de ce fichier, pas sur les std pour une fois
+template <class T, class src, class nested>
+class LinearizeIterator : public EnsemblistIterator<T, src, LinearizeIterator<T, src, nested>>
 {
-
+	nested* ncurrent;
 public:
-	LinearizeIterator(src Iterator1, src end1) : EnsemblistIterator(Iterator1, end1) { }
-	T& operator*() const {  return **sourceIterator; }
-	LinearizeIterator& operator++()
+	LinearizeIterator(src Iterator1, src end1) : EnsemblistIterator(Iterator1, end1), ncurrent(Iterator1 != end1 ? new nested(*Iterator1) : nullptr) { moveFirst(); }
+	T& operator*() const {  return **ncurrent; }
+	void moveFirst() 
 	{
-		if (*sourceIterator == *sourceEnd)
+		if (ncurrent == nullptr) return;
+		while (ncurrent->ended())
+		{
+			delete ncurrent;
 			++sourceIterator;
-		else
-			++*sourceIterator;
+			if (sourceIterator != sourceEnd)
+			{
+				ncurrent = new nested(*sourceIterator);
+			}
+			else
+			{
+				ncurrent = nullptr;
+				break;
+			}
+		}
+	}
+	LinearizeIterator& operator++()
+	{	
+		if (ncurrent == nullptr) return *this;
+		if (ncurrent->ended()) while (ncurrent->ended())
+		{
+			delete ncurrent;
+			++sourceIterator;
+			if (sourceIterator != sourceEnd)
+			{
+				ncurrent = new nested(*sourceIterator);
+			}
+			else
+			{
+				ncurrent = nullptr;
+				break;
+			}
+		}
+		else ++(*ncurrent);
+		if (ncurrent == nullptr) { return *this; }
+		if (ncurrent->ended()) operator++();
 		return *this;
 	}
 
-	LinearizeIterator<T, src> getEnd() const { return LinearizeIterator<T, src>(sourceEnd, sourceEnd); }
+	~LinearizeIterator() { delete ncurrent; ncurrent = nullptr; }
+	LinearizeIterator(const LinearizeIterator& o) : EnsemblistIterator(o), ncurrent(o.ncurrent != nullptr ? new nested(*o.ncurrent) : nullptr){ }
+	const LinearizeIterator& operator=(const LinearizeIterator& o) 
+	{ 
+		this->EnsemblistIterator::operator=(o); 
+		if (ncurrent != nullptr) delete ncurrent;
+		if (o.ncurrent != nullptr) ncurrent = new nested(*o.ncurrent);
+		else ncurrent = nullptr;
+	}
+	bool operator==(const LinearizeIterator& other) const
+	{
+		bool r = this->sourceIterator == other.sourceIterator
+			&& (this->ncurrent) == (other.ncurrent); //refequal, fait aussi le test pour nullptr
+		r = r || (this->sourceIterator == other.sourceIterator
+			&& (*this->ncurrent) == (*other.ncurrent)); //efequal, si les ref sont différentes et si on est pas dans un cas null
+		return r;
+	}
+	LinearizeIterator<T, src, nested> getEnd() const { return LinearizeIterator<T, src, nested>(sourceEnd, sourceEnd); }
 };
 
 
@@ -262,10 +316,10 @@ ConcatIterator<T, c, c2> Concat(c begin, c end, c2 begin2, c2 end2)
 }
 
 //opère une linéarisation
-template<class T, class c>
-LinearizeIterator<T, c> Linearize(c begin, c end)
+template<class T, class nested, class c>
+LinearizeIterator<T, c, nested> Linearize(c begin, c end)
 {
-	return LinearizeIterator<T, c>(
+	return LinearizeIterator<T, c, nested>(
 		begin,
 		end
 		);

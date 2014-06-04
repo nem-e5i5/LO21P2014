@@ -14,13 +14,38 @@ QString Dossier::Getmeta(QString n)
 SemestreLinearizer Dossier::UVIterator()
 {
 	auto x = Select<SemestreSuivi, UVEncoursOnVectorIterator>(Ssuivi.begin(), Ssuivi.end(), [](const SemestreSuivi& s) { return const_cast<SemestreSuivi&>(s).UVIterator(); });
-	return Linearize<UVEncours>(x, x.getEnd());
+	return Linearize<UVEncours, UVEncoursOnVectorIterator>(x, x.getEnd());
+}
+
+WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, UV>::iterator>> Dossier::UVPrenableIterator(QString SId)
+{
+	auto& s = SemestreRef(SId);
+
+	auto piter = UTProfiler::GetInstance()->UVIterator();
+	auto xiter = s.UVIterator();
+	auto viter = UVIterator();
+	auto iter = Where<UV>(piter, piter.getEnd(),
+		[xiter, viter, &s](const UV x) {
+		return
+			Where<UVEncours>(xiter, xiter.getEnd(),
+			[&x](const UVEncours& y) { return y.get_uv() == x; }).ended() &&
+			Where<UVEncours>(viter, viter.getEnd(),
+			[&x](const UVEncours& y) { return y.get_hasCompleted() && y.get_uv() == x; }).ended()
+			&& ((x.get_automne() && s.get_Saison() == Semestre::Automne) || (x.get_printemps() && s.get_Saison() == Semestre::Printemps));
+	}
+	); //Différence ensembliste: UV - UV_déjà_prise - UV_déjà_validé - UV_pas_enseigné
+	return iter;
+}
+
+IdentityIterator<SemestreSuivi, vector<SemestreSuivi>::iterator> Dossier::SemestreIterator()
+{
+	return IdentityIterator<SemestreSuivi, vector<SemestreSuivi>::iterator>(Ssuivi.begin(), Ssuivi.end());
 }
 
 SelectIterator<QString, const Cursus&, vector<QString>::iterator> Dossier::CursusIterator()
 {
 	return Select<QString, const Cursus&>(Cursussuivi.begin(), Cursussuivi.end(),
-		[](QString x) { return UTProfiler::GetInstance()->CursusrefByName(x); });
+		[](QString x) -> const Cursus&{ return UTProfiler::GetInstance()->CursusrefByName(x); });
 }
 
 int Dossier::getNbEquivalences(UVType t)
@@ -39,9 +64,32 @@ bool Dossier::validerDossier()
 		if (!((*x).Validate(*this))) return false; 
 	return true; }
 
-void Dossier::NouveauSemestre()
+void Dossier::NouveauSemestre(Semestre saison)
 {
-	Ssuivi.push_back(SemestreSuivi(Semestre::Automne, SemestreStatus::SEC));
+	Ssuivi.push_back(SemestreSuivi(saison, SemestreStatus::PL));
+}
+
+SemestreSuivi& Dossier::SemestreRef(QString SId)
+{
+	int ct = (SId.mid(1).toInt() - 1) * 2;
+	if ((SId[0] == 'A' && Ssuivi[0].get_Saison() == Semestre::Automne)
+	 || (SId[0] == 'P' && Ssuivi[0].get_Saison() == Semestre::Printemps)) 
+		//Concordance avec le premier
+		return Ssuivi[ct];
+	else 
+		//Discordance
+		return Ssuivi[ct + 1];
+}
+
+void Dossier::SupprimerSemestre(QString SId)
+{
+	auto& ref = SemestreRef(SId);
+	auto iterem = find(Ssuivi.begin(), Ssuivi.end(), ref);
+	auto iter = iterem;
+	for (auto end = Ssuivi.end(); iter != end; ++iter)
+		(*iter).change_Saison();
+	Ssuivi.erase(iterem);
+
 }
 
 void Dossier::InscriptionUV(const UV& x)
