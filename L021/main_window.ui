@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>825</width>
-    <height>458</height>
+    <height>559</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -59,13 +59,6 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="2">
-         <widget class="QPushButton" name="remove_uv_from_dossier_button">
-          <property name="text">
-           <string>Supprimer une UV</string>
-          </property>
-         </widget>
-        </item>
         <item row="4" column="1">
          <widget class="QPushButton" name="add_uv_to_dossier_button">
           <property name="text">
@@ -77,6 +70,27 @@
          <widget class="QLabel" name="label_2">
           <property name="text">
            <string>UVs suivies</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="add_semestre_button">
+          <property name="text">
+           <string>Ajouter un semestre</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="remove_semestre_button">
+          <property name="text">
+           <string>Supprimer un semestre</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QPushButton" name="remove_uv_from_dossier_button">
+          <property name="text">
+           <string>Supprimer une UV</string>
           </property>
          </widget>
         </item>
@@ -111,21 +125,14 @@
           </column>
          </widget>
         </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="add_semestre_button">
+        <item row="1" column="1" colspan="2">
+         <widget class="QPushButton" name="equivalence_button">
           <property name="text">
-           <string>Ajouter un semestre</string>
+           <string>Gerer les equivalences</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="remove_semestre_button">
-          <property name="text">
-           <string>Supprimer un semestre</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3" rowspan="2" colspan="2">
+        <item row="1" column="3" rowspan="3" colspan="2">
          <widget class="QTableWidget" name="dossier_cursus_list">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
