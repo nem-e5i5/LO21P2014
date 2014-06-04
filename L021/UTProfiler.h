@@ -36,6 +36,8 @@ public:
 		ssx = new UTProfiler();
 	}
 
+	Dossier& getDossier() { return MonDossier; }
+
 	SelectIterator<pair<QString, UV>, UV, map<QString, UV>::iterator> UVIterator();
 
 	SelectIterator<pair<QString, Cursus>, Cursus, map<QString, Cursus>::iterator> CursusIterator();
@@ -45,6 +47,9 @@ public:
 
 	bool UVExists(QString name) { return UVList.find(name) != UVList.end(); }
 	bool CursusExists(QString name) { return CursusList.find(name) != CursusList.end(); }
+
+	void RemoveUV(QString name);
+	void RemoveCursus(QString name) { CursusList.erase(name); }
 
 
 	void AppToBinFile(QString fname);

@@ -3,7 +3,7 @@
 // UV //
 const UV UV::null = UV();
 
-UV::UV() : _is_null(true) { }
+UV::UV() : _is_null(true), _code("SUPPR00"), _titre(QString::fromWCharArray(L"Ceci représente une UV inexistante ou supprimée")) { }
 UV::UV(const QString code, const QString titre, const UVType type, const unsigned int n, const bool a, const bool p) : _is_null(false) {
 	_code=code;
 	_titre=titre;
@@ -62,6 +62,15 @@ void UV::set_printemps (const bool p) {
 	_printemps=p;
 }
 
+bool UV::operator==(const UV& o) const
+{
+	return get_code() == o.get_code();
+}
+bool UV::operator!=(const UV& o) const
+{
+	return !operator==(o);
+}
+
 // UVEncours //
 UVEncours::UVEncours(QString uv, const UVStatus s) {
 	_uv = uv;
@@ -74,7 +83,21 @@ void UVEncours::set_status(const UVStatus s) {
 	_status=s;
 }
 
-const UV& UVEncours::get_uv() const { return UTProfiler::GetInstance()->UVrefByName(_uv); }
+const UV& UVEncours::get_uv() const 
+{ 
+	if (UTProfiler::GetInstance()->UVExists(_uv))
+		return UTProfiler::GetInstance()->UVrefByName(_uv);
+	else return UV::null;
+}
+
+bool UVEncours::operator==(const UVEncours& o) const
+{
+	return get_status() == o.get_status() && get_uv() == o.get_uv();
+}
+bool UVEncours::operator!=(const UVEncours& o) const
+{
+	return !operator==(o);
+}
 
 QDataStream& operator<<(QDataStream& str, const UV& x)
 {

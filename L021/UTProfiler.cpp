@@ -23,6 +23,24 @@ SelectIterator<pair<QString, Cursus>, Cursus, map<QString, Cursus>::iterator> UT
 		[](const pair<QString, Cursus>& x) { return x.second; });
 }
 
+void UTProfiler::RemoveUV(QString name)
+{
+	
+	auto iter1 = MonDossier.SemestreIterator();
+	for (; !iter1.ended(); ++iter1)
+		for (auto iter2 = (*iter1).UVIterator(); !iter2.ended(); ++iter2)
+		if ((*iter2).get_uv().get_code() == name)
+		{
+			for (int i = 0; i < UVType::size; ++i)
+				MonDossier.setNbEquivalences(static_cast<UVType>(i),
+				MonDossier.getNbEquivalences(static_cast<UVType>(i))
+				+ (*iter2).get_uv().get_nb_credit(static_cast<UVType>(i)));
+			(*iter2) = UVEncours("__NULL__", (*iter2).get_status());
+		}
+			
+	UVList.erase(name);
+}
+
 void UTProfiler::AppToBinFile(QString fname)
 {
 	QFile f(fname);

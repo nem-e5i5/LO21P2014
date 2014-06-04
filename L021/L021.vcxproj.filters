@@ -47,9 +47,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="l021gui.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -83,6 +80,18 @@
     <ClCompile Include="Semestre.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="l021gui_UV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="l021gui_Dossier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="l021gui_Binding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursusList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -101,6 +110,9 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="main_window.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="cursus_popup.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -157,6 +169,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Semestre.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_cursus_popup.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursusList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

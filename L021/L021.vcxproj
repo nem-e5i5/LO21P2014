@@ -144,16 +144,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cursus.cpp" />
+    <ClCompile Include="CursusList.cpp" />
     <ClCompile Include="Dossier.cpp" />
     <ClCompile Include="Ensemblist.cpp" />
     <ClCompile Include="GuiFunctions.cpp" />
+    <ClCompile Include="l021gui_Binding.cpp" />
+    <ClCompile Include="l021gui_Dossier.cpp" />
     <ClCompile Include="Other.cpp" />
     <ClCompile Include="Semestre.cpp" />
     <ClCompile Include="UTProfiler.cpp" />
     <ClCompile Include="UV.cpp" />
     <ClCompile Include="UVDialog.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_l021gui.cpp" />
-    <ClCompile Include="l021gui.cpp" />
+    <ClCompile Include="l021gui_UV.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UVList.cpp" />
   </ItemGroup>
@@ -253,11 +256,13 @@
   <ItemGroup>
     <ClInclude Include="AllUtility.h" />
     <ClInclude Include="Cursus.h" />
+    <ClInclude Include="CursusList.h" />
     <ClInclude Include="Dossier.h" />
     <ClInclude Include="DossierEtCursus.h" />
     <ClInclude Include="Ensemblist.h" />
     <ClInclude Include="Ensemblist_lin.h" />
     <ClInclude Include="Ensemblist_win.h" />
+    <ClInclude Include="GeneratedFiles\ui_cursus_popup.h" />
     <ClInclude Include="GeneratedFiles\ui_main_window.h" />
     <ClInclude Include="GeneratedFiles\ui_UV_popup.h" />
     <ClInclude Include="GuiFunctions.h" />
@@ -291,6 +296,24 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
     <CustomBuild Include="main_window.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild Include="cursus_popup.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>

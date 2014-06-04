@@ -34,6 +34,9 @@ class UV {
 		void set_nb_credit(const UVType type, const unsigned int n);
 		void set_automne (const bool a);
 		void set_printemps (const bool p);
+
+		bool operator==(const UV& o) const;
+		bool operator!=(const UV& o) const;
 };
 
 QDataStream& operator<<(QDataStream&, const UV&);
@@ -54,6 +57,9 @@ class UVEncours {
 		bool get_hasCompleted() const { return get_status() != UVStatus::F && get_status() != UVStatus::FX && get_status() != UVStatus::ABS && get_status() != UVStatus::RES && get_status() != UVStatus::EC; }
 
 		const UV& get_uv() const;
+
+		bool operator==(const UVEncours& o) const;
+		bool operator!=(const UVEncours& o) const;
 };
 QDataStream& operator<<(QDataStream&, const UVEncours&);
 QDataStream& operator>>(QDataStream&, UVEncours&);

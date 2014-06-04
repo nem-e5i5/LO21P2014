@@ -27,6 +27,11 @@ int Cursus::addValidator(CursusValidator* x) { Validators.push_back(x); return V
 
 void Cursus::removeValidator(int Id) { Validators.erase(Validators.begin() + Id); }
 
+SelectIterator<CursusValidator*, QString, vector<CursusValidator*>::iterator> Cursus::validatorList()
+{
+	return Select<CursusValidator*, QString>(Validators.begin(), Validators.end(), [](CursusValidator* x) { return x->getName(); });
+}
+
 bool Cursus::Validate(Dossier d) const
 {
 	for (auto& v : Validators)

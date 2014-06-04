@@ -6,6 +6,15 @@ UVEncoursOnVectorIterator SemestreSuivi::UVIterator()
 }
 
 void SemestreSuivi::Inscription(UVEncours e) { UVs.push_back(e); }
+void SemestreSuivi::Desinscription(QString Name)
+{
+	auto iter = Where<UVEncours>(UVs.begin(), UVs.end(), 
+		[=](const UVEncours& x) { return x.get_uv().get_code() == Name; });
+	if (iter.ended()) throw;
+	auto& item = *iter;
+	auto stditer = find(UVs.begin(), UVs.end(), item);
+	UVs.erase(stditer);
+}
 
 int SemestreSuivi::get_nb_credit_effective(UVType type) const
 {
@@ -18,7 +27,31 @@ int SemestreSuivi::get_nb_credit_previsional(UVType type) const
 {
 	auto x = Where<const UVEncours>(UVs.begin(), UVs.end(), [](const UVEncours& u) { return u.get_status() == UVStatus::EC; });
 	auto y = Select<const UVEncours, int>(x, x.getEnd(), [=](const UVEncours& u) { return u.get_uv().get_nb_credit(type); });
-	return Sum<int>(y, y.getEnd(), Prevision[type]);
+	return Sum<int>(y, y.getEnd(), 
+		type < UVType::size ? 
+			Prevision[type] : 
+			Sum<int>(Prevision, Prevision + UVType::size, 0));
+}
+
+SemestreStatus SemestreSuivi::get_Status() const
+{
+	return Status;
+}
+
+Semestre SemestreSuivi::get_Saison() const
+{
+	return SuiviEn;
+}
+
+void SemestreSuivi::change_Saison()
+{
+	SuiviEn = static_cast<Semestre>(!SuiviEn);
+}
+
+//Comparaison de référence, pas effective mais requise dans le programme
+bool SemestreSuivi::operator==(const SemestreSuivi& o) const
+{
+	return this == &o;
 }
 
 SemestreSuivi::SemestreSuivi(Semestre s, SemestreStatus ss) : SuiviEn(s), Status(ss)

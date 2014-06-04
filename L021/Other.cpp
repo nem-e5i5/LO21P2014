@@ -46,3 +46,20 @@ QString UVStatusName(UVStatus t)
 	}
 	return "ErreurStatus";
 }
+
+QString SemestreStatusName(SemestreStatus t)
+{
+	switch (t)
+	{
+	case Fini:
+		return "Fini";
+	case SEC:
+		return "En cours";
+	case PL:
+		return QString::fromWCharArray(L"Planifié");
+	case PR:
+		return QString::fromWCharArray(L"Proposé");
+	default:
+		return "ErreurStatus";
+	}
+}

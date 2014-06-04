@@ -12,7 +12,7 @@ using namespace std;
 class Cursus;
 class UVEncours;
 
-typedef LinearizeIterator <UVEncours, SelectIterator<SemestreSuivi, UVEncoursOnVectorIterator, vector<SemestreSuivi>::iterator>> SemestreLinearizer;
+typedef LinearizeIterator <UVEncours, SelectIterator<SemestreSuivi, UVEncoursOnVectorIterator, vector<SemestreSuivi>::iterator>, UVEncoursOnVectorIterator> SemestreLinearizer;
 class Dossier
 {
 	friend QDataStream& operator<<(QDataStream&, const Dossier&);
@@ -31,6 +31,8 @@ public:
 	QString Getmeta(QString);
 
 	SemestreLinearizer UVIterator();
+	WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, UV>::iterator>> UVPrenableIterator(QString SId);
+	IdentityIterator<SemestreSuivi, vector<SemestreSuivi>::iterator> SemestreIterator();
 
 	SelectIterator<QString, const Cursus&, vector<QString>::iterator> CursusIterator();
 
@@ -40,12 +42,17 @@ public:
 
 	bool validerDossier();
 
-	void NouveauSemestre();
+	void NouveauSemestre(Semestre saison = Semestre::Automne);
+
+	SemestreSuivi& SemestreRef(QString SId);
+	void SupprimerSemestre(QString SId);
 
 	void InscriptionUV(const UV& x);
 	void InscriptionUVByName(QString x);
+	
 	void InscriptionCursus(const Cursus& x);
 	void InscriptionCursusByName(QString x);
+	void DesinscriptionCursusByName(QString x);
 
 	Dossier();
 	~Dossier();

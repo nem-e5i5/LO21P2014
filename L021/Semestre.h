@@ -18,10 +18,17 @@ class SemestreSuivi
 public:
 	UVEncoursOnVectorIterator UVIterator();
 	void Inscription(UVEncours e);
+	void Desinscription(QString Name);
 
 	//Mixe pour tout
 	int get_nb_credit_effective(UVType type) const;
 	int get_nb_credit_previsional(UVType type) const;
+	SemestreStatus get_Status() const;
+	Semestre get_Saison() const;
+
+	void change_Saison();
+
+	bool operator==(const SemestreSuivi&) const;
 
 	SemestreSuivi(Semestre, SemestreStatus);
 	SemestreSuivi();

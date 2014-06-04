@@ -22,3 +22,4 @@ QString UVStatusName(UVStatus t);
 enum Semestre : bool { Printemps, Automne };
 //Fini, En cours, Planifié, Proposé
 enum SemestreStatus { Fini, SEC, PL, PR };
+QString SemestreStatusName(SemestreStatus t);
