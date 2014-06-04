@@ -1,5 +1,14 @@
 #include "l021gui.h"
 
+void L021GUI::EditEquiv_Dossier()
+{
+	auto& dossier = UTProfiler::GetInstance()->getDossier();
+	int equiv[UVType::size];
+	for (int i = 0; i < UVType::size; ++i) equiv[i] = dossier.getNbEquivalences(static_cast<UVType>(i));
+	EquivDialog::ShowDialog(equiv);
+	for (int i = 0; i < UVType::size; ++i) dossier.setNbEquivalences(static_cast<UVType>(i), equiv[i]);
+}
+
 void L021GUI::AddCursus_Dossier()
 {
 	auto xiter = UTProfiler::GetInstance()->CursusIterator();

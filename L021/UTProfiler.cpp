@@ -31,7 +31,7 @@ void UTProfiler::RemoveUV(QString name)
 		for (auto iter2 = (*iter1).UVIterator(); !iter2.ended(); ++iter2)
 		if ((*iter2).get_uv().get_code() == name)
 		{
-			for (int i = 0; i < UVType::size; ++i)
+			if ((*iter2).get_hasCompleted()) for (int i = 0; i < UVType::size; ++i)
 				MonDossier.setNbEquivalences(static_cast<UVType>(i),
 				MonDossier.getNbEquivalences(static_cast<UVType>(i))
 				+ (*iter2).get_uv().get_nb_credit(static_cast<UVType>(i)));
@@ -39,6 +39,20 @@ void UTProfiler::RemoveUV(QString name)
 		}
 			
 	UVList.erase(name);
+}
+
+void UTProfiler::RemoveCursus(QString name)
+{
+	auto iter = MonDossier.CursusIterator();
+	for (; !iter.ended(); ++iter)
+	{
+		if ((*iter).getName() == name)
+		{
+			MonDossier.DesinscriptionCursusByName(name);
+			break;
+		}
+	}
+	CursusList.erase(name);
 }
 
 void UTProfiler::AppToBinFile(QString fname)
