@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>467</width>
-    <height>300</height>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@
         <x>0</x>
         <y>0</y>
         <width>447</width>
-        <height>208</height>
+        <height>279</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_2">
@@ -69,5 +69,38 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Validator_dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>336</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>-53</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Validator_dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>407</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>487</x>
+     <y>364</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
