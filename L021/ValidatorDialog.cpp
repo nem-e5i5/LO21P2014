@@ -32,7 +32,7 @@ void ValidatorDialog::AjouterLigne() {
 	QComboBox* combo= new(QComboBox);
 	combo->addItems(combo_options);
 	widget_list.push_back({combo, nullptr});
-	formLayout_2->setWidget(0, QFormLayout::ItemRole::LabelRole, combo);
+	formLayout_2->setWidget(widget_list.size() -1, QFormLayout::ItemRole::LabelRole, combo);
 	combo->show();
 }
 
