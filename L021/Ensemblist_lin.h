@@ -172,7 +172,8 @@ public:
 	ReduceIterator<T, src, F> getEnd() const { return ReduceIterator<T, src, F>(this->sourceEnd, this->sourceEnd, equalityComparer); }
 };
 
-//itére la première séquence puis la deuxième
+///<summary>design pattern "Iterator"</summary>
+///<remarks>Itère succéssivement deux séquences</remarks>
 template <class T, class src, class src2>
 class ConcatIterator : public EnsemblistIterator<T, src, ConcatIterator<T, src, src2>>
 {
