@@ -314,6 +314,46 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>825</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFichiers">
+    <property name="title">
+     <string>Fichiers</string>
+    </property>
+    <widget class="QMenu" name="menuImporter_des_UVs">
+     <property name="title">
+      <string>Importer des UVs</string>
+     </property>
+     <addaction name="actionTexte"/>
+     <addaction name="actionAutre_dossier"/>
+    </widget>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="menuImporter_des_UVs"/>
+   </widget>
+   <addaction name="menuFichiers"/>
+  </widget>
+  <action name="actionEnregistrer">
+   <property name="text">
+    <string>Enregistrer</string>
+   </property>
+  </action>
+  <action name="actionTexte">
+   <property name="text">
+    <string>Texte</string>
+   </property>
+  </action>
+  <action name="actionAutre_dossier">
+   <property name="text">
+    <string>Autre dossier</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
