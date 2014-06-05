@@ -19,6 +19,7 @@ L021GUI::L021GUI(QWidget *parent)
 	QObject::connect(ui.add_semestre_button, SIGNAL(clicked()), this, SLOT(AddSemestre_Dossier()));
 	QObject::connect(ui.remove_semestre_button, SIGNAL(clicked()), this, SLOT(RemoveSemestre_Dossier()));
 
+	QObject::connect(ui.add_cursus_button, SIGNAL(clicked()), this, SLOT(AddCursus()));
 	
 	UVListChanged();
 	CursusList_DossierChanged();

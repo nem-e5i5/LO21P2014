@@ -37,6 +37,8 @@ private slots:
 
 	void AddUV_Semestre();
 	void RemoveUV_Semestre();
+
+	void AddCursus();
 private:
 	Ui::MainWindow ui;
 	void UVListChanged();

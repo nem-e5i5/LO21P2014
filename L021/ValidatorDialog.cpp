@@ -4,19 +4,19 @@ ValidatorDialog::ValidatorDialog(QWidget* parent)
 {
 	widget_list={};
 	setupUi(this);
-	QObject::connect(add_button, SIGNAL(clicked()), this, SLOT(AjouterLigne()));
 }
 ValidatorDialog::~ValidatorDialog()
 {
 
 }
-/*static Cursus& ShowDialog(Cursus& cr, QWidget* parent = nullptr)
+Cursus& ValidatorDialog::ShowDialog(Cursus& cr, QWidget* parent)
 {
-
+	return cr;
 }
-static Cursus ShowDialog(QWidget* parent = nullptr)
+Cursus ValidatorDialog::ShowDialog(QWidget* parent)
 {
 	ValidatorDialog x(parent);
+	QObject::connect(x.add_button, SIGNAL(clicked()), &x, SLOT(AjouterLigne()));
 	int rflag = x.exec();
 	if (rflag == 0)
 		return Cursus::null;
@@ -24,8 +24,7 @@ static Cursus ShowDialog(QWidget* parent = nullptr)
 	{
 
 	}
-<<<<<<< HEAD
-}*/
+}
 
 void ValidatorDialog::AjouterLigne() {
 	QStringList combo_options = {"int", "string", "UV", "bool", "UVType", "UVStatus", "Cursus"};
@@ -40,15 +39,3 @@ void ValidatorDialog::AjouterLigne() {
 void ValidatorDialog::RetirerLigne() {
 
 }
-=======
-}
-
-void ValidatorDialog::AjouterLigne()
-{
-
-}
-void ValidatorDialog::RetirerLigne()
-{
-
-}
->>>>>>> 5af6803e667d32e9a2d2ce7e627face99a3ea3a4

@@ -150,6 +150,7 @@
     <ClCompile Include="EquivDialog.cpp" />
     <ClCompile Include="GuiFunctions.cpp" />
     <ClCompile Include="l021gui_Binding.cpp" />
+    <ClCompile Include="l021gui_Cursus.cpp" />
     <ClCompile Include="l021gui_Dossier.cpp" />
     <ClCompile Include="Other.cpp" />
     <ClCompile Include="Semestre.cpp" />

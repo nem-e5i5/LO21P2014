@@ -98,6 +98,9 @@
     <ClCompile Include="ValidatorDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="l021gui_Cursus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
