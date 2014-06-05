@@ -24,7 +24,6 @@ static Cursus ShowDialog(QWidget* parent = nullptr)
 	{
 
 	}
-<<<<<<< HEAD
 }*/
 
 void ValidatorDialog::AjouterLigne() {
@@ -40,15 +39,3 @@ void ValidatorDialog::AjouterLigne() {
 void ValidatorDialog::RetirerLigne() {
 
 }
-=======
-}
-
-void ValidatorDialog::AjouterLigne()
-{
-
-}
-void ValidatorDialog::RetirerLigne()
-{
-
-}
->>>>>>> 5af6803e667d32e9a2d2ce7e627face99a3ea3a4
