@@ -1,0 +1,8 @@
+<map id="UVDialog::ShowDialog" name="UVDialog::ShowDialog">
+<area shape="rect" id="node2" href="$class_u_v.html#a605f39d5fbd0a87f8e1cd5d72dad3a3d" title="UV::get_code" alt="" coords="225,5,327,32"/>
+<area shape="rect" id="node3" href="$class_u_v.html#a901ca324c0b237e916cd2c0dfd3de409" title="UV::get_titre" alt="" coords="228,56,324,83"/>
+<area shape="rect" id="node4" href="$class_u_v.html#a26e68319a64e533b088f10f26df307d8" title="UV::get_nb_credit" alt="" coords="213,107,339,133"/>
+<area shape="rect" id="node5" href="$class_u_v.html#a153785a8d51b0b47f8755b0f088221bc" title="UV::get_type" alt="" coords="227,157,325,184"/>
+<area shape="rect" id="node6" href="$class_u_v.html#a54100ccc75d8ed143b1a84c47787a9a5" title="UV::get_printemps" alt="" coords="211,208,341,235"/>
+<area shape="rect" id="node7" href="$class_u_v.html#af699a899a8eb5564906fec3addc76c9d" title="UV::get_automne" alt="" coords="214,259,338,285"/>
+</map>

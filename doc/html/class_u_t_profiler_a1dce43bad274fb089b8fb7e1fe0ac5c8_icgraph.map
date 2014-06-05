@@ -1,0 +1,11 @@
+<map id="UTProfiler::GetInstance" name="UTProfiler::GetInstance">
+<area shape="rect" id="node2" href="$class_dossier.html#a3c9b646dcdced95e194406391f3daedd" title="Dossier::CursusIterator" alt="" coords="237,5,395,32"/>
+<area shape="rect" id="node4" href="$class_dossier.html#a08557d7ea011c001c61a2617f6b2e21d" title="Dossier::InscriptionUVByName" alt="" coords="213,56,419,83"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="531,107,581,133"/>
+<area shape="rect" id="node7" href="$class_dossier.html#ac5d0ecdb63138619b78ec8652f04f330" title="Dossier::InscriptionCursus\lByName" alt="" coords="227,158,405,199"/>
+<area shape="rect" id="node9" href="$class_u_v_encours.html#a1d70400d3ff6cefa7a435f9867660a98" title="UVEncours::get_uv" alt="" coords="248,224,384,251"/>
+<area shape="rect" id="node3" href="$class_dossier.html#a12be309f0ad11cc7936bd8f8f6cd2d8d" title="Dossier::validerDossier" alt="" coords="477,5,635,32"/>
+<area shape="rect" id="node5" href="$class_dossier.html#aaf4173d4e15ef5d9a8efda341284d036" title="Dossier::InscriptionUV" alt="" coords="479,56,633,83"/>
+<area shape="rect" id="node8" href="$class_dossier.html#a35216c69e6b136dace6b69cfc1cc41ec" title="Dossier::InscriptionCursus" alt="" coords="467,165,645,192"/>
+<area shape="rect" id="node10" href="$_u_v_8hpp.html#a12b42732fddeeaf191639f7b8f510327" title="operator\&lt;\&lt;" alt="" coords="513,224,599,251"/>
+</map>

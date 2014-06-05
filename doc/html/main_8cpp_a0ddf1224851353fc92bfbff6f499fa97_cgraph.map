@@ -1,0 +1,15 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$class_u_t_profiler.html#a1dce43bad274fb089b8fb7e1fe0ac5c8" title="UTProfiler::GetInstance" alt="" coords="364,96,524,122"/>
+<area shape="rect" id="node3" href="$class_u_t_profiler.html#aa72a1ddf8f20daa20a41bc4b15594bca" title="UTProfiler::UVrefByName" alt="" coords="119,45,294,72"/>
+<area shape="rect" id="node4" href="$class_dossier.html#a08557d7ea011c001c61a2617f6b2e21d" title="Dossier::InscriptionUVByName" alt="" coords="104,96,309,122"/>
+<area shape="rect" id="node5" href="$class_dossier.html#afd242c69f4e2376b3b0cdf653f9ba4f1" title="Dossier::UVIterator" alt="" coords="139,146,274,173"/>
+<area shape="rect" id="node6" href="$class_cursus.html#a09c698c522f1083f11be189630bc4cc4" title="Cursus::addValidator" alt="" coords="135,197,279,224"/>
+<area shape="rect" id="node7" href="$_cursus_8h.html#a73a83944d18257cee8d1abceff9714ae" title="CreditValidator" alt="" coords="153,248,261,274"/>
+<area shape="rect" id="node8" href="$class_u_t_profiler.html#a2169d357015cb93295543519fce8362e" title="UTProfiler::CursusrefByName" alt="" coords="108,298,305,325"/>
+<area shape="rect" id="node9" href="$class_dossier.html#ac5d0ecdb63138619b78ec8652f04f330" title="Dossier::InscriptionCursus\lByName" alt="" coords="118,350,295,391"/>
+<area shape="rect" id="node10" href="$class_u_t_profiler.html#af6ea53a4a9c7525542b599a498a63584" title="UTProfiler::AppToBinFile" alt="" coords="123,416,290,442"/>
+<area shape="rect" id="node13" href="$class_u_t_profiler.html#af9801ea6d189abada974c5120bf656b9" title="UTProfiler::ResetInstance" alt="" coords="119,466,294,493"/>
+<area shape="rect" id="node14" href="$class_u_t_profiler.html#ac35ca8f83ef9cf9c696698677d8cb23e" title="UTProfiler::BinFileToApp" alt="" coords="123,517,290,544"/>
+<area shape="rect" id="node11" href="$class_u_t_profiler.html#aaf6d73f74f351d6f4994b16ee6831677" title="UTProfiler::UVIterator" alt="" coords="369,390,519,417"/>
+<area shape="rect" id="node12" href="$class_u_t_profiler.html#a7fea35d9eac66ab518260800c478db55" title="UTProfiler::CursusIterator" alt="" coords="358,441,530,468"/>
+</map>

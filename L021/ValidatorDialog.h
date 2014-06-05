@@ -1,5 +1,6 @@
 #pragma once
 #include <qdialog.h>
+#include <qscrollarea.h>
 #include "ui_validator_dialog.h"
 #include "Cursus.h"
 #include <vector>

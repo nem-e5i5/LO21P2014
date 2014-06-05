@@ -95,6 +95,9 @@
     <ClCompile Include="EquivDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ValidatorDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -199,6 +202,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="EquivDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ValidatorDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

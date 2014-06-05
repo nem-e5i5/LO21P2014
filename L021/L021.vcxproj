@@ -160,6 +160,7 @@
     <ClCompile Include="l021gui_UV.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UVList.cpp" />
+    <ClCompile Include="ValidatorDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -279,6 +280,7 @@
     <ClInclude Include="GeneratedFiles\ui_AddUV.h" />
     <ClInclude Include="UVList.h" />
     <ClInclude Include="Validator.h" />
+    <ClInclude Include="ValidatorDialog.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="UV_popup.ui">
