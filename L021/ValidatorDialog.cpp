@@ -45,7 +45,7 @@ void ValidatorDialog::RetirerLigne() {
 
 void ValidatorDialog::AjouterLigne()
 {
-	
+
 }
 void ValidatorDialog::RetirerLigne()
 {

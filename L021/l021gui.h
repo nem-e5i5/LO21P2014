@@ -7,6 +7,7 @@
 #include "ui_main_window.h"
 #include "UVDialog.h"
 #include "EquivDialog.h"
+#include "ValidatorDialog.h"
 #include "UVList.h"
 #include "CursusList.h"
 #include "UV.hpp"
