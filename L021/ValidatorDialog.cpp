@@ -4,17 +4,16 @@ ValidatorDialog::ValidatorDialog(QWidget* parent)
 {
 	widget_list={};
 	setupUi(this);
-	QObject::connect(add_button, SIGNAL(clicked()), this, SLOT(AjouterLigne()));
 }
 ValidatorDialog::~ValidatorDialog()
 {
 
 }
-/*static Cursus& ShowDialog(Cursus& cr, QWidget* parent = nullptr)
+/*Cursus& ValidatorDialog::ShowDialog(Cursus& cr, QWidget* parent)
 {
-
+	return cr;
 }
-static Cursus ShowDialog(QWidget* parent = nullptr)
+Cursus ValidatorDialog::ShowDialog(QWidget* parent)
 {
 	ValidatorDialog x(parent);
 	int rflag = x.exec();
@@ -27,13 +26,12 @@ static Cursus ShowDialog(QWidget* parent = nullptr)
 }*/
 
 void ValidatorDialog::AjouterLigne() {
-	QStringList combo_options = {"int", "string", "UV", "bool", "UVType", "UVStatus", "Cursus"};
+	static const QStringList combo_options = {"int", "string", "UV", "bool", "UVType", "UVStatus", "Cursus"};
+
 	QComboBox* combo= new(QComboBox);
 	combo->addItems(combo_options);
 	widget_list.push_back({combo, nullptr});
-
-	formLayout_2->setWidget(widget_list.size()-1, QFormLayout::ItemRole::LabelRole, combo);
-
+	formLayout_2->setWidget(widget_list.size() -1, QFormLayout::ItemRole::LabelRole, combo);
 	combo->show();
 	QObject::connect(combo, SIGNAL(currentTextChanged(QString)), this, SLOT(ComboChanged(QString)));
 }
