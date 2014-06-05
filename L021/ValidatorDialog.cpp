@@ -23,3 +23,12 @@ static Cursus ShowDialog(QWidget* parent = nullptr)
 
 	}
 }
+
+void ValidatorDialog::AjouterLigne()
+{
+	
+}
+void ValidatorDialog::RetirerLigne()
+{
+
+}

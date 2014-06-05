@@ -35,17 +35,17 @@
     <widget class="QComboBox" name="choose_validator_combobox"/>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QScrollArea" name="scrollArea">
+    <widget class="QScrollArea" name="param_area">
      <property name="widgetResizable">
       <bool>true</bool>
      </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
+     <widget class="QWidget" name="param_area_layout">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
         <width>380</width>
-        <height>208</height>
+        <height>225</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_2">
