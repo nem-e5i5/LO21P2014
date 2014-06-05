@@ -14,10 +14,6 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-<<<<<<< HEAD
-   <item row="1" column="0" colspan="3">
-    <widget class="QScrollArea" name="scrollArea">
-=======
    <item row="4" column="1">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
@@ -40,7 +36,6 @@
    </item>
    <item row="1" column="0" colspan="2">
     <widget class="QScrollArea" name="param_area">
->>>>>>> 5af6803e667d32e9a2d2ce7e627face99a3ea3a4
      <property name="widgetResizable">
       <bool>true</bool>
      </property>
