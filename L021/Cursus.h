@@ -93,7 +93,7 @@ class Cursus
 	QString Name;
 	vector<CursusValidator*> Validators;
 public:
-	
+	static const Cursus null;
 	//Utiliser new, le pointeur sera géré par l'objet lui même, pas de delete après
 	int addValidator(CursusValidator* x);
 	void removeValidator(int Id);

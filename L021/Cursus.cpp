@@ -1,7 +1,7 @@
 #include "DossierEtCursus.h"
 
 map<QString, const ValidatorFactory*> CursusValidator::Validators;
-
+const Cursus Cursus::null = Cursus("null");
 
 CursusValidator* CursusValidator::true_UnSerialize(QDataStream& str)
 {
