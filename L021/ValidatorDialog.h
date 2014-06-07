@@ -19,10 +19,10 @@ public:
 	ValidatorDialog(QWidget* parent);
 	~ValidatorDialog();
 	// Affiche une boîte de dialogue avec les informations de l'UV passé en paramètre, cette UV est édité par l'utilisateur. Retourne la référence passé en paramètre
-	/*static Cursus& ShowDialog(Cursus& cr, QWidget* parent = nullptr);
-	static Cursus ShowDialog(QWidget* parent = nullptr);*/
+	static Cursus& ShowDialog(Cursus& cr, QWidget* parent = nullptr);
+	static Cursus ShowDialog(QWidget* parent = nullptr);
 public slots:
 	void AjouterLigne();
 	void RetirerLigne();
-	void ComboChanged(QString s);
+	void ComboChanged(QString s, QObject* sender = nullptr);
 };
