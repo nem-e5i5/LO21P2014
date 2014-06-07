@@ -9,20 +9,56 @@ ValidatorDialog::~ValidatorDialog()
 {
 
 }
-Cursus& ValidatorDialog::ShowDialog(Cursus& cr, QWidget* parent)
+
+
+QBuffer* ValidatorDialog::ParseFormData()
 {
+	QBuffer* ret = new QBuffer();
+	ret->open(QIODevice::ReadWrite);
+	QDataStream dst(ret);
+	QString vname = this->choose_validator_combobox->currentText();
+	dst << vname;
+	for (auto i : widget_list)
+	{
+		auto type = dynamic_cast<QComboBox*>(i[0])->currentText();
+		if (type == "int")
+		{
+			auto* item = dynamic_cast<QSpinBox*>(i[1]);
+			dst << item->value();
+		}
+	}
+	ret->seek(0);
+	return ret;
+}
+
+CursusValidator* ValidatorDialog::ShowDialog(CursusValidator* cr, QWidget* parent)
+{
+	//TODO, non vital pour avoir une appli fonctionnelle
 	return cr;
 }
-Cursus ValidatorDialog::ShowDialog(QWidget* parent)
+CursusValidator* ValidatorDialog::ShowDialog(QWidget* parent)
 {
 	ValidatorDialog x(parent);
+	auto v = Select < pair<QString, const ValidatorFactory*>, QString>
+		(CursusValidator::Validators.begin(), CursusValidator::Validators.end(), 
+		[](const pair<QString, const ValidatorFactory*>& x) { return x.first; });
+
+	x.choose_validator_combobox->addItems(
+		QStringList::fromVector( //on en reparle
+			QVector<QString>::fromStdVector( //de toute ces
+				toVector<QString>(v, v.getEnd())))); //conversions???
 	QObject::connect(x.add_button, SIGNAL(clicked()), &x, SLOT(AjouterLigne()));
 	int rflag = x.exec();
 	if (rflag == 0)
-		return Cursus::null;
+		return nullptr;
 	else
 	{
-
+		auto* buff = x.ParseFormData();
+		QDataStream stream(buff);
+		auto* ret = CursusValidator::true_UnSerialize(stream); //Une erreur ici ? RTFM!
+		buff->close();
+		delete buff;
+		return ret;
 	}
 }
 

@@ -21,9 +21,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QComboBox" name="choose_validator_combobox"/>
-   </item>
    <item row="4" column="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
@@ -55,7 +52,7 @@
         <x>0</x>
         <y>0</y>
         <width>447</width>
-        <height>279</height>
+        <height>296</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_2">

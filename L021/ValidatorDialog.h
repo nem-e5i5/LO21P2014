@@ -6,6 +6,7 @@
 #include "Cursus.h"
 #include <vector>
 #include <QSpinBox>
+#include <qbuffer.h>
 
 class ValidatorDialog :
 	public QDialog,
@@ -15,12 +16,15 @@ class ValidatorDialog :
 	Q_OBJECT
 private:
 	vector<vector<QWidget*>> widget_list;
+	/// <summary>Cette fonction retourne un pointeur qu'il faudra delete vous même</summary>
+	QBuffer* ParseFormData();
 public:
 	ValidatorDialog(QWidget* parent);
 	~ValidatorDialog();
-	// Affiche une boîte de dialogue avec les informations de l'UV passé en paramètre, cette UV est édité par l'utilisateur. Retourne la référence passé en paramètre
-	static Cursus& ShowDialog(Cursus& cr, QWidget* parent = nullptr);
-	static Cursus ShowDialog(QWidget* parent = nullptr);
+	/// <summary>Cette fonction retourne un pointeur qu'il faudra delete vous même</summary>
+	static CursusValidator* ShowDialog(CursusValidator* cr, QWidget* parent = nullptr);
+	/// <summary>Cette fonction retourne un pointeur qu'il faudra delete vous même</summary>
+	static CursusValidator* ShowDialog(QWidget* parent = nullptr);
 public slots:
 	void AjouterLigne();
 	void RetirerLigne();
