@@ -63,3 +63,11 @@ QString SemestreStatusName(SemestreStatus t)
 		return "ErreurStatus";
 	}
 }
+
+SemestreStatus SemestreStatusFromName(QString x)
+{
+	if (x == "Fini") return SemestreStatus::Fini;
+	if (x == "En cours") return SemestreStatus::SEC;
+	if (x == QString::fromWCharArray(L"Planifié")) return SemestreStatus::PL;
+	if (x == QString::fromWCharArray(L"Proposé")) return SemestreStatus::PR;
+}

@@ -20,7 +20,11 @@ int SemestreSuivi::get_nb_credit_effective(UVType type) const
 {
 	auto x = Where<const UVEncours>(UVs.begin(), UVs.end(), [](const UVEncours& u) { return u.get_hasCompleted(); });
 	auto y = Select<const UVEncours, int>(x, x.getEnd(), [=](const UVEncours& u) { return u.get_uv().get_nb_credit(type); });
-	return Sum<int>(y, y.getEnd(), 0);
+	return Sum<int>(y, y.getEnd(),
+		Status == SemestreStatus::Fini ?
+		(type < UVType::size ?
+		Prevision[type] :
+		Sum<int>(Prevision, Prevision + UVType::size, 0)) : 0);
 }
 
 int SemestreSuivi::get_nb_credit_previsional(UVType type) const

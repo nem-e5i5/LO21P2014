@@ -23,7 +23,15 @@ public:
 	//Mixe pour tout
 	int get_nb_credit_effective(UVType type) const;
 	int get_nb_credit_previsional(UVType type) const;
+	int get_Prevision(UVType t) const { return Prevision[t]; }
+	void set_Prevision(UVType t, int i) { Prevision[t] = i; }
 	SemestreStatus get_Status() const;
+	bool get_ALEtranger() const { return ALEtranger; }
+	void set_ALEtranger(bool value) { ALEtranger = value; }
+	void set_Status(SemestreStatus s) { Status = s; }
+	UVEncours& UVRef(QString Name) {
+		return *Where<UVEncours&>(UVs.begin(), UVs.end(), [=](const UVEncours& x) { return x.get_uv().get_code() == Name; });
+	}
 	Semestre get_Saison() const;
 
 	void change_Saison();

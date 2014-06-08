@@ -15,7 +15,28 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QComboBox" name="semestre_status_combo"/>
+    <widget class="QComboBox" name="semestre_status_combo">
+     <item>
+      <property name="text">
+       <string>Fini</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>En cours</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Planifié</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Proposé</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">

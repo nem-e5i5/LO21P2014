@@ -36,6 +36,7 @@ public:
 	static map<QString, const ValidatorFactory*> Validators;
 
 	virtual QString getName() = 0;
+	virtual QString Prety_print() { return getName(); }
 	CursusValidator() {}
 	virtual bool Validate(Dossier d) const = 0;
 
@@ -61,6 +62,8 @@ define_validator(Credit)
 
 	bool Validate(Dossier d) const;
 
+	QString Prety_print() { return QString("Avoir ") + QString::number(nb) + QString::fromWCharArray(L" crédits ") + UVTypeName(t); }
+
 	vector<QString> ArgList() const
 	{
 		vector<QString> out(2);
@@ -82,7 +85,6 @@ define_validator(Credit)
 		t = static_cast<UVType>(tmp);
 		str >> nb;
 	}
-
 };
 
 class Cursus
@@ -95,12 +97,15 @@ class Cursus
 public:
 	static const Cursus null;
 	//Utiliser new, le pointeur sera géré par l'objet lui même, pas de delete après
-	int addValidator(CursusValidator* x);
-	void removeValidator(int Id);
+	void addValidator(CursusValidator* x);
+	void removeValidator(CursusValidator* x);
+	void removeValidatorAt(int at);
 
-	SelectIterator<CursusValidator*, QString, vector<CursusValidator*>::iterator> validatorList();
+	SelectIterator<CursusValidator*, QString, vector<CursusValidator*>::iterator> validatorNameList();
+	IdentityIterator<CursusValidator*, vector<CursusValidator*>::iterator> validatorList();
 
 	QString getName() const { return Name; }
+	void Rename(QString x) { Name = x; }
 
 	bool Validate(Dossier d) const;
 	Cursus() : Cursus(""){}
@@ -108,6 +113,8 @@ public:
 	const Cursus& operator=(const Cursus&);
 	Cursus(QString name);
 	~Cursus();
+
+	bool operator==(const Cursus& o) const { return Name == o.Name; }
 };
 
 QDataStream& operator<<(QDataStream&, const Cursus&);

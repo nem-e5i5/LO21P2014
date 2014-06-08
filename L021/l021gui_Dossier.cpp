@@ -7,6 +7,7 @@ void L021GUI::EditEquiv_Dossier()
 	for (int i = 0; i < UVType::size; ++i) equiv[i] = dossier.getNbEquivalences(static_cast<UVType>(i));
 	EquivDialog::ShowDialog(equiv);
 	for (int i = 0; i < UVType::size; ++i) dossier.setNbEquivalences(static_cast<UVType>(i), equiv[i]);
+	CursusList_DossierChanged();
 }
 
 void L021GUI::AddCursus_Dossier()
@@ -108,6 +109,31 @@ void L021GUI::RemoveUV_Semestre()
 		.SemestreRef(p->text(0))
 		.Desinscription(ui.dossier_uv_list->selectedItems().at(0)->text(0));
 	UVList_DossierChanged();
+}
+
+void L021GUI::ChangeStatus()
+{
+	if (ui.dossier_uv_list->selectedItems().size() <= 0)
+	{
+		Notify(L"Rien de sélectionné");
+		return;
+	}
+	auto p = ui.dossier_uv_list->selectedItems().at(0);
+	if (p->parent() == nullptr)
+	{
+		auto& s = UTProfiler::GetInstance()->getDossier()
+			.SemestreRef(p->text(0));
+		SemestreStatusDialog::ShowDialog(s);
+		UVList_DossierChanged();
+	}
+	else
+	{
+		auto& s = UTProfiler::GetInstance()->getDossier()
+			.SemestreRef(p->parent()->text(0)).UVRef(p->text(0));
+		s.set_status((static_cast<UVStatus>((s.get_status() + 1) % UVStatus::Usize)));
+		p->setText(2, UVStatusName(s.get_status()));
+	}
+	CursusList_DossierChanged();
 }
 
 void L021GUI::CursusList_DossierChanged()

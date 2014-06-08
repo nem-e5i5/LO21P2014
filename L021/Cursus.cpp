@@ -16,20 +16,24 @@ CursusValidator* CursusValidator::true_UnSerialize(QDataStream& str)
 
 bool CreditValidator::Validate(Dossier d) const
 {
-	auto iter = d.UVIterator();
-	auto cd = Where<UVEncours>(iter, iter.getEnd(), [=](const UVEncours& x) { return x.get_hasCompleted(); });
-	auto sl = Select<UVEncours, unsigned int>(cd, cd.getEnd(), [=](const UVEncours& x) { return x.get_uv().get_nb_credit(t); });
+	auto iter = d.SemestreIterator();
+	auto sl = Select<SemestreSuivi, unsigned int>(iter, iter.getEnd(), [=](const SemestreSuivi& x) { return x.get_nb_credit_effective(t); });
 	int ag = Sum<unsigned int>(sl, sl.getEnd(), d.getNbEquivalences(t));
 	return ag >= nb;
 }
 
-int Cursus::addValidator(CursusValidator* x) { Validators.push_back(x); return Validators.size() - 1; }
+void Cursus::addValidator(CursusValidator* x) { Validators.push_back(x); }
 
-void Cursus::removeValidator(int Id) { Validators.erase(Validators.begin() + Id); }
-
-SelectIterator<CursusValidator*, QString, vector<CursusValidator*>::iterator> Cursus::validatorList()
+void Cursus::removeValidator(CursusValidator* x) { auto y = find(Validators.begin(), Validators.end(), x);  delete *y; Validators.erase(y); }
+void Cursus::removeValidatorAt(int at) { auto y = Validators.begin() + at;  delete *y; Validators.erase(y); }
+SelectIterator<CursusValidator*, QString, vector<CursusValidator*>::iterator> Cursus::validatorNameList()
 {
 	return Select<CursusValidator*, QString>(Validators.begin(), Validators.end(), [](CursusValidator* x) { return x->getName(); });
+}
+
+IdentityIterator<CursusValidator*, vector<CursusValidator*>::iterator> Cursus::validatorList()
+{
+	return IdentityIterator<CursusValidator*, vector<CursusValidator*>::iterator>(Validators.begin(), Validators.end());
 }
 
 bool Cursus::Validate(Dossier d) const
@@ -49,7 +53,7 @@ Cursus::Cursus(const Cursus& x): Name(x.Name),
 const Cursus& Cursus::operator=(const Cursus& x)
 {
 	if (&x == this) return x;
-
+	Cursus::~Cursus();
 	Name = x.Name;
 	Validators = vector<CursusValidator*>(x.Validators.size());
 	for (int i = 0; i < x.Validators.size(); ++i)

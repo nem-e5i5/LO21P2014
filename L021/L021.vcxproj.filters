@@ -42,6 +42,15 @@
     <Filter Include="Utility\Source">
       <UniqueIdentifier>{9525ca90-c004-4e3a-9cc5-2a13201ac2d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DialogBox">
+      <UniqueIdentifier>{5e570302-0793-48df-93cc-56e08478bd78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DialogBox\Source">
+      <UniqueIdentifier>{ac9841ee-5b1d-4a09-94c2-8f86986ab6c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DialogBox\Header">
+      <UniqueIdentifier>{6ffffe9f-356d-462a-a30e-43d72f2e9c7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,14 +74,8 @@
     <ClCompile Include="UV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UVDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GuiFunctions.cpp">
       <Filter>Utility\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="UVList.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Other.cpp">
       <Filter>Utility\Source</Filter>
@@ -89,15 +92,6 @@
     <ClCompile Include="l021gui_Binding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CursusList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EquivDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ValidatorDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="l021gui_Cursus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -106,6 +100,33 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_ValidatorDialog.cpp">
       <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CursusDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CursusDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CursusDialog.cpp">
+      <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CursusList.cpp">
+      <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EquivDialog.cpp">
+      <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="UVDialog.cpp">
+      <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="UVList.cpp">
+      <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ValidatorDialog.cpp">
+      <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SemestreStatusDialog.cpp">
+      <Filter>DialogBox\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -139,19 +160,22 @@
     <CustomBuild Include="validator_dialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ValidatorDialog.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="GeneratedFiles\ui_validator_dialog.h">
       <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CursusDialog.h">
+      <Filter>DialogBox\Header</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ValidatorDialog.h">
+      <Filter>DialogBox\Header</Filter>
+    </CustomBuild>
+    <CustomBuild Include="semestre_status_dialog.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_AddUV.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UVDialog.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UTProfiler.h">
       <Filter>Header Files</Filter>
@@ -195,17 +219,11 @@
     <ClInclude Include="GeneratedFiles\ui_main_window.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="UVList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Semestre.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_cursus_popup.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CursusList.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_cursus_dialog.h">
       <Filter>Generated Files</Filter>
@@ -213,8 +231,23 @@
     <ClInclude Include="GeneratedFiles\ui_equiv_dialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="UVList.h">
+      <Filter>DialogBox\Header</Filter>
+    </ClInclude>
     <ClInclude Include="EquivDialog.h">
-      <Filter>Header Files</Filter>
+      <Filter>DialogBox\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="UVDialog.h">
+      <Filter>DialogBox\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CursusList.h">
+      <Filter>DialogBox\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_semestre_status_dialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SemestreStatusDialog.h">
+      <Filter>DialogBox\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

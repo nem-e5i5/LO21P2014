@@ -13,6 +13,8 @@
 #include "UV.hpp"
 #include "AllUtility.h"
 #include "UTProfiler.h"
+#include "CursusDialog.h"
+#include "SemestreStatusDialog.h"
 
 class L021GUI : public QMainWindow
 {
@@ -38,10 +40,15 @@ private slots:
 	void AddUV_Semestre();
 	void RemoveUV_Semestre();
 
+	void ChangeStatus();
+
 	void AddCursus();
+	void EditCursus();
+	void RemoveCursus();
 private:
 	Ui::MainWindow ui;
 	void UVListChanged();
+	void CursusListChanged();
 	void CursusList_DossierChanged();
 	void UVList_DossierChanged();
 };
