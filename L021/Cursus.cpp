@@ -13,15 +13,6 @@ CursusValidator* CursusValidator::true_UnSerialize(QDataStream& str)
 	return ret;
 }
 
-
-bool CreditValidator::Validate(Dossier d) const
-{
-	auto iter = d.SemestreIterator();
-	auto sl = Select<SemestreSuivi, unsigned int>(iter, iter.getEnd(), [=](const SemestreSuivi& x) { return x.get_nb_credit_effective(t); });
-	int ag = Sum<unsigned int>(sl, sl.getEnd(), d.getNbEquivalences(t));
-	return ag >= nb;
-}
-
 void Cursus::addValidator(CursusValidator* x) { Validators.push_back(x); }
 
 void Cursus::removeValidator(CursusValidator* x) { auto y = find(Validators.begin(), Validators.end(), x);  delete *y; Validators.erase(y); }
@@ -41,6 +32,27 @@ bool Cursus::Validate(Dossier d) const
 	for (auto& v : Validators)
 	if (!v->Validate(d)) return false;
 	return true;
+}
+
+bool Cursus::MayValidate(Dossier d) const
+{
+	for (auto& v : Validators)
+	if (!v->MayValidate(d)) return false;
+	return true;
+}
+
+bool Cursus::Improve(Dossier d, UV u) const
+{
+	for (auto& v : Validators) 
+	if (v->Improve(d, u) && !v->MayValidate(d)) return true;
+	return false;
+}
+
+bool Cursus::MayValidateImprovable(Dossier d) const
+{
+	for (auto& v : Validators)
+	if (v->MayValidate(d) || !v->Improvable()) return true;
+	return false;
 }
 
 Cursus::Cursus(const Cursus& x): Name(x.Name), 

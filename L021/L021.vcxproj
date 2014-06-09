@@ -143,6 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Credit.cpp" />
+    <ClCompile Include="CreditIn.cpp" />
     <ClCompile Include="Cursus.cpp" />
     <ClCompile Include="CursusDialog.cpp" />
     <ClCompile Include="CursusList.cpp" />
@@ -166,9 +168,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GuiFunctions.cpp" />
+    <ClCompile Include="l021gui_Autocomplete.cpp" />
     <ClCompile Include="l021gui_Binding.cpp" />
     <ClCompile Include="l021gui_Cursus.cpp" />
     <ClCompile Include="l021gui_Dossier.cpp" />
+    <ClCompile Include="l021gui_FileManager.cpp" />
     <ClCompile Include="Other.cpp" />
     <ClCompile Include="Semestre.cpp" />
     <ClCompile Include="SemestreStatusDialog.cpp" />
@@ -180,6 +184,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UVList.cpp" />
     <ClCompile Include="ValidatorDialog.cpp" />
+    <ClCompile Include="XSemestreALetranger.cpp" />
+    <ClCompile Include="XUVIn.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -276,7 +282,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllUtility.h" />
+    <ClInclude Include="Credit.h" />
+    <ClInclude Include="CreditIn.h" />
     <ClInclude Include="Cursus.h" />
+    <ClInclude Include="XSemestreALetranger.h" />
+    <ClInclude Include="XUVIn.h" />
     <CustomBuild Include="CursusDialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing CursusDialog.h...</Message>

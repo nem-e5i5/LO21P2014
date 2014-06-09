@@ -29,7 +29,7 @@ int SemestreSuivi::get_nb_credit_effective(UVType type) const
 
 int SemestreSuivi::get_nb_credit_previsional(UVType type) const
 {
-	auto x = Where<const UVEncours>(UVs.begin(), UVs.end(), [](const UVEncours& u) { return u.get_status() == UVStatus::EC; });
+	auto x = Where<const UVEncours>(UVs.begin(), UVs.end(), [](const UVEncours& u) { return u.get_status() == UVStatus::EC || u.get_hasCompleted(); });
 	auto y = Select<const UVEncours, int>(x, x.getEnd(), [=](const UVEncours& u) { return u.get_uv().get_nb_credit(type); });
 	return Sum<int>(y, y.getEnd(), 
 		type < UVType::size ? 
@@ -58,7 +58,7 @@ bool SemestreSuivi::operator==(const SemestreSuivi& o) const
 	return this == &o;
 }
 
-SemestreSuivi::SemestreSuivi(Semestre s, SemestreStatus ss) : SuiviEn(s), Status(ss)
+SemestreSuivi::SemestreSuivi(Semestre s, SemestreStatus ss) : SuiviEn(s), Status(ss), ALEtranger(false)
 {
 	for (auto& x : Prevision) x = 0;
 }

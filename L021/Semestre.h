@@ -32,6 +32,7 @@ public:
 	UVEncours& UVRef(QString Name) {
 		return *Where<UVEncours&>(UVs.begin(), UVs.end(), [=](const UVEncours& x) { return x.get_uv().get_code() == Name; });
 	}
+	int UVCount() const { return UVs.size(); }
 	Semestre get_Saison() const;
 
 	void change_Saison();

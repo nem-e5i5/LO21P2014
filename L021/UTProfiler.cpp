@@ -106,3 +106,96 @@ void UTProfiler::BinFileToApp(QString fname)
 	dst >> MonDossier;
 	f.close();
 }
+
+void UTProfiler::ImportUVOnly(QString fname)
+{
+	QFile f(fname);
+	if (!f.open(QIODevice::ReadOnly))
+		return;
+	QDataStream dst(&f);
+
+	int tmp;
+	Cursus tmp2("");
+	UV tmp3;
+	Dossier tmp4;
+
+	dst >> tmp;
+	for (int i = 0; i < tmp; ++i)
+	{
+		dst >> tmp3;
+		UVList[tmp3.get_code()] = tmp3;
+	}
+}
+
+void UTProfiler::ImportUVOnlytxt(QString fname)
+{
+	QFile f(fname);
+	if (!f.open(QIODevice::ReadOnly))
+		return;
+	
+	QTextStream str(&f);
+	str.setCodec("UTF-8");
+	QString name, titre, tmp;
+	int Credit;
+	UVType t;
+	while (!str.atEnd())
+	{
+		try
+		{
+			name = str.readLine();
+			titre = str.readLine();
+			Credit = str.readLine().toInt();
+			t = UVTypeFromName(str.readLine());
+		}
+		catch (exception) { break; }
+		UVList[name] = UV(name, titre, t, Credit, true, true);
+	}
+}
+
+void UTProfiler::AutoComplete()
+{
+	auto CursusIter = getDossier().CursusIterator();
+	auto UVIter = UVIterator();
+
+	for (; !CursusIter.ended(); ++CursusIter)
+	//Pour chaque cursus
+	{
+		auto UVIter = MonDossier.UVPrenableIterator("");
+		for (; !(*CursusIter).MayValidate(MonDossier) && !UVIter.ended(); ++UVIter)
+		//Pour chaque UV tant que le cursus n'est pas validé
+		{
+			if ((*CursusIter).Improve(MonDossier, *UVIter))
+			//si l'uv améliore le dossier
+			{
+				if (MonDossier.SemestreRef().get_nb_credit_previsional(UVType::Mixe) + (*UVIter).get_nb_credit(UVType::Mixe) >= 35
+					|| MonDossier.SemestreRef().UVCount() >= 7)
+				//si le semestre est plein
+				{
+					//on en commence un nouveau
+					MonDossier.NouveauSemestre();
+					//de type proposé
+					MonDossier.SemestreRef().set_Status(SemestreStatus::PR);
+					//auquel on ajoute l'UV voulu
+					MonDossier.InscriptionUV(*UVIter);
+					//puis on remet l'UVPrenableIterator à 0 (car on a changer de saison et de nouvelles UV peuevnt devenir disponible)
+					UVIter = MonDossier.UVPrenableIterator("");
+				}
+				else
+				{
+					MonDossier.InscriptionUV(*UVIter);
+					UVIter = MonDossier.UVPrenableIterator("");
+				}
+			}
+		}
+		if (!(*CursusIter).MayValidate(MonDossier))
+		{
+			Notify(QString::fromWCharArray(L"Impossible de compléter le dossier. Le cursus ") + (*CursusIter).getName() + " bloque");
+			if ((*CursusIter).MayValidateImprovable(MonDossier))
+			{
+				Notify(QString::fromWCharArray(L"Il semblerait que le bloquage soit causé par des conditions de validations ne concernant pas les UV. Un semestre à l'étranger par exemple? L'application va maintenant continuer l'autocomplétion, il faudra néanmoins pour compléter le dossier une action supplémentaire"));
+				continue;
+			}
+			break;
+		}
+	}
+}

@@ -51,6 +51,15 @@
     <Filter Include="DialogBox\Header">
       <UniqueIdentifier>{6ffffe9f-356d-462a-a30e-43d72f2e9c7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Validators">
+      <UniqueIdentifier>{0196533d-22f5-41c0-9c77-68ead252a162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Validators\Source">
+      <UniqueIdentifier>{d119f007-0a05-4855-9798-10bae4c07f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Validators\Header">
+      <UniqueIdentifier>{3b9de4fe-93f4-48b6-a277-77c4ebe1f2ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -127,6 +136,24 @@
     </ClCompile>
     <ClCompile Include="SemestreStatusDialog.cpp">
       <Filter>DialogBox\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="l021gui_FileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="l021gui_Autocomplete.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Credit.cpp">
+      <Filter>Validators\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditIn.cpp">
+      <Filter>Validators\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="XUVIn.cpp">
+      <Filter>Validators\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="XSemestreALetranger.cpp">
+      <Filter>Validators\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +275,18 @@
     </ClInclude>
     <ClInclude Include="SemestreStatusDialog.h">
       <Filter>DialogBox\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Credit.h">
+      <Filter>Validators\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditIn.h">
+      <Filter>Validators\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="XUVIn.h">
+      <Filter>Validators\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="XSemestreALetranger.h">
+      <Filter>Validators\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,9 @@
 int main(int argc, char *argv[])
 {
 	register_validator(Credit);
+	register_validator(CreditIn);
+	register_validator(XUVIn);
+	register_validator(XSemestreALetranger);
 
 	UTProfiler* prf = UTProfiler::GetInstance();
 	

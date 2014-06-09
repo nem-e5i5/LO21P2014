@@ -25,6 +25,12 @@ L021GUI::L021GUI(QWidget *parent)
 	QObject::connect(ui.modifie_cursus_button, SIGNAL(clicked()), this, SLOT(EditCursus()));
 	QObject::connect(ui.remove_cursus_button, SIGNAL(clicked()), this, SLOT(RemoveCursus()));
 
+	QObject::connect(ui.actionEnregistrer, SIGNAL(triggered()), this, SLOT(SaveDossier()));
+	QObject::connect(ui.actionTexte, SIGNAL(triggered()), this, SLOT(ImportUV()));
+	QObject::connect(ui.actionAutre_dossier, SIGNAL(triggered()), this, SLOT(LoadUV()));
+	QObject::connect(ui.actionCharger, SIGNAL(triggered()), this, SLOT(LoadDossier()));
+
+	QObject::connect(ui.autocomplete_button, SIGNAL(clicked()), this, SLOT(AutoComplete()));
 
 	UVListChanged();
 	CursusList_DossierChanged();

@@ -24,7 +24,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tab_widget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -283,6 +283,9 @@
         </item>
         <item row="0" column="0" colspan="3">
          <widget class="QTableWidget" name="cursus_list">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="selectionMode">
            <enum>QAbstractItemView::SingleSelection</enum>
           </property>
@@ -320,7 +323,7 @@
      <x>0</x>
      <y>0</y>
      <width>825</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichiers">
@@ -335,6 +338,7 @@
      <addaction name="actionAutre_dossier"/>
     </widget>
     <addaction name="actionEnregistrer"/>
+    <addaction name="actionCharger"/>
     <addaction name="menuImporter_des_UVs"/>
    </widget>
    <addaction name="menuFichiers"/>
@@ -352,6 +356,11 @@
   <action name="actionAutre_dossier">
    <property name="text">
     <string>Autre dossier</string>
+   </property>
+  </action>
+  <action name="actionCharger">
+   <property name="text">
+    <string>Charger</string>
    </property>
   </action>
  </widget>

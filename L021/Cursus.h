@@ -11,8 +11,8 @@ using namespace std;
 
 #define define_validator(name) \
 	struct name##Validator : public CursusValidator{ \
-		CreditValidator() : CursusValidator(){}\
-		QString getName() { return #name; } \
+		name##Validator() : CursusValidator(){}\
+		QString getName() const { return #name; } \
 			struct name##ValidatorFactory : public ValidatorFactory{ \
 				name##Validator* proceed() const { return new name##Validator(); }\
 				CursusValidator* proceed(const CursusValidator& x) const { return new name##Validator(dynamic_cast<const name##Validator&>(x)); }\
@@ -26,7 +26,6 @@ class Dossier;
 class ValidatorFactory;
 class CursusValidator {
 protected:
-	virtual vector<QString> ArgList() const = 0;
 	virtual void Serialize(QDataStream&) const = 0;
 	virtual void UnSerialize(QDataStream&) = 0;
 	
@@ -35,10 +34,14 @@ public:
 	//on fait pas de ménage mémoire car cela est fait pour durer pendant toute l'execution
 	static map<QString, const ValidatorFactory*> Validators;
 
-	virtual QString getName() = 0;
+	virtual QString getName() const = 0;
 	virtual QString Prety_print() { return getName(); }
 	CursusValidator() {}
 	virtual bool Validate(Dossier d) const = 0;
+	virtual bool MayValidate(Dossier d) const = 0;
+	virtual bool Improve(Dossier d, UV u) const = 0;
+
+	virtual bool Improvable() const { return true; }
 
 	void true_Serialize(QDataStream& str) { str << getName(); Serialize(str); }
 	
@@ -51,40 +54,6 @@ class ValidatorFactory /* abstract factory*/ {
 public:
 	virtual CursusValidator* proceed() const = 0;
 	virtual CursusValidator* proceed(const CursusValidator& x) const = 0;
-};
-
- 
-define_validator(Credit)
-	UVType t;
-	int nb;
-
-	CreditValidator(UVType _t, int nbr) : CursusValidator(), t(_t), nb(nbr) {}
-
-	bool Validate(Dossier d) const;
-
-	QString Prety_print() { return QString("Avoir ") + QString::number(nb) + QString::fromWCharArray(L" crédits ") + UVTypeName(t); }
-
-	vector<QString> ArgList() const
-	{
-		vector<QString> out(2);
-		out[0] = "UVType";
-		out[1] = "int";
-		return out;
-	}
-
-	void Serialize(QDataStream& str) const
-	{
-		str << static_cast<int>(t)
-			<< nb;
-	}
-
-	void UnSerialize(QDataStream& str)
-	{
-		int tmp;
-		str >> tmp;
-		t = static_cast<UVType>(tmp);
-		str >> nb;
-	}
 };
 
 class Cursus
@@ -108,6 +77,10 @@ public:
 	void Rename(QString x) { Name = x; }
 
 	bool Validate(Dossier d) const;
+	bool MayValidate(Dossier d) const;
+	bool Improve(Dossier d, UV u) const;
+	bool MayValidateImprovable(Dossier d) const;
+
 	Cursus() : Cursus(""){}
 	Cursus(const Cursus&);
 	const Cursus& operator=(const Cursus&);

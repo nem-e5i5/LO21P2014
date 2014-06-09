@@ -30,7 +30,7 @@ WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, U
 			Where<UVEncours>(xiter, xiter.getEnd(),
 			[&x](const UVEncours& y) { return y.get_uv() == x; }).ended() &&
 			Where<UVEncours>(viter, viter.getEnd(),
-			[&x](const UVEncours& y) { return y.get_hasCompleted() && y.get_uv() == x; }).ended()
+			[&x](const UVEncours& y) { return (y.get_hasCompleted() || y.get_status() == UVStatus::EC) && y.get_uv() == x; }).ended()
 			&& ((x.get_automne() && s.get_Saison() == Semestre::Automne) || (x.get_printemps() && s.get_Saison() == Semestre::Printemps));
 	}
 	); //Différence ensembliste: UV - UV_déjà_prise - UV_déjà_validé - UV_pas_enseigné
@@ -66,11 +66,16 @@ bool Dossier::validerDossier()
 
 void Dossier::NouveauSemestre(Semestre saison)
 {
-	Ssuivi.push_back(SemestreSuivi(saison, SemestreStatus::PL));
+	if (Ssuivi.size() > 0) 
+		Ssuivi.push_back(
+		SemestreSuivi(static_cast<Semestre>(!(*(Ssuivi.end() - 1)).get_Saison()), 
+		SemestreStatus::PL));
+	else Ssuivi.push_back(SemestreSuivi(saison, SemestreStatus::PL));
 }
 
 SemestreSuivi& Dossier::SemestreRef(QString SId)
 {
+	if (SId == "") return *(Ssuivi.end() - 1);
 	int ct = (SId.mid(1).toInt() - 1) * 2;
 	if ((SId[0] == 'A' && Ssuivi[0].get_Saison() == Semestre::Automne)
 	 || (SId[0] == 'P' && Ssuivi[0].get_Saison() == Semestre::Printemps)) 

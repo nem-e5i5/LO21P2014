@@ -6,6 +6,7 @@
 #include <qfile.h>
 #include <qstring.h>
 #include <qdatastream.h>
+#include <qtextstream.h>
 
 class Cursus;
 class UV;
@@ -55,5 +56,12 @@ public:
 	void AppToBinFile(QString fname);
 
 	void BinFileToApp(QString fname);
+
+	void ImportUVOnly(QString fname);
+
+	void ImportUVOnlytxt(QString fname);
+
+
+	void AutoComplete();
 };
 

@@ -44,7 +44,7 @@ public:
 
 	void NouveauSemestre(Semestre saison = Semestre::Automne);
 
-	SemestreSuivi& SemestreRef(QString SId);
+	SemestreSuivi& SemestreRef(QString SId = "");
 	void SupprimerSemestre(QString SId);
 
 	void InscriptionUV(const UV& x);

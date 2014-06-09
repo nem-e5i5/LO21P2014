@@ -16,6 +16,17 @@ QString UVTypeName(UVType t)
 	return "ErreurTypename";
 }
 
+UVType UVTypeFromName(QString name)
+{
+	if (name == "CS") return UVType::CS;
+	if (name == "TM") return UVType::TM;
+	if (name == "TSH") return UVType::TSH;
+	if (name == "SP") return UVType::SP;
+	if (name == "Mixe") return UVType::Mixe;
+
+	return UVType::Mixe;
+}
+
 QString UVStatusName(UVStatus t)
 /**
  * Retourne le nom de l'UVStatus

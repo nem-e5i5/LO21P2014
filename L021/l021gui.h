@@ -15,6 +15,12 @@
 #include "UTProfiler.h"
 #include "CursusDialog.h"
 #include "SemestreStatusDialog.h"
+#include <qfiledialog.h>
+
+#include "Credit.h"
+#include "CreditIn.h"
+#include "XUVIn.h"
+#include "XSemestreALetranger.h"
 
 class L021GUI : public QMainWindow
 {
@@ -45,6 +51,13 @@ private slots:
 	void AddCursus();
 	void EditCursus();
 	void RemoveCursus();
+
+	void SaveDossier();
+	void LoadDossier();
+	void LoadUV();
+	void ImportUV();
+
+	void AutoComplete();
 private:
 	Ui::MainWindow ui;
 	void UVListChanged();
