@@ -26,12 +26,14 @@ public:
 	~UTProfiler();
 
 	static UTProfiler* GetInstance()
+	//! Retourne une instance du singleton UTProfiler.
 	{
 		if (!ssx) ssx = new UTProfiler();
 		return ssx;
 	}
 
 	static void ResetInstance()
+	//! Retourne une nouvelle instance du singleton UTProfiler.
 	{
 		if (ssx) delete ssx;
 		ssx = new UTProfiler();
@@ -43,11 +45,19 @@ public:
 
 	SelectIterator<pair<QString, Cursus>, Cursus, map<QString, Cursus>::iterator> CursusIterator();
 
-	UV& UVrefByName(QString name) { return UVList[name]; }
-	Cursus& CursusrefByName(QString name) { return CursusList[name]; }
+	UV& UVrefByName(QString name) 
+	//! Retourne une reference sur l'UV de nom name. Si l'UV n'existe pas elle est cree.
+	{ return UVList[name]; }
+	Cursus& CursusrefByName(QString name)
+	//! Retourne une reference sur le Cursus de nom name. Si le Cursus n'existe pas il est cree.
+	{ return CursusList[name]; }
 
-	bool UVExists(QString name) { return UVList.find(name) != UVList.end(); }
-	bool CursusExists(QString name) { return CursusList.find(name) != CursusList.end(); }
+	bool UVExists(QString name)
+	//! Retourne true si l'UV existe, false sinon.
+	{ return UVList.find(name) != UVList.end(); }
+	bool CursusExists(QString name)
+	//! Retourne true si le Cursus existe, false sinon.
+	{ return CursusList.find(name) != CursusList.end(); }
 
 	void RemoveUV(QString name);
 	void RemoveCursus(QString name);

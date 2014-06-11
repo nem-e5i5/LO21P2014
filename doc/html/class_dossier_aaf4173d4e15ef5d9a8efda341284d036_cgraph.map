@@ -1,5 +1,0 @@
-<map id="Dossier::InscriptionUV" name="Dossier::InscriptionUV">
-<area shape="rect" id="node2" href="$class_dossier.html#a08557d7ea011c001c61a2617f6b2e21d" title="Dossier::InscriptionUVByName" alt="" coords="208,5,413,32"/>
-<area shape="rect" id="node4" href="$class_u_v.html#a605f39d5fbd0a87f8e1cd5d72dad3a3d" title="UV::get_code" alt="" coords="259,56,362,83"/>
-<area shape="rect" id="node3" href="$class_u_t_profiler.html#a1dce43bad274fb089b8fb7e1fe0ac5c8" title="UTProfiler::GetInstance" alt="" coords="461,5,621,32"/>
-</map>

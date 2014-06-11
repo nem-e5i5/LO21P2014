@@ -1,5 +1,0 @@
-<map id="Dossier::InscriptionCursus" name="Dossier::InscriptionCursus">
-<area shape="rect" id="node2" href="$class_dossier.html#ac5d0ecdb63138619b78ec8652f04f330" title="Dossier::InscriptionCursus\lByName" alt="" coords="233,5,410,46"/>
-<area shape="rect" id="node4" href="$class_cursus.html#a0e5baebcdc0320bcfa0e96d2b68e0968" title="Cursus::getName" alt="" coords="259,71,384,97"/>
-<area shape="rect" id="node3" href="$class_u_t_profiler.html#a1dce43bad274fb089b8fb7e1fe0ac5c8" title="UTProfiler::GetInstance" alt="" coords="459,12,619,39"/>
-</map>

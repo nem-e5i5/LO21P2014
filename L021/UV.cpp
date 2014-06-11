@@ -100,6 +100,7 @@ bool UVEncours::operator!=(const UVEncours& o) const
 }
 
 QDataStream& operator<<(QDataStream& str, const UV& x)
+//! Exporte une UV vers un QDataStream.
 {
 	str << x.get_code()
 		<< x.get_titre();
@@ -110,6 +111,7 @@ QDataStream& operator<<(QDataStream& str, const UV& x)
 	return str;
 }
 QDataStream& operator>>(QDataStream& str, UV& x)
+//! Importe une UV depuis un QDataStream.
 {
 	str >> x._code
 		>> x._titre;
@@ -121,12 +123,14 @@ QDataStream& operator>>(QDataStream& str, UV& x)
 }
 
 QDataStream& operator<<(QDataStream& str, const UVEncours& x)
+//! Exporte une UVEnCours vers un QDataStream.
 {
 	str << x.get_uv().get_code();
 	str << static_cast<int>(x.get_status());
 	return str;
 }
 QDataStream& operator>>(QDataStream& str, UVEncours& x)
+//! Importe une UVEnCours depuis un QDataStream.
 {
 	int tmp2;
 	str >> x._uv >> tmp2;

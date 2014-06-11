@@ -1,12 +1,14 @@
 #include "Semestre.h"
 
 UVEncoursOnVectorIterator SemestreSuivi::UVIterator()
+//! Retourne un itérateur pour les UV du Semestre.
 {
 	return UVEncoursOnVectorIterator(UVs.begin(), UVs.end());
 }
 
 void SemestreSuivi::Inscription(UVEncours e) { UVs.push_back(e); }
 void SemestreSuivi::Desinscription(QString Name)
+//! Desincription d'une UV du Semestre.
 {
 	auto iter = Where<UVEncours>(UVs.begin(), UVs.end(), 
 		[=](const UVEncours& x) { return x.get_uv().get_code() == Name; });
@@ -17,6 +19,7 @@ void SemestreSuivi::Desinscription(QString Name)
 }
 
 int SemestreSuivi::get_nb_credit_effective(UVType type) const
+//! Retourne le nombre de crédits obtenus durant le semestre.
 {
 	auto x = Where<const UVEncours>(UVs.begin(), UVs.end(), [](const UVEncours& u) { return u.get_hasCompleted(); });
 	auto y = Select<const UVEncours, int>(x, x.getEnd(), [=](const UVEncours& u) { return u.get_uv().get_nb_credit(type); });
@@ -28,6 +31,7 @@ int SemestreSuivi::get_nb_credit_effective(UVType type) const
 }
 
 int SemestreSuivi::get_nb_credit_previsional(UVType type) const
+//! Retourne le nombre de crédits pouvant etre obtenus durant le semestre.
 {
 	auto x = Where<const UVEncours>(UVs.begin(), UVs.end(), [](const UVEncours& u) { return u.get_status() == UVStatus::EC || u.get_hasCompleted(); });
 	auto y = Select<const UVEncours, int>(x, x.getEnd(), [=](const UVEncours& u) { return u.get_uv().get_nb_credit(type); });
@@ -73,12 +77,14 @@ SemestreSuivi::~SemestreSuivi()
 }
 
 QDataStream& operator<<(QDataStream& str, const SemestreSuivi& s)
+//! Exporte un Semestre vers un QDataStream.
 {
 	str << static_cast<bool>(s.SuiviEn) << static_cast<int>(s.Status) << s.UVs.size();
 	for (auto x : s.UVs) str << x;
 	return str;
 }
 QDataStream& operator>>(QDataStream& str, SemestreSuivi& s)
+//! Importe un Semestre depuis un QDataStream.
 {
 	bool tmp1;
 	int tmp2, tmp3;

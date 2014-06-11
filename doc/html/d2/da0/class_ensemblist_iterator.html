@@ -92,6 +92,9 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 
+<p>Classe de base � tous les iterateurs ensemblistes.  
+ <a href="../../d2/da0/class_ensemblist_iterator.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d5/dfd/_ensemblist__lin_8h_source.html">Ensemblist_lin.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -118,6 +121,8 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:a429be7cff44c8d62066e599f14ca5d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90ddf78bbf218239a3277dc5ead4a8b9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da0/class_ensemblist_iterator.html#a90ddf78bbf218239a3277dc5ead4a8b9">ended</a> () const </td></tr>
 <tr class="separator:a90ddf78bbf218239a3277dc5ead4a8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a475cac8abfe421a7775f5fa0b9f45821"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da0/class_ensemblist_iterator.html#a475cac8abfe421a7775f5fa0b9f45821">~EnsemblistIterator</a> ()</td></tr>
+<tr class="separator:a475cac8abfe421a7775f5fa0b9f45821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Attributs publics</h2></td></tr>
@@ -131,7 +136,12 @@ Fonctions membres protégées</h2></td></tr>
 <tr class="memitem:a85983e88c60258604fb60ab793e2cda1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da0/class_ensemblist_iterator.html#a85983e88c60258604fb60ab793e2cda1">EnsemblistIterator</a> (src Iterator, src End)</td></tr>
 <tr class="separator:a85983e88c60258604fb60ab793e2cda1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><h3>template&lt;class T, class src, class Derived&gt;<br />
+class EnsemblistIterator&lt; T, src, Derived &gt;</h3>
+
+<p>Classe de base � tous les iterateurs ensemblistes. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a class="anchor" id="a85983e88c60258604fb60ab793e2cda1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -198,6 +208,31 @@ template&lt;class T, class src, class Derived&gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a475cac8abfe421a7775f5fa0b9f45821"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T, class src, class Derived&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../d2/da0/class_ensemblist_iterator.html">EnsemblistIterator</a>&lt; T, src, Derived &gt;::~<a class="el" href="../../d2/da0/class_ensemblist_iterator.html">EnsemblistIterator</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -338,7 +373,33 @@ template&lt;class T, class src, class Derived&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implémenté dans <a class="el" href="../../de/dfc/class_linearize_iterator.html#a087485ce2273262c09d96dfdc701c6a8">LinearizeIterator&lt; T, src &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>, et <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>.</p>
+<p>Implémenté dans <a class="el" href="../../de/dfc/class_linearize_iterator.html#a09c4e5a449e81d42f6fe2c845dd8ee92">LinearizeIterator&lt; T, src, nested &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>, et <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b56a6d35af892533a06b28e3f4ef239"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T, class src, class Derived&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Derived <a class="el" href="../../d2/da0/class_ensemblist_iterator.html">EnsemblistIterator</a>&lt; T, src, Derived &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -365,33 +426,7 @@ template&lt;class T, class src, class Derived&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implémenté dans <a class="el" href="../../de/dfc/class_linearize_iterator.html#a087485ce2273262c09d96dfdc701c6a8">LinearizeIterator&lt; T, src &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>, et <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0b56a6d35af892533a06b28e3f4ef239"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, class src, class Derived&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Derived <a class="el" href="../../d2/da0/class_ensemblist_iterator.html">EnsemblistIterator</a>&lt; T, src, Derived &gt;::operator++ </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Implémenté dans <a class="el" href="../../de/dfc/class_linearize_iterator.html#a09c4e5a449e81d42f6fe2c845dd8ee92">LinearizeIterator&lt; T, src, nested &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#a5e5a2c0c986df77ba3af416bf4ce5dd4">ConcatIterator&lt; T, src, src2 &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../db/dda/class_reduce_iterator.html#a8a954af01cba2723ac1802a50ab2d967">ReduceIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../d3/d04/class_unique_iterator.html#a8eef90ebb6b2faae331f4d4da536b3b0">UniqueIterator&lt; T, src, F &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../da/db2/class_select_iterator.html#ade054811301a2595e55655dec7f70a32">SelectIterator&lt; T, Tdest, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d4/dd9/class_where_iterator.html#ad4ff13e1f238a98061ece5494484751f">WhereIterator&lt; T, src &gt;</a>, <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>, et <a class="el" href="../../d3/d36/class_identity_iterator.html#af214c63d8caa02e2cf28a6d58f1c35ba">IdentityIterator&lt; T, src &gt;</a>.</p>
 
 </div>
 </div>
@@ -445,7 +480,7 @@ template&lt;class T, class src, class Derived&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Réimplémentée dans <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>, et <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>.</p>
+<p>Réimplémentée dans <a class="el" href="../../de/dfc/class_linearize_iterator.html#a27c5d44dd4eed51b71440b91a2aa9e02">LinearizeIterator&lt; T, src, nested &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>, et <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>.</p>
 
 </div>
 </div>
@@ -473,7 +508,7 @@ template&lt;class T, class src, class Derived&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Réimplémentée dans <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>, et <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>.</p>
+<p>Réimplémentée dans <a class="el" href="../../de/dfc/class_linearize_iterator.html#a27c5d44dd4eed51b71440b91a2aa9e02">LinearizeIterator&lt; T, src, nested &gt;</a>, <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>, et <a class="el" href="../../dd/d7f/class_concat_iterator.html#af6b2ce5c282b9be02643289cd3627427">ConcatIterator&lt; T, src, src2 &gt;</a>.</p>
 
 </div>
 </div>
@@ -513,7 +548,7 @@ template&lt;class T, class src, class Derived&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 28 Mai 2014 10:34:46 pour UTProfiler par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 11 Juin 2014 11:07:20 pour UTProfiler par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

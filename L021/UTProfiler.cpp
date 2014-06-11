@@ -12,18 +12,21 @@ UTProfiler::~UTProfiler()
 }
 
 SelectIterator<pair<QString, UV>, UV, map<QString, UV>::iterator> UTProfiler::UVIterator()
+//! Retourne un iterateur sur l'ensemble des UV.
 {
 	return Select<pair<QString, UV>, UV>(UVList.begin(), UVList.end(),
 		[](const pair<QString, UV>& x) { return x.second; });
 }
 
 SelectIterator<pair<QString, Cursus>, Cursus, map<QString, Cursus>::iterator> UTProfiler::CursusIterator()
+//! Retourne un iterateur sur l'ensemble des Cursus.
 {
 	return Select<pair<QString, Cursus>, Cursus>(CursusList.begin(), CursusList.end(),
 		[](const pair<QString, Cursus>& x) { return x.second; });
 }
 
 void UTProfiler::RemoveUV(QString name)
+//! Supprime une UV d'UTProfiler.
 {
 	
 	auto iter1 = MonDossier.SemestreIterator();
@@ -42,6 +45,7 @@ void UTProfiler::RemoveUV(QString name)
 }
 
 void UTProfiler::RemoveCursus(QString name)
+//! Supprime un Cursus d'UTProfiler.
 {
 	auto iter = MonDossier.CursusIterator();
 	for (; !iter.ended(); ++iter)
@@ -55,7 +59,9 @@ void UTProfiler::RemoveCursus(QString name)
 	CursusList.erase(name);
 }
 
+
 void UTProfiler::AppToBinFile(QString fname)
+//! Sauvegarde toutes les donnees (Cursus, UV, Dossier) dans un fichier binaire.
 {
 	QFile f(fname);
 	if (!f.open(QIODevice::WriteOnly))
@@ -76,6 +82,7 @@ void UTProfiler::AppToBinFile(QString fname)
 }
 
 void UTProfiler::BinFileToApp(QString fname)
+//! Extrait toutes les donnees (Cursus, UV, Dossier) depuis un fichier binaire.
 {
 	QFile f(fname);
 	if (!f.open(QIODevice::ReadOnly))
@@ -108,6 +115,7 @@ void UTProfiler::BinFileToApp(QString fname)
 }
 
 void UTProfiler::ImportUVOnly(QString fname)
+//! Importe uniquement une liste d'UV depuis un fichier binaire.
 {
 	QFile f(fname);
 	if (!f.open(QIODevice::ReadOnly))
@@ -128,6 +136,7 @@ void UTProfiler::ImportUVOnly(QString fname)
 }
 
 void UTProfiler::ImportUVOnlytxt(QString fname)
+//! Importe une liste d'UV depuis un fichier texte (res/UV_UTC.txt).
 {
 	QFile f(fname);
 	if (!f.open(QIODevice::ReadOnly))
@@ -153,6 +162,8 @@ void UTProfiler::ImportUVOnlytxt(QString fname)
 }
 
 void UTProfiler::AutoComplete()
+//! Algorithme d'autocompletion du dossier.
+//! Recherche d'abord une solution viable, puis l'optimise avant de la compacter sur un nombre de semestre minimum.
 {
 	auto CursusIter = getDossier().CursusIterator();
 	auto UVIter = UVIterator();
