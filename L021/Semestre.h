@@ -30,6 +30,7 @@ public:
 	void set_ALEtranger(bool value) { ALEtranger = value; }
 	void set_Status(SemestreStatus s) { Status = s; }
 	UVEncours& UVRef(QString Name) {
+		//! Retourne une reference vers l'UV de nom Name dans le Semestre.
 		return *Where<UVEncours&>(UVs.begin(), UVs.end(), [=](const UVEncours& x) { return x.get_uv().get_code() == Name; });
 	}
 	int UVCount() const { return UVs.size(); }

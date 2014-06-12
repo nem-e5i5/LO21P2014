@@ -12,12 +12,14 @@ QString Dossier::Getmeta(QString n)
 }
 
 SemestreLinearizer Dossier::UVIterator()
+//! Itere sur l'ensemble des UV du Dossier.
 {
 	auto x = Select<SemestreSuivi, UVEncoursOnVectorIterator>(Ssuivi.begin(), Ssuivi.end(), [](const SemestreSuivi& s) { return const_cast<SemestreSuivi&>(s).UVIterator(); });
 	return Linearize<UVEncours, UVEncoursOnVectorIterator>(x, x.getEnd());
 }
 
 WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, UV>::iterator>> Dossier::UVPrenableIterator(QString SId)
+//! Liste des UV pouvant etre suivies pour un Semestre donné.
 {
 	auto& s = SemestreRef(SId);
 
@@ -38,11 +40,13 @@ WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, U
 }
 
 IdentityIterator<SemestreSuivi&, vector<SemestreSuivi>::iterator> Dossier::SemestreIterator()
+//! Retourne un itérateur sur l'ensemble des Semestre du Dossier
 {
 	return IdentityIterator<SemestreSuivi&, vector<SemestreSuivi>::iterator>(Ssuivi.begin(), Ssuivi.end());
 }
 
 SelectIterator<QString, const Cursus&, vector<QString>::iterator> Dossier::CursusIterator()
+//! Retourne un itérateur sur l'ensemble des Cursus du Dossier
 {
 	return Select<QString, const Cursus&>(Cursussuivi.begin(), Cursussuivi.end(),
 		[](QString x) -> const Cursus&{ return UTProfiler::GetInstance()->CursusrefByName(x); });
@@ -60,12 +64,14 @@ void Dossier::setNbEquivalences(UVType t, int value = 0)
 }
 
 bool Dossier::validerDossier() 
+//! Renvoie true si le Dossier est complété, false sinon. 
 { 
 	for (auto x = CursusIterator(); !x.ended(); ++x) 
 		if (!((*x).Validate(*this))) return false; 
 	return true; }
 
 void Dossier::NouveauSemestre(Semestre saison)
+//! Créer un nouveau Semestre.
 {
 	if (Ssuivi.size() > 0) 
 		Ssuivi.push_back(
@@ -75,6 +81,7 @@ void Dossier::NouveauSemestre(Semestre saison)
 }
 
 SemestreSuivi& Dossier::SemestreRef(QString SId)
+//! Retourne une reference vers le semestre de nom SId. Si SId="" retourne le dernier Semestre.
 {
 	if (SId == "") return *(Ssuivi.end() - 1);
 	int ct = (SId.mid(1).toInt() - 1) * 2;
@@ -88,6 +95,7 @@ SemestreSuivi& Dossier::SemestreRef(QString SId)
 }
 
 void Dossier::SupprimerSemestre(QString SId)
+//! Tente de Supprimer un Semestre du Dossier.
 {
 	auto& ref = SemestreRef(SId);
 	auto iterem = find(Ssuivi.begin(), Ssuivi.end(), ref);
@@ -99,20 +107,24 @@ void Dossier::SupprimerSemestre(QString SId)
 }
 
 void Dossier::InscriptionUV(const UV& x)
+//! Inscription a une UV pour le Dossier.
 {
 	Dossier::InscriptionUVByName(x.get_code());
 }
 void Dossier::InscriptionCursus(const Cursus& x)
+//! Inscription a un Cursus pour le Dossier.
 {
 	InscriptionCursusByName(x.getName());
 }
 
 void Dossier::InscriptionUVByName(QString x)
+//! Inscription a une UV pour le Dossier en fonction du nom.
 {
 	if (!UTProfiler::GetInstance()->UVExists(x)) throw;
 	(*(Ssuivi.end() - 1)).Inscription(UVEncours(x, UVStatus::EC));
 }
 void Dossier::InscriptionCursusByName(QString x)
+//! Inscription a un Cursus pour le Dossier en fonction du nom.
 {
 	if (!UTProfiler::GetInstance()->CursusExists(x)) throw;
 	Cursussuivi.push_back(x);
@@ -127,6 +139,7 @@ void Dossier::DesinscriptionUVByName(QString x)
 	}
 }
 void Dossier::DesinscriptionCursusByName(QString x)
+//! Desinscription d'un Cursus pour le Dossier en fonction du nom.
 {
 	auto iter = find(Cursussuivi.begin(), Cursussuivi.end(), x);
 	if (iter == Cursussuivi.end()) throw;
@@ -144,6 +157,7 @@ Dossier::~Dossier()
 }
 
 QDataStream& operator<<(QDataStream& str, const Dossier& x)
+//! Exporte un dossier dans un QDataStream.
 {
 	str << x.Ssuivi.size();
 	for (auto& u: x.Ssuivi)
@@ -164,6 +178,7 @@ QDataStream& operator<<(QDataStream& str, const Dossier& x)
 }
 
 QDataStream& operator>>(QDataStream& str, Dossier& x)
+//! Importe un dossier depuis un QDataStream.
 {
 	int tmp;
 	UVEncours tmp2("", UVStatus::RES);

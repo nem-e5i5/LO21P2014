@@ -1,0 +1,17 @@
+% a3_landascape
+\newenvironment{a3_landscape}
+{
+	\newpage
+	\pdfpagewidth=2\pdfpagewidth
+	\setlength{\textwidth}{4cm+\textwidth*2} % need calc pkg
+	\headwidth=\textwidth
+	\hsize=\textwidth
+}
+{
+	\newpage
+	\pdfpagewidth=.5\pdfpagewidth
+	\setlength{\textwidth}{\textwidth-4cm}
+	\textwidth=.5\textwidth
+	\headwidth=\textwidth
+	\hsize=\textwidth
+}

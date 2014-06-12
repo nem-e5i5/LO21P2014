@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">while</span> (begin != end)</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            f.tableWidget-&gt;setRowCount(i + 1);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="../../dc/d3d/class_u_v.html">UV</a> c = (*begin);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">const</span> <a class="code" href="../../dc/d3d/class_u_v.html">UV</a>&amp; c = (*begin);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            f.tableWidget-&gt;setItem(i, 0, <span class="keyword">new</span> QTableWidgetItem(c.<a class="code" href="../../dc/d3d/class_u_v.html#a605f39d5fbd0a87f8e1cd5d72dad3a3d">get_code</a>()));</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            f.tableWidget-&gt;setItem(i, 1, <span class="keyword">new</span> QTableWidgetItem(<a class="code" href="../../d6/dcf/_other_8cpp.html#a57f6c34a3b730c62e1be99311ea5ff17">UVTypeName</a>(c.<a class="code" href="../../dc/d3d/class_u_v.html#a153785a8d51b0b47f8755b0f088221bc">get_type</a>())));</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            f.tableWidget-&gt;setItem(i, 2, <span class="keyword">new</span> QTableWidgetItem(QString::number(c.<a class="code" href="../../dc/d3d/class_u_v.html#a26e68319a64e533b088f10f26df307d8">get_nb_credit</a>(c.<a class="code" href="../../dc/d3d/class_u_v.html#a153785a8d51b0b47f8755b0f088221bc">get_type</a>()))));</div>
@@ -122,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            ++begin;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">int</span> ret = f.exec();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (ret == 1) <span class="keywordflow">return</span> f.tableWidget-&gt;selectedItems()[0]-&gt;text();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (ret == 1 &amp;&amp; f.tableWidget-&gt;selectedItems().size() &gt; 0) <span class="keywordflow">return</span> f.tableWidget-&gt;selectedItems()[0]-&gt;text();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
@@ -142,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 28 Mai 2014 10:34:46 pour UTProfiler par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 11 Juin 2014 09:46:35 pour UTProfiler par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

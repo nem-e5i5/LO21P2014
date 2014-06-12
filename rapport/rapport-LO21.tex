@@ -1,0 +1,82 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[francais]{babel}
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{lastpage}
+\usepackage[top=3cm, bottom=3cm, left=2cm, right=2cm]{geometry}
+\usepackage{enumitem} % \begin{itemize}[label=#]
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=black]{hyperref}
+\usepackage{calc}
+\usepackage{mathastext}
+\usepackage{fancyhdr}
+
+\input{a3_landscape.tex}
+
+\DeclareUnicodeCharacter{00A0}{ } % replace no-break space
+
+% header
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{LO21-P14}
+\rhead{\leftmark}
+\lfoot{}
+\rfoot{\hrule\vspace{.1cm}\thepage /\pageref{LastPage}}
+
+% title info
+\title{Projet LO21 P14 :\\UTProfiler}
+\author{Alexandre Thouvenin\\Adrien Jacquet}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{\fill}
+\tableofcontents
+\vspace{\fill}
+
+% paragraph
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{5mm}
+
+\newpage
+\section{Introduction}
+L'objectif du projet qui nous a été assigné ce semestre était de développer une application destinée a aider un étudiant d'Université de Technologie (UT) a gérer son dossier étudiant tout au long de son parcours au sein de l'université. Cette application a été réalisée en utilisant les concepts de la POO (Programmation Orientée Objet) tel qu'ils sont implémentés dans le langage de programmation C++. Nous avons aussi eu a réaliser une GUI (Graphical User Interface) avec la librairie Qt qui permette d'utiliser les différentes fonctions misent a disposition par l'architecture.
+
+Voici une liste non exhaustive des fonctions de service que nous avions a traiter :
+\begin{itemize}[label=-]
+	\item gestion des UVs de l'UT (ajout, suppression, modification...)
+	\item gestion des différents cursus de l'UT
+	\item constitution par l’étudiant d'un dossier (inscription a un ensemble d'UVs et de cursus)
+	\item auto-complétion du dossier (conseils de choix d'UVs pour la validation des différents cursus)
+	\item sauvegarde et importation des différentes données précédemment citées
+	\item gestion des équivalences de crédit
+\end{itemize}
+
+\vspace{1cm}
+\section{Présentation de l'architecture}
+Plutôt qu'un long discours, nous avons décidés de présenter notre architecture via un diagramme de classe UML. L'UML complet accessible sous la forme d'un diagramme généré avec Visual Studio (!!!file!!!). Vous pouvez trouver a la page suivante un UML simplifié de notre architecture.
+
+\begin{a3_landscape}
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=\textwidth]{!!!file!!!}
+		\caption{Diagramme de classe UML simplifié d'UTProfiler}
+	\end{center}
+\end{figure}
+\end{a3_landscape}
+
+\section{Modularité de l'architecture}
+
+\newpage
+\section{Précisions a l'attention du correcteur}
+Jusqu'ici, nous n'avons réussi a compiler le code fourni qu'en utilisant Visual Studio 2013 en conjonction avec Qt. Néanmoins, il n'existe pas encore d'addon officiel pour intégrer Qt5 a Visual Studio 2013, ce pourquoi il nous a fallu compiler Qt pour VS2013. Vous pouvez trouver des instructions détaillées pour réaliser la dite compilation a l'adresse suivante : !!!url!!!
+
+Néanmoins, nous avons choisi de vous joindre, en suivant le principe de précaution, un exécutable pour Windows (!!!file!!!) compilé dans les conditions précédemment énoncées, au cas ou vous auriez des problème pour compiler le code source de l'application.
+
+\end{document}

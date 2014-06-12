@@ -831,7 +831,7 @@ FILE_PATTERNS          = *.c \
 # be searched for input files as well.
 # The default value is: NO.
 
-RECURSIVE              = YES
+RECURSIVE              = NO
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
@@ -840,7 +840,31 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = 
+EXCLUDE                = L021/CursusDialog.cpp \
+                         L021/CursusDialog.h \
+                         L021/EquivDialog.cpp \
+                         L021/EquivDialog.h \
+                         L021/GuiFunctions.cpp \
+                         L021/GuiFunctions.h \
+                         L021/l021gui.h \
+                         L021/l021gui_Autocomplete.cpp \
+                         L021/l021gui_Binding.cpp \
+                         L021/l021gui_Cursus.cpp \
+                         L021/l021gui_Dossier.cpp \
+                         L021/l021gui_FileManager.cpp \
+                         L021/l021gui_UV.cpp \
+                         L021/SemestreStatusDialog.cpp \
+                         L021/SemestreStatusDialog.h \
+                         L021/UVDialog.cpp \
+                         L021/UVDialog.h \
+                         L021/ValidatorDialog.cpp \
+                         L021/ValidatorDialog.cpp.orig \
+                         L021/ValidatorDialog.h \
+                         L021/ValidatorDialog.h.orig \
+                         L021/CursusList.cpp \
+                         L021/CursusList.h \
+                         L021/UVList.cpp \
+                         L021/UVList.h
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded

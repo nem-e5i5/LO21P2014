@@ -43,7 +43,9 @@ public:
 
 	virtual bool Improvable() const { return true; }
 
-	void true_Serialize(QDataStream& str) { str << getName(); Serialize(str); }
+	void true_Serialize(QDataStream& str)
+	//! Ajoute les données necessaire pour la création depuis une abstract factory.
+	{ str << getName(); Serialize(str); }
 	
 	//Cette fonction créer un CursusValidator* à l'aide d'une abstract factory, à vous de libérer la mémoire après usage
 	static CursusValidator* true_UnSerialize(QDataStream& str);

@@ -9,6 +9,7 @@ using namespace std;
 //classe de base des itérateurs génériques
 template <class T, class src, class Derived>
 class EnsemblistIterator
+//! Classe de base à tous les iterateurs ensemblistes
 {
 protected:
 	src sourceIterator;
@@ -49,6 +50,7 @@ public:
 //peut être utilisé pour normaliser les itérateurs std si besoin
 template <class T, class src>
 class IdentityIterator : public EnsemblistIterator<T, src, IdentityIterator<T, src>>
+//!Itérateur identité. Ne faisant rien si ce n'est normalisé l'interface
 {
 public:
 	IdentityIterator(src Iterator, src end) : EnsemblistIterator(Iterator, end) {}
@@ -70,6 +72,7 @@ public:
 //effectue une opération de restriction
 template <class T, class src>
 class WhereIterator : public EnsemblistIterator<T, src, WhereIterator<T, src>>
+//Représente un itérateur qui va effectuer une restriction (type WHERE en SQL) sur un itérateur sous jacent src
 {
 	function<bool(const T&)> predicate;
 
@@ -97,6 +100,7 @@ public:
 //effectue une opération de transformation
 template <class T, class Tdest, class src>
 class SelectIterator : public EnsemblistIterator<T, src, SelectIterator<T, Tdest, src>>
+//!Effectue une opération de selection (de type SELECT en SQL) sur l'itérateur sous jacent
 {
 	function<Tdest(const T&)> selector;
 
@@ -115,6 +119,7 @@ public:
 //supprime les doublons d'un ensemble
 template <class T, class src, class F>
 class UniqueIterator : public EnsemblistIterator<T, src, UniqueIterator<T, src, F>>
+//Supprime les doublons de l'itérateur sous jacent
 {
 	F equalityComparer;
 public:
@@ -147,6 +152,7 @@ public:
 //supprime un élément de chaque type (les éléments en double, deviennent uniques, les éléments seuls disparaissent, ...)
 template <class T, class src, class F>
 class ReduceIterator : public EnsemblistIterator<T, src, ReduceIterator<T, src, F>>
+//Supprime un élément de chaque type de l'itérateur sous jacent.
 {
 	F equalityComparer;
 public:
@@ -179,6 +185,7 @@ public:
 //itére la première séquence puis la deuxième
 template <class T, class src, class src2>
 class ConcatIterator : public EnsemblistIterator<T, src, ConcatIterator<T, src, src2>>
+//Effectue une concaténation des deux itérateurs sous jacents de type potentiellement différent (concaténer vector et Qvector par exemple)
 {
 	src2 sourceIterator2;
 	src2 sourceEnd2;
@@ -215,6 +222,7 @@ public:
 //n'opère que sur les itertors de ce fichier, pas sur les std pour une fois
 template <class T, class src, class nested>
 class LinearizeIterator : public EnsemblistIterator<T, src, LinearizeIterator<T, src, nested>>
+//!transforme un iterator d'iterator en un iterator. vector<vector<T>> -> vector<T> par exemple
 {
 	nested* ncurrent;
 public:
@@ -343,6 +351,7 @@ ReduceIterator<T, c, F> removeOneOfEach(c begin, c end, F EqualityComparer = [](
 //effectue une union ensembliste
 template<class T, class c, class c2, class F>
 UniqueIterator<T, ConcatIterator<T, c, c2>, F> Union(c begin, c end, c2 begin2, c2 end2, F EqualityComparer = [](T x, T y) { return x == y; })
+//!créer un iterateur d'union ensembliste sur les deux itérateurs sous jacents
 {
 	auto x = Concat<T>(begin, end, begin2, end2);
 	return keepOneOfEach<T>(x, x.getEnd(), EqualityComparer);
@@ -351,6 +360,7 @@ UniqueIterator<T, ConcatIterator<T, c, c2>, F> Union(c begin, c end, c2 begin2, 
 //effectue une intersection ensembliste
 template <class T, class c, class c2, class F>
 ReduceIterator<T, ConcatIterator<T, UniqueIterator<T, c, F>, UniqueIterator<T, c2, F>>, F> Intersect(c begin, c end, c2 begin2, c2 end2, F Equalitycomparer = [](T x, T y) { return x == y; })
+//!créer un itérateur d'intersection ensembliste sur les deux itérateurs sous jacents
 {
 	auto x = keepOneOfEach<T>(begin, end, Equalitycomparer);
 	auto y = keepOneOfEach<T>(begin2, end2, Equalitycomparer);
@@ -361,6 +371,7 @@ ReduceIterator<T, ConcatIterator<T, UniqueIterator<T, c, F>, UniqueIterator<T, c
 //vérifie si un élément appartient à la collection
 template <class T, class c, class F>
 bool Contains(c begin, c end, T item, F Equalitycomparer = [](T x, T y) { return x == y; })
+//!la séquence contient elle cet élément?
 {
 	for (; begin != end; ++begin)
 	if (Equalitycomparer(item, *begin)) return true;
@@ -370,6 +381,7 @@ bool Contains(c begin, c end, T item, F Equalitycomparer = [](T x, T y) { return
 //Effectue une accumulation des valeurs selon le schéma pour chaque v; aggr(seed, v) -> seed; return seed;
 template <class T, class aggregated, class c, class F>
 aggregated Aggregate(c begin, c end, F /* aggregated(aggregated, T) */aggregator, aggregated seed /*= default(aggregated)*/)
+//Effectue une accumulation des valeurs de la séquence dans seed
 {
 	for (; begin != end; ++begin) seed = aggregator(seed, *begin);
 	return seed;
@@ -378,6 +390,7 @@ aggregated Aggregate(c begin, c end, F /* aggregated(aggregated, T) */aggregator
 //Alias à Aggregate(begin, end, (x, y) => x+y, seed)
 template <class T, class aggregated, class c>
 aggregated Sum(c begin, c end, aggregated seed /*= default(aggregated)*/)
+//Effectue une somme de toute les valeur avec l'opérateur + comme aggrégateur
 {
 	return Aggregate<T, aggregated>(begin, end, [](aggregated x, T y) { return x + y; }, seed);
 }
@@ -399,6 +412,7 @@ c SkipWhile(c begin, c end, F w)
 //évalue une expression ensembliste et stock le résultat dans un vector<T>
 template <class T, class c>
 vector<T> toVector(c begin, c end)
+//?transforme un itérateur quelconque en vector
 {
 	vector<T> vec;
 	for (; begin != end; ++begin)
