@@ -26,6 +26,22 @@ QBuffer* ValidatorDialog::ParseFormData()
 			auto* item = dynamic_cast<QSpinBox*>(i[1]);
 			dst << item->value();
 		}
+		else if (type == "string" || type == "UV" || type == "Cursus")
+		{
+			auto* item = dynamic_cast<QLineEdit*>(i[1]);
+			dst << item->text();
+		}
+		else if (type == "UVType" || type == "UVStatus")
+		{
+			auto* item = dynamic_cast<QComboBox*>(i[1]);
+			if (type == "UVType") dst << UVTypeFromName(item->currentText());
+			else dst << UVStatusFromName(item->currentText());
+		}
+		else if (type == "bool")
+		{
+			auto* item = dynamic_cast<QCheckBox*>(i[1]);
+			dst << item->isChecked();
+		}
 	}
 	ret->seek(0);
 	return ret;
@@ -48,6 +64,7 @@ CursusValidator* ValidatorDialog::ShowDialog(QWidget* parent)
 			QVector<QString>::fromStdVector( //de toute ces
 				toVector<QString>(v, v.getEnd())))); //conversions???
 	QObject::connect(x.add_button, SIGNAL(clicked()), &x, SLOT(AjouterLigne()));
+	QObject::connect(x.remove_button, SIGNAL(clicked()), &x, SLOT(RetirerLigne()));
 	int rflag = x.exec();
 	if (rflag == 0)
 		return nullptr;
@@ -90,6 +107,35 @@ void ValidatorDialog::ComboChanged(QString s, QObject* sender) {
 				widget_list[i][1]= new QSpinBox;
 				formLayout_2->setWidget(i, QFormLayout::ItemRole::FieldRole, widget_list[i][1]);
 				widget_list[i][1]->show();
+				return;
+			}
+			if (s == "string" || s == "UV" || s == "Cursus") {
+				widget_list[i][1] = new QLineEdit(nullptr);
+				formLayout_2->setWidget(i, QFormLayout::ItemRole::FieldRole, widget_list[i][1]);
+				if (s == "UV") QObject::connect(widget_list[i][1], SIGNAL(editingFinished()), this, SLOT(TextFocusLost()));
+				if (s == "Cursus") QObject::connect(widget_list[i][1], SIGNAL(editingFinished()), this, SLOT(TextFocusLost2()));
+				widget_list[i][1]->show();
+				return;
+			}
+			if (s == "UVType" || s == "UVStatus") {
+				auto* cb = new QComboBox();
+				if (s == "UVType") {
+					cb->addItem("Mixe");
+					for (int i = 0; i < UVType::size; ++i) cb->addItem(UVTypeName(static_cast<UVType>(i)));
+				}
+				else for (int i = 0; i < UVStatus::Usize; ++i) cb->addItem(UVStatusName(static_cast<UVStatus>(i)));
+				widget_list[i][1] = cb;
+				formLayout_2->setWidget(i, QFormLayout::ItemRole::FieldRole, widget_list[i][1]);
+				widget_list[i][1]->show();
+				return;
+			}
+			if (s == "bool")
+			{
+				widget_list[i][1] = new QCheckBox;
+				formLayout_2->setWidget(i, QFormLayout::ItemRole::FieldRole, widget_list[i][1]);
+				if (s == "UV") QObject::connect(widget_list[i][1], SIGNAL(editingFinished()), this, SLOT(TextFocusLost()));
+				widget_list[i][1]->show();
+				return;
 			}
 
 			return;
@@ -97,6 +143,42 @@ void ValidatorDialog::ComboChanged(QString s, QObject* sender) {
 	}
 }
 
-void ValidatorDialog::RetirerLigne() {
+void ValidatorDialog::TextFocusLost(QObject* sender)
+{
+	static map<QObject*, QString> toldya;
+	if (sender == nullptr) sender = QObject::sender();
+	auto* o = dynamic_cast<QLineEdit*>(sender);
+	if (!UTProfiler::GetInstance()->UVExists(o->text()) && toldya[sender] != o->text())
+	{
+		Notify("Attention: L'UV " + o->text() + QString::fromWCharArray(L" n'est pas enregistré, ceci peut être causé par une faute de frappe"));
+		toldya[sender] = o->text();
+	}
+}
 
+void ValidatorDialog::TextFocusLost2(QObject* sender)
+{
+	static map<QObject*, QString> toldya;
+	if (sender == nullptr) sender = QObject::sender();
+	auto* o = dynamic_cast<QLineEdit*>(sender);
+	if (!UTProfiler::GetInstance()->CursusExists(o->text()) && toldya[sender] != o->text())
+	{
+		Notify("Attention: Le cursus " + o->text() + QString::fromWCharArray(L" n'est pas enregistré, ceci peut être causé par une faute de frappe"));
+		toldya[sender] = o->text();
+	}
+}
+
+void ValidatorDialog::RetirerLigne() {
+	if (widget_list.size() <= 0) return;
+	auto& item = *(widget_list.end() - 1);
+	if (item.at(0) != nullptr)
+	{
+		formLayout_2->removeWidget(item.at(0));
+		delete item.at(0);
+	}
+	if (item.at(1) != nullptr)
+	{
+		formLayout_2->removeWidget(item.at(1));
+		delete item.at(1);
+	}
+	widget_list.pop_back();
 }

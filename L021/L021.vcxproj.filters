@@ -60,6 +60,9 @@
     <Filter Include="Validators\Header">
       <UniqueIdentifier>{3b9de4fe-93f4-48b6-a277-77c4ebe1f2ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Validators\Expanded">
+      <UniqueIdentifier>{53a65701-bfe0-434d-b548-0efeeb771d76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -155,6 +158,12 @@
     <ClCompile Include="XSemestreALetranger.cpp">
       <Filter>Validators\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Switch.cpp">
+      <Filter>Validators\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="XUVAvecYIn.cpp">
+      <Filter>Validators\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="l021gui.h">
@@ -231,9 +240,6 @@
     <ClInclude Include="Ensemblist_win.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Ensemblist_lin.h">
-      <Filter>Utility\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Ensemblist.h">
       <Filter>Utility\Header</Filter>
     </ClInclude>
@@ -287,6 +293,30 @@
     </ClInclude>
     <ClInclude Include="XSemestreALetranger.h">
       <Filter>Validators\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Switch.h">
+      <Filter>Validators\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="XUVAvecYIn.h">
+      <Filter>Validators\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="XSemestreALetranger - Copie.h">
+      <Filter>Validators\Expanded</Filter>
+    </ClInclude>
+    <ClInclude Include="XUVAvecYIn - Copie.h">
+      <Filter>Validators\Expanded</Filter>
+    </ClInclude>
+    <ClInclude Include="XUVIn - Copie.h">
+      <Filter>Validators\Expanded</Filter>
+    </ClInclude>
+    <ClInclude Include="Credit - Copie.h">
+      <Filter>Validators\Expanded</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditIn - Copie.h">
+      <Filter>Validators\Expanded</Filter>
+    </ClInclude>
+    <ClInclude Include="Switch - Copie.h">
+      <Filter>Validators\Expanded</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -54,13 +54,13 @@ public:
 	IdentityIterator(src Iterator, src end) : EnsemblistIterator(Iterator, end) {}
 
 
-	T& operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
+	T operator*() { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 	const T& operator*() const { if (sourceIterator != sourceEnd) return *sourceIterator; throw; }
 
 
 	IdentityIterator& operator++()
 	{
-		++sourceIterator;
+		if (sourceIterator != sourceEnd) ++sourceIterator;
 		return *this;
 	}
 
@@ -85,7 +85,7 @@ public:
 	{
 		do
 		{
-			++sourceIterator;
+			if (sourceIterator != sourceEnd) ++sourceIterator;
 			if (sourceIterator == sourceEnd) break;
 		} while (!predicate(**this));
 		return *this;
@@ -105,7 +105,7 @@ public:
 	Tdest operator*() const { return selector(*sourceIterator); }
 	SelectIterator& operator++()
 	{
-		++sourceIterator;
+		if (sourceIterator != sourceEnd) ++sourceIterator;
 		return *this;
 	}
 
@@ -219,7 +219,7 @@ class LinearizeIterator : public EnsemblistIterator<T, src, LinearizeIterator<T,
 	nested* ncurrent;
 public:
 	LinearizeIterator(src Iterator1, src end1) : EnsemblistIterator(Iterator1, end1), ncurrent(Iterator1 != end1 ? new nested(*Iterator1) : nullptr) { moveFirst(); }
-	T& operator*() const {  return **ncurrent; }
+	T operator*() const {  return **ncurrent; }
 	void moveFirst() 
 	{
 		if (ncurrent == nullptr) return;
@@ -269,6 +269,7 @@ public:
 		if (ncurrent != nullptr) delete ncurrent;
 		if (o.ncurrent != nullptr) ncurrent = new nested(*o.ncurrent);
 		else ncurrent = nullptr;
+		return o;
 	}
 	bool operator==(const LinearizeIterator& other) const
 	{
@@ -379,6 +380,17 @@ template <class T, class aggregated, class c>
 aggregated Sum(c begin, c end, aggregated seed /*= default(aggregated)*/)
 {
 	return Aggregate<T, aggregated>(begin, end, [](aggregated x, T y) { return x + y; }, seed);
+}
+
+template <class c, class F>
+c SkipWhile(c begin, c end, F w)
+{
+	c ret(begin);
+	while (begin != end && w(*begin)) {
+		ret = begin; ++begin;
+	}
+	if (begin == end) return end;
+	return ret;
 }
 
 

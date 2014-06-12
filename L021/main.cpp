@@ -7,24 +7,10 @@ int main(int argc, char *argv[])
 	register_validator(CreditIn);
 	register_validator(XUVIn);
 	register_validator(XSemestreALetranger);
+	register_validator(Switch);
+	register_validator(XUVAvecYIn);
 
 	UTProfiler* prf = UTProfiler::GetInstance();
-	
-	prf->UVrefByName("lol21") = UV(QString("lol21"), "rire fort", UVType::CS, 6, false, false);
-	prf->UVrefByName("lol20") = UV(QString("lol20"), "haha", UVType::CS, 6, false, false);
-	prf->UVrefByName("lol19") = UV(QString("lol19"), "hihi", UVType::CS, 6, false, false);
-	
-	Dossier& x = prf->MonDossier;
-	Cursus y("counter strike");
-	x.NouveauSemestre();
-	x.InscriptionUVByName("lol21");
-	//(*x.UVIterator()).set_status(UVStatus::A);
-	y.addValidator(new CreditValidator(UVType::CS, 6));
-	
-	prf->CursusrefByName("counter strike") = y;
-	x.InscriptionCursusByName("counter strike");
-
-	prf->AppToBinFile("test.bin");
 
 	QApplication a(argc, argv);
 	L021GUI w;

@@ -6,7 +6,11 @@
 #include "Cursus.h"
 #include <vector>
 #include <QSpinBox>
+#include <qlineedit.h>
 #include <qbuffer.h>
+#include <qcombobox.h>
+#include "UTProfiler.h"
+#include <qcheckbox.h>
 
 class ValidatorDialog :
 	public QDialog,
@@ -29,4 +33,8 @@ public slots:
 	void AjouterLigne();
 	void RetirerLigne();
 	void ComboChanged(QString s, QObject* sender = nullptr);
+
+	void TextFocusLost(QObject* send = nullptr);
+	void TextFocusLost2(QObject* send = nullptr);
+
 };

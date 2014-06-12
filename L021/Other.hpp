@@ -17,8 +17,9 @@ class UTException {
 enum UVType {CS, TM, TSH, SP, size=4, Mixe};
 QString UVTypeName(UVType t);
 UVType UVTypeFromName(QString name);
-enum UVStatus {A, B, C, D, E, F, FX, RES, ABS, EC, Usize};
+enum UVStatus {A, B, C, D, E, FX, F, RES, ABS, EC, Usize};
 QString UVStatusName(UVStatus t);
+UVStatus UVStatusFromName(QString t);
 enum Semestre : bool { Printemps, Automne };
 //Fini, En cours, Planifié, Proposé
 enum SemestreStatus { Fini, SEC, PL, PR, Ssize };

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ValidatorDialog_t {
-    QByteArrayData data[7];
-    char stringdata[66];
+    QByteArrayData data[10];
+    char stringdata[100];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,10 +35,14 @@ QT_MOC_LITERAL(2, 29, 0),
 QT_MOC_LITERAL(3, 30, 12),
 QT_MOC_LITERAL(4, 43, 12),
 QT_MOC_LITERAL(5, 56, 1),
-QT_MOC_LITERAL(6, 58, 6)
+QT_MOC_LITERAL(6, 58, 6),
+QT_MOC_LITERAL(7, 65, 13),
+QT_MOC_LITERAL(8, 79, 4),
+QT_MOC_LITERAL(9, 84, 14)
     },
     "ValidatorDialog\0AjouterLigne\0\0"
     "RetirerLigne\0ComboChanged\0s\0sender\0"
+    "TextFocusLost\0send\0TextFocusLost2\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,7 +52,7 @@ static const uint qt_meta_data_ValidatorDialog[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -56,16 +60,24 @@ static const uint qt_meta_data_ValidatorDialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x0a,
-       3,    0,   35,    2, 0x0a,
-       4,    2,   36,    2, 0x0a,
-       4,    1,   41,    2, 0x2a,
+       1,    0,   54,    2, 0x0a,
+       3,    0,   55,    2, 0x0a,
+       4,    2,   56,    2, 0x0a,
+       4,    1,   61,    2, 0x2a,
+       7,    1,   64,    2, 0x0a,
+       7,    0,   67,    2, 0x2a,
+       9,    1,   68,    2, 0x0a,
+       9,    0,   71,    2, 0x2a,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::QObjectStar,    5,    6,
     QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void, QMetaType::QObjectStar,    8,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QObjectStar,    8,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -79,6 +91,10 @@ void ValidatorDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 1: _t->RetirerLigne(); break;
         case 2: _t->ComboChanged((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QObject*(*)>(_a[2]))); break;
         case 3: _t->ComboChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: _t->TextFocusLost((*reinterpret_cast< QObject*(*)>(_a[1]))); break;
+        case 5: _t->TextFocusLost(); break;
+        case 6: _t->TextFocusLost2((*reinterpret_cast< QObject*(*)>(_a[1]))); break;
+        case 7: _t->TextFocusLost2(); break;
         default: ;
         }
     }
@@ -111,13 +127,13 @@ int ValidatorDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 8;
     }
     return _id;
 }

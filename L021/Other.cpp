@@ -58,6 +58,20 @@ QString UVStatusName(UVStatus t)
 	return "ErreurStatus";
 }
 
+UVStatus UVStatusFromName(QString t)
+{
+	if (t == "A") return UVStatus::A;
+	if (t == "B") return UVStatus::B;
+	if (t == "C") return UVStatus::C;
+	if (t == "D") return UVStatus::D;
+	if (t == "E") return UVStatus::E;
+	if (t == "F") return UVStatus::F;
+	if (t == "FX") return UVStatus::FX;
+	if (t == "RES") return UVStatus::RES;
+	if (t == "ABS") return UVStatus::ABS;
+	return UVStatus::EC;
+}
+
 QString SemestreStatusName(SemestreStatus t)
 {
 	switch (t)

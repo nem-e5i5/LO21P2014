@@ -37,9 +37,9 @@ WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, U
 	return iter;
 }
 
-IdentityIterator<SemestreSuivi, vector<SemestreSuivi>::iterator> Dossier::SemestreIterator()
+IdentityIterator<SemestreSuivi&, vector<SemestreSuivi>::iterator> Dossier::SemestreIterator()
 {
-	return IdentityIterator<SemestreSuivi, vector<SemestreSuivi>::iterator>(Ssuivi.begin(), Ssuivi.end());
+	return IdentityIterator<SemestreSuivi&, vector<SemestreSuivi>::iterator>(Ssuivi.begin(), Ssuivi.end());
 }
 
 SelectIterator<QString, const Cursus&, vector<QString>::iterator> Dossier::CursusIterator()
@@ -50,7 +50,8 @@ SelectIterator<QString, const Cursus&, vector<QString>::iterator> Dossier::Cursu
 
 int Dossier::getNbEquivalences(UVType t)
 {
-	return Equivalences[t];
+	return t < UVType::size ? Equivalences[t] : 
+		Sum<int>(&Equivalences[0], &Equivalences[UVType::size], 0);
 }
 
 void Dossier::setNbEquivalences(UVType t, int value = 0)
@@ -117,6 +118,14 @@ void Dossier::InscriptionCursusByName(QString x)
 	Cursussuivi.push_back(x);
 }
 
+void Dossier::DesinscriptionUVByName(QString x)
+{
+	if (!UTProfiler::GetInstance()->UVExists(x)) throw;
+	for (auto semiter = SemestreIterator(); !semiter.ended(); ++semiter)
+	{
+		(*semiter).Desinscription(x);
+	}
+}
 void Dossier::DesinscriptionCursusByName(QString x)
 {
 	auto iter = find(Cursussuivi.begin(), Cursussuivi.end(), x);

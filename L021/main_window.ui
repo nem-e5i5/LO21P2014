@@ -24,7 +24,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tab_widget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -147,7 +147,7 @@
            <bool>true</bool>
           </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>300</number>
+           <number>160</number>
           </attribute>
           <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
            <bool>true</bool>
@@ -166,6 +166,11 @@
           <column>
            <property name="text">
             <string>Validé</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Validable</string>
            </property>
           </column>
          </widget>

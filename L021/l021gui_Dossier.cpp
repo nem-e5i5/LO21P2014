@@ -64,7 +64,20 @@ void L021GUI::RemoveSemestre_Dossier()
 	}
 	auto p = ui.dossier_uv_list->selectedItems().at(0)->parent();
 	if (p == nullptr) p = ui.dossier_uv_list->selectedItems().at(0);
-	UTProfiler::GetInstance()->getDossier().SupprimerSemestre(p->text(0));
+	
+	auto* sem = &UTProfiler::GetInstance()->getDossier().SemestreRef(p->text(0));
+	auto* last = &UTProfiler::GetInstance()->getDossier().SemestreRef();
+	if (sem != last)
+	{
+		auto iter = sem->UVIterator();
+		for (; !iter.ended(); ++iter)
+			sem->Desinscription((*iter).get_uv().get_code());
+		for (int i = 0; i < UVType::size; ++i)
+			sem->set_Prevision(static_cast<UVType>(i), 0);
+		sem->set_ALEtranger(false);
+		sem->set_Status(SemestreStatus::PR);
+	}
+	else UTProfiler::GetInstance()->getDossier().SupprimerSemestre(p->text(0));
 	UVList_DossierChanged();
 }
 
@@ -145,6 +158,7 @@ void L021GUI::CursusList_DossierChanged()
 		ui.dossier_cursus_list->setRowCount(i + 1);
 		ui.dossier_cursus_list->setItem(i, 0, new QTableWidgetItem((*iter).getName()));
 		ui.dossier_cursus_list->setItem(i, 1, new QTableWidgetItem((*iter).Validate(UTProfiler::GetInstance()->getDossier()) ? "Oui": "Non"));
+		ui.dossier_cursus_list->setItem(i, 2, new QTableWidgetItem((*iter).MayValidate(UTProfiler::GetInstance()->getDossier()) ? "Oui" : "Non"));
 		++i;
 	}
 }

@@ -32,7 +32,7 @@ public:
 
 	SemestreLinearizer UVIterator();
 	WhereIterator<UV, SelectIterator<std::pair<QString, UV>, UV, std::map<QString, UV>::iterator>> UVPrenableIterator(QString SId);
-	IdentityIterator<SemestreSuivi, vector<SemestreSuivi>::iterator> SemestreIterator();
+	IdentityIterator<SemestreSuivi&, vector<SemestreSuivi>::iterator> SemestreIterator();
 
 	SelectIterator<QString, const Cursus&, vector<QString>::iterator> CursusIterator();
 
@@ -49,6 +49,7 @@ public:
 
 	void InscriptionUV(const UV& x);
 	void InscriptionUVByName(QString x);
+	void DesinscriptionUVByName(QString x);
 	
 	void InscriptionCursus(const Cursus& x);
 	void InscriptionCursusByName(QString x);

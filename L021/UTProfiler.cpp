@@ -155,7 +155,11 @@ void UTProfiler::ImportUVOnlytxt(QString fname)
 void UTProfiler::AutoComplete()
 {
 	auto CursusIter = getDossier().CursusIterator();
-	auto UVIter = UVIterator();
+	if (MonDossier.SemestreIterator().ended())
+	{
+		MonDossier.NouveauSemestre();
+		MonDossier.SemestreRef().set_Status(SemestreStatus::PR);
+	}
 
 	for (; !CursusIter.ended(); ++CursusIter)
 	//Pour chaque cursus
@@ -195,7 +199,55 @@ void UTProfiler::AutoComplete()
 				Notify(QString::fromWCharArray(L"Il semblerait que le bloquage soit causé par des conditions de validations ne concernant pas les UV. Un semestre à l'étranger par exemple? L'application va maintenant continuer l'autocomplétion, il faudra néanmoins pour compléter le dossier une action supplémentaire"));
 				continue;
 			}
-			break;
+			return;
+		}
+	}
+	//optimisation du nombre d'UV
+	auto SemIter = MonDossier.SemestreIterator();
+	for (; !SemIter.ended(); ++SemIter)
+	{
+		auto UVIter = (*SemIter).UVIterator();
+		auto uvector = toVector<UVEncours>(UVIter, UVIter.getEnd());
+		for (auto uv : uvector)
+		{
+			(*SemIter).Desinscription(uv.get_uv().get_code());
+			CursusIter = MonDossier.CursusIterator();
+			for (; !CursusIter.ended(); ++CursusIter)
+			{
+				if (!(*CursusIter).MayValidate(MonDossier)) break;
+			}
+			if (!CursusIter.ended()) (*SemIter).Inscription(uv);
+		}
+	}
+	//Optimisation du nombre de semestres
+	SemIter = MonDossier.SemestreIterator();
+	for (; !SemIter.ended(); ++SemIter)
+	{
+		if ((*SemIter).get_Status() != SemestreStatus::PL && (*SemIter).get_Status() != SemestreStatus::PR)
+			continue;
+		auto UVIter = MonDossier.UVIterator();
+		auto ____debug = toVector<UVEncours>(UVIter, UVIter.getEnd());
+
+		UVIter = SkipWhile(UVIter, UVIter.getEnd(), [SemIter](const UVEncours& x)
+		{
+			auto y = SemIter;
+			++y;
+			if (y.ended()) return true;
+			return (*y).UVIterator().ended() || 
+				x != (*(*y).UVIterator());
+		});
+		auto uvector = toVector<UVEncours>(UVIter, UVIter.getEnd());
+		for (auto uv : uvector)
+		{
+			if ((*SemIter).get_Status() == SemestreStatus::PL || (*SemIter).get_Status() == SemestreStatus::PR)
+			if ((*SemIter).get_nb_credit_previsional(UVType::Mixe) + uv.get_uv().get_nb_credit(UVType::Mixe) < 35
+				&& (*SemIter).UVCount() < 7)
+			if ((uv.get_uv().get_automne() && (*SemIter).get_Saison() == Semestre::Automne)
+				|| (uv.get_uv().get_printemps() && (*SemIter).get_Saison() == Semestre::Printemps))
+			{
+				MonDossier.DesinscriptionUVByName(uv.get_uv().get_code());
+				(*SemIter).Inscription(uv);
+			}
 		}
 	}
 }

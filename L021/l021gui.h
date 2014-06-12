@@ -21,6 +21,8 @@
 #include "CreditIn.h"
 #include "XUVIn.h"
 #include "XSemestreALetranger.h"
+#include "Switch.h"
+#include "XUVAvecYIn.h"
 
 class L021GUI : public QMainWindow
 {

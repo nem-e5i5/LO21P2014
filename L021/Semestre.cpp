@@ -10,7 +10,7 @@ void SemestreSuivi::Desinscription(QString Name)
 {
 	auto iter = Where<UVEncours>(UVs.begin(), UVs.end(), 
 		[=](const UVEncours& x) { return x.get_uv().get_code() == Name; });
-	if (iter.ended()) throw;
+	if (iter.ended()) return;
 	auto& item = *iter;
 	auto stditer = find(UVs.begin(), UVs.end(), item);
 	UVs.erase(stditer);

@@ -13,13 +13,14 @@ Cursus& CursusDialog::ShowDialog(Cursus& src, QWidget* parent)
 	CursusDialog x(parent);
 	x.dst = src;
 	x.cursusName_edit->setText(src.getName());
+	x.cursusName_edit->setEnabled(false);
 	x.ListUpdated();
 	int rflag = x.exec();
 	if (rflag == 0) Notify(L"Modifications annulées");
 	else
 	{
 		src = x.dst;
-		src.Rename(x.cursusName_edit->text());
+		//src.Rename(x.cursusName_edit->text());
 	}
 	return src;
 }

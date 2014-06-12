@@ -1,211 +1,339 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="UVList" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="EnsemblistIterator&lt;T, src, Derived&gt;">
+    <Position X="7" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UVList.h</FileName>
+      <HashCode>AAAAAAAAAQAAAAAEQCBAAQAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Ensemblist_win.h</FileName>
+      <NewMemberFileName>Ensemblist_lin.h</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CursusValidator" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAIACAAAAACAAAAAAAIAAAAAACAAAQBAAAAEAAABBAA=</HashCode>
-      <FileName>Cursus.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ValidatorFactory" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Cursus.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Cursus" Collapsed="true">
-    <Position X="0.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AhAAAAAAAACAAAAAAAAAAAQAAAAAAAAEAAAkIABBAAA=</HashCode>
-      <FileName>Cursus.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CursusList" Collapsed="true">
-    <Position X="1" Y="1" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAACAAAEAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>CursusList.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Dossier" Collapsed="true">
-    <Position X="0.5" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAAAgQAAIAAgBIIAAAEAAAAAAEBAqiAEAQkCAA=</HashCode>
-      <FileName>Dossier.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EquivDialog" Collapsed="true">
-    <Position X="1.25" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAA=</HashCode>
-      <FileName>EquivDialog.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="L021GUI" Collapsed="true">
-    <Position X="1.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAISAQAAgAAAEAAAAQEAAAAgAQAAAAABIAACEAAAAAA=</HashCode>
-      <FileName>l021gui.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SemestreSuivi" Collapsed="true">
-    <Position X="0.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>RAAAAACEAIEAAAAAAAAAAQABAAAACAQAIoAAAAAABIA=</HashCode>
-      <FileName>Semestre.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UTProfiler">
-    <Position X="2.25" Y="3.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAGhACAEAAIAAAAAAACAAAAgBAAAAAAZAgBIACAAgAA=</HashCode>
-      <FileName>UTProfiler.h</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="MonDossier" />
-      <Field Name="UVList" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="UV" Collapsed="true">
-    <Position X="2.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>CAACAAAKIIBAAFAAAQAAQQAACQAAAgAAIIAACgQgAAA=</HashCode>
-      <FileName>UV.hpp</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UVEncours" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAEAAAAIAAAAAAAAAAAAQAAAEAAAAAAQAAAAAAASAA=</HashCode>
-      <FileName>UV.hpp</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UVDialog" Collapsed="true">
-    <Position X="0.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UVDialog.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UTException" Collapsed="true">
-    <Position X="0.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAIAAAA=</HashCode>
-      <FileName>Other.hpp</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EnsemblistIterator&lt;T, src, Derived&gt;" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAQCBAAQAAAAAAAAAQAAAAAAAAAAA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="IdentityIterator&lt;T, src&gt;" Collapsed="true">
-    <Position X="8" Y="1.75" Width="4" />
+  <Class Name="IdentityIterator&lt;T, src&gt;">
+    <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAEA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
+      <FileName>Ensemblist_win.h</FileName>
+      <NewMemberFileName>Ensemblist_lin.h</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WhereIterator&lt;T, src&gt;" Collapsed="true">
-    <Position X="12.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAABAQAAAAAAAAAAAAAAAEAAgAAAAAAA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SelectIterator&lt;T, Tdest, src&gt;" Collapsed="true">
-    <Position X="5.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAIAACAAAAAAAAAQAAAAAAAAAAAAAAIAAAgAAAAAAA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UniqueIterator&lt;T, src, F&gt;" Collapsed="true">
-    <Position X="10.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAIAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAkAAAAAAA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ReduceIterator&lt;T, src, F&gt;" Collapsed="true">
-    <Position X="14.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQIAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConcatIterator&lt;T, src, src2&gt;">
-    <Position X="3.5" Y="2.75" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAAAAQCRAAQAAQAAAAAAAAAAgAAAAAAA=</HashCode>
-      <FileName>Ensemblist_lin.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LinearizeIterator&lt;T, src, nested&gt;" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
+  <Class Name="LinearizeIterator&lt;T, src, nested&gt;">
+    <Position X="9.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAEAAAAAQAAAgQAAAAAAAAAAAAAgAAACAAA=</HashCode>
       <FileName>Ensemblist_win.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="std::map&lt;_Kty, _Ty, _Pr, _Alloc&gt;" Collapsed="true">
-    <Position X="7" Y="5.75" Width="1.5" />
+  <Class Name="UV">
+    <Position X="15.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAgQAgAAAAAAA=</HashCode>
-      <FileName>c:\program files (x86)\microsoft visual studio 12.0\vc\include\map</FileName>
+      <HashCode>CAACAAAKIIBAAFAAAQAAQQAACQAAAgAAIIAACgQgAAA=</HashCode>
+      <FileName>UV.hpp</FileName>
     </TypeIdentifier>
   </Class>
-  <Typedef Name="SemestreLinearizer" Collapsed="true">
-    <Position X="1.25" Y="1.75" Width="1.5" />
+  <Class Name="UVEncours">
+    <Position X="17" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAEAAAAIAAAAAAAAAAAAQAAAEAAAAAAQAAAAAAASAA=</HashCode>
+      <FileName>UV.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UTProfiler">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAGhACAEQAIAAAAAAACAAAAgBAAAAAAZAgBIASAAgAA=</HashCode>
+      <FileName>UTProfiler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SemestreSuivi">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAIAAACEAMEAAAAAAAAAAQQBAAAACAQAIoCBEAAIBIA=</HashCode>
+      <FileName>Semestre.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="L021GUI">
+    <Position X="1.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIWAUAAwAAAEAAAAQFAAAAgAUQABAADIABCEAABAAA=</HashCode>
+      <FileName>l021gui.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dossier">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAAAAAgQAAIAAgBIIAAAEAAAAAAEBAqiAEAQkCAA=</HashCode>
       <FileName>Dossier.h</FileName>
     </TypeIdentifier>
-  </Typedef>
+  </Class>
+  <Class Name="CursusValidator">
+    <Position X="16" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIACAAAAACAAAgAAAIAAAAAAGAAAQBAAAIEAgABAAA=</HashCode>
+      <FileName>Cursus.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidatorFactory">
+    <Position X="16" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cursus.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cursus">
+    <Position X="14.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAACAACAAAAAAAAAAQQAAFQAAgAEAAIkIABBgAA=</HashCode>
+      <FileName>Cursus.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CursusDialog">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACAAAIAAAAAAAAAAAAEAAAAAAQAAAAASAAAAAAA=</HashCode>
+      <FileName>CursusDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CursusList">
+    <Position X="5.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAEAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>CursusList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquivDialog">
+    <Position X="3.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>EquivDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SemestreStatusDialog">
+    <Position X="1.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>SemestreStatusDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UVDialog">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UVDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UVList">
+    <Position X="5.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UVList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidatorDialog">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgABAEAAAAAAAEAAABQAAAAAQAAAAAgAAA=</HashCode>
+      <FileName>ValidatorDialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WhereIterator&lt;T, src&gt;">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAABAQAAAAAAAAAAAAAAAEAAgAAAAAAA=</HashCode>
+      <FileName>Ensemblist_win.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SelectIterator&lt;T, Tdest, src&gt;">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAACAAAAAAAAAQAAAAAAAAAAAAAAIAAAgAAAAAAA=</HashCode>
+      <FileName>Ensemblist_win.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniqueIterator&lt;T, src, F&gt;">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAkAAAAAAA=</HashCode>
+      <FileName>Ensemblist_win.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReduceIterator&lt;T, src, F&gt;">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Ensemblist_win.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConcatIterator&lt;T, src, src2&gt;">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAQAAAAAAQCRAAQAAQAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Ensemblist_win.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CreditValidator">
+    <Position X="17.75" Y="13.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="CreditValidator::CreditValidatorFactory">
+        <TypeIdentifier>
+          <NewMemberFileName>Credit - Copie.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <InheritanceLine Type="CursusValidator" FixedToPoint="true">
+      <Path>
+        <Point X="16.75" Y="13.25" />
+        <Point X="16.75" Y="12.875" />
+        <Point X="18.5" Y="12.875" />
+        <Point X="18.5" Y="13.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAACAQAAAAAAAAAAAAGAAAABAAAYEAgAAAAA=</HashCode>
+      <FileName>Credit - Copie.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreditInValidator">
+    <Position X="21.25" Y="13.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="CreditInValidator::CreditInValidatorFactory">
+        <TypeIdentifier>
+          <NewMemberFileName>CreditIn - Copie.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <InheritanceLine Type="CursusValidator" FixedToPoint="true">
+      <Path>
+        <Point X="17.156" Y="13.25" />
+        <Point X="17.156" Y="12.875" />
+        <Point X="22" Y="12.875" />
+        <Point X="22" Y="13.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAACAQAAAAAAAAAAAAGAAAABAAAYEAgAAAAA=</HashCode>
+      <FileName>CreditIn - Copie.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SwitchValidator">
+    <Position X="24.75" Y="13.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="SwitchValidator::SwitchValidatorFactory">
+        <TypeIdentifier>
+          <NewMemberFileName>Switch - Copie.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <InheritanceLine Type="CursusValidator" FixedToPoint="true">
+      <Path>
+        <Point X="16.242" Y="13.25" />
+        <Point X="16.242" Y="12.875" />
+        <Point X="25.5" Y="12.875" />
+        <Point X="25.5" Y="13.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAQAgAAAAAAAAAAGAAAAFCAAYEAgAAAAA=</HashCode>
+      <FileName>Switch - Copie.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="XSemestreALetrangerValidator">
+    <Position X="19.5" Y="13.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="XSemestreALetrangerValidator::XSemestreALetrangerValidatorFactory">
+        <TypeIdentifier>
+          <NewMemberFileName>XSemestreALetranger - Copie.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <InheritanceLine Type="CursusValidator" FixedToPoint="true">
+      <Path>
+        <Point X="17.359" Y="13.25" />
+        <Point X="17.359" Y="12.875" />
+        <Point X="20.312" Y="12.875" />
+        <Point X="20.312" Y="13.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgCAQAgAAAAAAAAAAGAAAABAAAIEAgAAAAA=</HashCode>
+      <FileName>XSemestreALetranger - Copie.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="XUVAvecYInValidator">
+    <Position X="23" Y="13.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="XUVAvecYInValidator::XUVAvecYInValidatorFactory">
+        <TypeIdentifier>
+          <NewMemberFileName>Credit - Copie.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <InheritanceLine Type="CursusValidator" FixedToPoint="true">
+      <Path>
+        <Point X="16.953" Y="13.25" />
+        <Point X="16.953" Y="12.875" />
+        <Point X="23.75" Y="12.875" />
+        <Point X="23.75" Y="13.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAQAAAAAAAAAAAAGAAAARAAIYEAgAAAAA=</HashCode>
+      <FileName>XUVAvecYIn - Copie.h</FileName>
+      <NewMemberFileName>Credit - Copie.h</NewMemberFileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="XUVInValidator">
+    <Position X="26.5" Y="13.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="XUVInValidator::XUVInValidatorFactory">
+        <TypeIdentifier>
+          <NewMemberFileName>XUVIn - Copie.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <InheritanceLine Type="CursusValidator" FixedToPoint="true">
+      <Path>
+        <Point X="16.547" Y="13.25" />
+        <Point X="16.547" Y="12.875" />
+        <Point X="27.25" Y="12.875" />
+        <Point X="27.25" Y="13.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAACAQAAAAAAAAAAAAGAAAABAAAYEAgAAAAA=</HashCode>
+      <FileName>XUVIn - Copie.h</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Typedef Name="UVEncoursOnVectorIterator" Collapsed="true">
-    <Position X="1.75" Y="1.75" Width="1.5" />
+    <Position X="5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Semestre.h</FileName>
     </TypeIdentifier>
   </Typedef>
-  <Enum Name="UVType" Collapsed="true">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+  <Typedef Name="SemestreLinearizer" Collapsed="true">
+    <Position X="9.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAIAAAgAAAIAAAAAAAAAAAAAAEIA=</HashCode>
-      <FileName>Other.hpp</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dossier.h</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="UVStatus" Collapsed="true">
-    <Position X="0.5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEIAABAAAAAAAAAAAAAAAAAAAtgEAAAI=</HashCode>
-      <FileName>Other.hpp</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Semestre" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Other.hpp</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="SemestreStatus" Collapsed="true">
-    <Position X="2.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Other.hpp</FileName>
-    </TypeIdentifier>
-  </Enum>
+  </Typedef>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
